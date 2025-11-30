@@ -1,4 +1,4 @@
-// src/components/sections/projects-section.tsx
+// src/app/projects/page.tsx
 import { Container } from "@/components/layout/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Card } from "@/components/ui/card";
@@ -6,16 +6,16 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { getAllProjects } from "@/lib/projects";
 
-export function ProjectsSection() {
+export default function ProjectsListPage() {
   const projects = getAllProjects();
 
   return (
-    <section id="projects" className="border-b border-slate-800 bg-qp-bg">
+    <section className="bg-qp-bg border-b border-slate-800">
       <Container>
         <div className="py-section-y">
           <SectionTitle
-            title="Projets phares"
-            description="Une sélection de projets qui représentent le mieux ma manière de travailler : du front au backend, jusqu’au déploiement."
+            title="Tous les projets"
+            description="Liste complète des projets présentés sur ce portfolio."
           />
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -33,31 +33,13 @@ export function ProjectsSection() {
                     <Badge key={tech}>{tech}</Badge>
                   ))}
                 </div>
-                <div className="mt-4 flex flex-wrap gap-3 text-xs">
+                <div className="mt-4">
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="text-qp-primary hover:underline"
+                    className="text-sm text-qp-primary hover:underline"
                   >
-                    Voir le projet →
+                    Voir le détail →
                   </Link>
-                  {project.links.github && (
-                    <a
-                      href={project.links.github}
-                      target="_blank"
-                      className="text-slate-300 hover:text-qp-primary"
-                    >
-                      Code source
-                    </a>
-                  )}
-                  {project.links.demo && (
-                    <a
-                      href={project.links.demo}
-                      target="_blank"
-                      className="text-slate-300 hover:text-qp-primary"
-                    >
-                      Démo
-                    </a>
-                  )}
                 </div>
               </Card>
             ))}
