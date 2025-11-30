@@ -1,34 +1,45 @@
-// src/app/api/contact/route.ts
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 
-const ContactSchema = z.object({
-  name: z.string().min(1, "Le nom est requis").max(100),
-  email: z.string().email("Email invalide"),
-  message: z.string().min(10, "Le message est trop court").max(2000),
+const contactSchema = z.object({
+  name: z.string().min(1, "Le nom est requis").max(200),
+  email: z.string().email("Email invalide").max(200),
+  message: z.string().min(1, "Le message est requis").max(5000),
 });
 
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const json = await req.json();
-    const data = ContactSchema.parse(json);
+    const json = await request.json();
+    const data = contactSchema.parse(json);
 
-    // Pour l’instant, on log juste côté serveur
-    console.log("Nouveau message de contact:", data);
+    // Pour l’instant on loggue simplement côté serveur.
+    // Tu pourras plus tard brancher ça sur un vrai envoi d’email.
+    console.log("[CONTACT] Nouveau message :", {
+      ...data,
+      receivedAt: new Date().toISOString(),
+    });
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
+    console.error("[CONTACT] Erreur :", error);
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           ok: false,
-          errors: error.flatten(),
+          error: "INVALID_DATA",
+          issues: error.issues,
         },
         { status: 400 },
       );
     }
 
-    console.error("Erreur dans /api/contact:", error);
-    return NextResponse.json({ ok: false }, { status: 500 });
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "SERVER_ERROR",
+      },
+      { status: 500 },
+    );
   }
 }
