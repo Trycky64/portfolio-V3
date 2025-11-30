@@ -1,9 +1,13 @@
+import { Container } from "@/components/layout/container";
+import { SectionTitle } from "@/components/ui/section-title";
+
 export function AboutSection() {
   return (
-    <section id="about" className="border-b border-slate-800 bg-slate-950">
-      <div className="mx-auto max-w-5xl px-4 py-16">
-        <h2 className="text-2xl font-semibold sm:text-3xl">À propos</h2>
-        <div className="mt-4 space-y-4 text-sm text-slate-300">
+    <section id="about" className="border-b border-slate-800 bg-qp-bg">
+      <Container>
+        <div className="py-section-y">
+          <SectionTitle title="À propos" />
+          <div className="mt-4 space-y-4 text-sm text-slate-300">
           <p>
             Je m’appelle Quentin Perriere et je suis développeur web &amp;
             applicatif, actuellement en Bachelor après un BTS SIO option SLAM.
@@ -27,7 +31,8 @@ export function AboutSection() {
             perso.
           </p>
         </div>
-      </div>
+        </div>
+      </Container>
     </section>
   );
 }

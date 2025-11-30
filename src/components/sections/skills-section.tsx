@@ -58,40 +58,38 @@ const skillGroups = [
   },
 ];
 
+import { Container } from "@/components/layout/container";
+import { SectionTitle } from "@/components/ui/section-title";
+import { Badge } from "@/components/ui/badge";
+
 export function SkillsSection() {
   return (
     <section id="skills" className="border-b border-slate-800 bg-slate-950">
-      <div className="mx-auto max-w-5xl px-4 py-16">
-        <h2 className="text-2xl font-semibold sm:text-3xl">Compétences</h2>
-        <p className="mt-2 text-sm text-slate-300">
-          Un aperçu rapide de mon stack actuel côté front, back, DevOps et
-          qualité logicielle.
-        </p>
+      <Container>
+        <div className="py-section-y">
+          <SectionTitle
+            title="Compétences"
+            description="Un aperçu rapide de mon stack actuel côté front, back, DevOps et qualité logicielle."
+          />
 
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          {skillGroups.map((group) => (
-            <article
-              key={group.title}
-              className="rounded-xl border border-slate-800 bg-slate-900/40 p-5"
-            >
-              <h3 className="text-sm font-semibold">{group.title}</h3>
-              <p className="mt-1 text-sm text-slate-300">
-                {group.description}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-slate-700 bg-slate-900 px-2 py-1 text-slate-200"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {skillGroups.map((group) => (
+              <article
+                key={group.title}
+                className="rounded-xl border border-slate-800 bg-slate-900/40 p-5"
+              >
+                <h3 className="text-sm font-semibold">{group.title}</h3>
+                <p className="mt-1 text-sm text-slate-300">{group.description}</p>
+                <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  {group.skills.map((skill) => (
+                    <Badge key={skill}>{skill}</Badge>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -1,3 +1,6 @@
+import { Container } from "@/components/layout/container";
+import { SectionTitle } from "@/components/ui/section-title";
+
 const timeline = [
   {
     title: "Équipier polyvalent — McDonald’s, Anglet",
@@ -39,15 +42,15 @@ const timeline = [
 
 export function TimelineSection() {
   return (
-    <section id="timeline" className="border-b border-slate-800 bg-slate-900">
-      <div className="mx-auto max-w-5xl px-4 py-16">
-        <h2 className="text-2xl font-semibold sm:text-3xl">Parcours</h2>
-        <p className="mt-2 text-sm text-slate-300">
-          Entre formation, expériences en entreprise et projets perso, voici les
-          grandes étapes de mon parcours.
-        </p>
+    <section id="timeline" className="border-b border-slate-800 bg-slate-950">
+      <Container>
+        <div className="py-section-y">
+          <SectionTitle
+            title="Parcours"
+            description="Entre formation, expériences en entreprise et projets perso, voici les grandes étapes de mon parcours."
+          />
 
-        <ol className="mt-8 space-y-6 border-l border-slate-700 pl-4">
+          <ol className="mt-8 space-y-6 border-l border-slate-700 pl-4">
           {timeline.map((item) => (
             <li key={item.title} className="relative pl-4">
               <span className="absolute -left-[9px] mt-1 h-3 w-3 rounded-full border border-sky-500 bg-slate-950" />
@@ -60,6 +63,7 @@ export function TimelineSection() {
           ))}
         </ol>
       </div>
+      </Container>
     </section>
   );
 }

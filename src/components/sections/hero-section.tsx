@@ -1,10 +1,13 @@
+import { Container } from "@/components/layout/container";
+
 export function HeroSection() {
   return (
     <section
       id="hero"
       className="border-b border-slate-800 bg-gradient-to-b from-slate-950 to-slate-900"
     >
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:py-24">
+      <Container>
+        <div className="py-16 sm:py-24">
         <p className="text-sm uppercase tracking-[0.3em] text-sky-400">
           Quentin Perriere
         </p>
@@ -37,7 +40,8 @@ export function HeroSection() {
             Télécharger mon CV
           </a>
         </div>
-      </div>
+        </div>
+      </Container>
     </section>
   );
 }

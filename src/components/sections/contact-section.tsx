@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState, useEffect } from "react";
+import { Container } from "@/components/layout/container";
 
 export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -24,7 +25,7 @@ export function ContactSection() {
   if (!isMounted) {
     // render a small placeholder to maintain layout while avoiding hydration mismatch
     return (
-      <section id="contact" className="bg-slate-950" suppressHydrationWarning>
+      <section id="contact" className="bg-qp-bg" suppressHydrationWarning>
         <div className="mx-auto max-w-5xl px-4 py-16" />
       </section>
     );
@@ -32,7 +33,8 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="bg-slate-950" suppressHydrationWarning>
-      <div className="mx-auto max-w-5xl px-4 py-16">
+      <Container>
+        <div className="py-16">
         <h2 className="text-2xl font-semibold sm:text-3xl">
           On travaille ensemble ?
         </h2>
@@ -68,7 +70,7 @@ export function ContactSection() {
                 name="email"
                 type="email"
                 required
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-sky-400"
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary"
               />
             </div>
 
@@ -81,7 +83,7 @@ export function ContactSection() {
                 name="message"
                 rows={5}
                 required
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-sky-400"
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary"
               />
             </div>
 
@@ -113,7 +115,7 @@ export function ContactSection() {
                 href="mailto:q.perriere@gmail.com"
                 className="text-sky-400 hover:underline"
               >
-                Mail
+                q.perriere@gmail.com
               </a>
             </p>
             <p>
@@ -139,6 +141,7 @@ export function ContactSection() {
           </div>
         </div>
       </div>
+      </Container>
     </section>
   );
 }
