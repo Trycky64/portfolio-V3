@@ -2,7 +2,7 @@ import nextConfig from "eslint-config-next";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
-export default [
+const eslintConfig = [
   // Config Next.js officielle (core-web-vitals, etc.)
   ...nextConfig,
 
@@ -17,3 +17,5 @@ export default [
     },
   },
 ];
+
+export default eslintConfig;
