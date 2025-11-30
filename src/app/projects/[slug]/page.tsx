@@ -45,11 +45,13 @@ export default function ProjectPage({
 
         {/* Description */}
         <p className="mt-6 text-slate-200 leading-relaxed text-sm">
-          {project.description}
+          {project.shortDescription}
         </p>
 
         {/* Stack */}
-        <h2 className="mt-10 text-lg font-semibold text-white">Technologies utilisées</h2>
+        <h2 className="mt-10 text-lg font-semibold text-white">
+          Technologies utilisées
+        </h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {project.stack.map((tech) => (
             <Badge key={tech}>{tech}</Badge>
@@ -57,12 +59,18 @@ export default function ProjectPage({
         </div>
 
         {/* Highlights */}
-        <h2 className="mt-10 text-lg font-semibold text-white">Points clés</h2>
-        <ul className="mt-3 list-disc pl-5 text-sm text-slate-300 space-y-1">
-          {project.highlights.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        {project.highlights && project.highlights.length > 0 && (
+          <>
+            <h2 className="mt-10 text-lg font-semibold text-white">
+              Points clés
+            </h2>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-300">
+              {project.highlights.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </>
+        )}
 
         {/* Liens */}
         <h2 className="mt-10 text-lg font-semibold text-white">Liens</h2>
