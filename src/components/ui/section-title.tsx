@@ -12,7 +12,7 @@ export function SectionTitle({
   return (
     <div className="max-w-2xl">
       {eyebrow && (
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-sky-400">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-qp-primary">
           {eyebrow}
         </p>
       )}
