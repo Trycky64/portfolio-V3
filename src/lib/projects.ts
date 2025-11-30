@@ -28,8 +28,8 @@ export const projects: Project[] = [
       "Développement typé avec TypeScript.",
     ],
     links: {
-      github: "#",
-      demo: "#",
+      github: "https://github.com/Trycky64/citypulse",
+      demo: "https://citypulse.quentinperriere.com",
     },
     image: "/images/projects/citypulse.png",
   },
@@ -47,8 +47,8 @@ export const projects: Project[] = [
       "Images optimisées via next/image.",
     ],
     links: {
-      github: "#",
-      demo: "#",
+      github: "https://github.com/Trycky64/portfolio-V3",
+      demo: "https://quentinperriere.com",
     },
     image: "/images/projects/portfolio-v3.png",
   },
