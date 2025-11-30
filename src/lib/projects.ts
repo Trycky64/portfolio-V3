@@ -1,63 +1,72 @@
-// src/lib/projects.ts
-export type Project = {
+export interface ProjectLinks {
+  github?: string;
+  demo?: string;
+}
+
+export interface Project {
   slug: string;
   title: string;
   tagLine: string;
+  image?: string;
   shortDescription: string;
   stack: string[];
   highlights: string[];
-  links: {
-    github?: string;
-    demo?: string;
-  };
-  image?: string;
-};
+  links: ProjectLinks;
+}
 
-export const projects: Project[] = [
-  {
-    slug: "citypulse",
-    title: "CityPulse",
-    tagLine: "Application web — dashboard de données urbaines",
-    shortDescription:
-      "Application Vue 3 moderne pour explorer et visualiser des données urbaines avec une UX centrée sur la lisibilité.",
-    stack: ["Vue 3", "Vite", "TypeScript", "Tailwind", "API REST"],
-    highlights: [
-      "Architecture front basée sur des composants Vue 3 réutilisables.",
-      "Design responsive avec Tailwind CSS.",
-      "Consommation d’une API backend et gestion d’état front.",
-      "Développement typé avec TypeScript.",
-    ],
-    links: {
-      github: "https://github.com/Trycky64/citypulse",
-      demo: "https://citypulse.quentinperriere.com",
-    },
-    image: "/images/projects/citypulse.png",
-  },
+const projects: Project[] = [
   {
     slug: "portfolio-v3",
-    title: "Portfolio v3",
-    tagLine: "Site personnel — Next.js",
+    title: "Portfolio V3",
+    tagLine: "Next.js • Tailwind • Cloudflare • Raspberry Pi",
+    image: "/images/projects/portfolio-v3.png",
     shortDescription:
-      "Portfolio développé avec Next.js App Router pour présenter mon parcours, mes projets et mes compétences.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "App Router"],
+      "Portfolio moderne développé avec Next.js 16, déployé sur un Raspberry Pi via Cloudflare Tunnel. Formulaire de contact emailing avec Resend.",
+    stack: [
+      "Next.js 16",
+      "React",
+      "TypeScript",
+      "TailwindCSS",
+      "Cloudflare Tunnel",
+      "Resend",
+      "systemd",
+    ],
     highlights: [
-      "Architecture en sections réutilisables.",
-      "Design system avec composants génériques.",
-      "Formulaire de contact via API Next.js.",
-      "Images optimisées via next/image.",
+      "UI/UX responsive basée sur un design system cohérent",
+      "Déploiement sur Raspberry Pi via Cloudflare Tunnel",
+      "Formulaire de contact complet (Resend API)",
+      "Gestion CI/CD avec GitHub Actions",
     ],
     links: {
       github: "https://github.com/Trycky64/portfolio-V3",
       demo: "https://quentinperriere.com",
     },
-    image: "/images/projects/portfolio-v3.png",
+  },
+  {
+    slug: "citypulse",
+    title: "CityPulse",
+    tagLine: "Vue 3 • Vite • Tailwind • API Node.js",
+    image: "/images/projects/citypulse.png",
+    shortDescription:
+      "Application web affichant les données de pollution, météo et circulation en temps réel. Interface moderne en Vue 3 + API Node.",
+    stack: ["Vue 3", "Vite", "TailwindCSS", "Node.js", "API REST"],
+    highlights: [
+      "Interface réactive et légère",
+      "Données temps réel pollution et météo",
+      "Backend Node.js hébergé sur Raspberry Pi",
+      "Déploiement full-stack sécurisé via Cloudflare",
+    ],
+    links: {
+      github: "https://github.com/Trycky64/citypulse",
+      demo: "https://citypulse.quentinperriere.com",
+    },
   },
 ];
 
-export function getAllProjects() {
+export function getAllProjects(): Project[] {
   return projects;
 }
 
-export function getProjectBySlug(slug: string) {
-  return projects.find((project) => project.slug === slug);
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((p) => p.slug === slug);
 }

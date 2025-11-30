@@ -1,25 +1,22 @@
-import { notFound } from "next/navigation";
 import Image from "next/image";
-import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 import { Container } from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
+import { getProjectBySlug } from "@/lib/projects";
 
-export async function generateStaticParams() {
-  const projects = getAllProjects();
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
-}
-
-export default function ProjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const project = getProjectBySlug(params.slug);
+export default function CityPulseProjectPage() {
+  const project = getProjectBySlug("citypulse");
 
   if (!project) {
-    return notFound();
+    return (
+      <section className="bg-qp-bg min-h-screen py-16">
+        <Container>
+          <h1 className="text-3xl font-bold text-white">Projet introuvable</h1>
+          <p className="mt-4 text-sm text-slate-300">
+            Le projet <span className="font-mono text-qp-primary">citypulse</span> n&apos;a pas été trouvé.
+          </p>
+        </Container>
+      </section>
+    );
   }
 
   return (
@@ -43,7 +40,7 @@ export default function ProjectPage({
           </div>
         )}
 
-        {/* Description */}
+        {/* Description courte */}
         <p className="mt-6 text-slate-200 leading-relaxed text-sm">
           {project.shortDescription}
         </p>

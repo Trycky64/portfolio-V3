@@ -1,39 +1,43 @@
-import Link from "next/link";
+"use client";
 
-const NAV_ITEMS = [
-  { href: "#projects", label: "Projets" },
-  { href: "#timeline", label: "Parcours" },
-  { href: "#skills", label: "Compétences" },
-  { href: "#about", label: "À propos" },
-  { href: "#contact", label: "Contact" },
-];
+import Link from "next/link";
+import { Container } from "./container";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-800 bg-qp-bg/80 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        <Link
-          href="#hero"
-          className="text-sm font-semibold tracking-wide text-slate-100 focus-ring"
-          aria-label="Revenir au début de la page"
-        >
-          <span className="text-qp-primary">{"<"}</span>
-          Quentin Perriere
-          <span className="text-qp-primary">{"/>"}</span>
-        </Link>
+    <header className="border-b border-slate-800 bg-qp-bg/80 backdrop-blur supports-[backdrop-filter]:bg-qp-bg/60 sticky top-0 z-40">
+      <Container>
+        <div className="flex h-14 items-center justify-between">
 
-        <nav className="hidden gap-4 text-xs sm:flex" aria-label="Navigation principale">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-3 py-1 text-slate-300 transition hover:bg-slate-800 hover:text-qp-primary focus-ring"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </div>
+          {/* BOUTON HOME ALWAYS ABSOLUTE + VIOLET */}
+          <Link
+            href="https://quentinperriere.com"
+            className="font-semibold text-qp-primary hover:text-qp-primary/80 transition focus-ring"
+          >
+            <span>&lt;Quentin Perriere/&gt;</span>
+          </Link>
+
+          {/* Navigation */}
+          <nav className="hidden sm:flex gap-6 text-sm">
+            <Link href="/#projects" className="hover:text-qp-primary transition">
+              Projets
+            </Link>
+            <Link href="/#timeline" className="hover:text-qp-primary transition">
+              Parcours
+            </Link>
+            <Link href="/#skills" className="hover:text-qp-primary transition">
+              Compétences
+            </Link>
+            <Link href="/#about" className="hover:text-qp-primary transition">
+              À propos
+            </Link>
+            <Link href="/#contact" className="hover:text-qp-primary transition">
+              Contact
+            </Link>
+          </nav>
+
+        </div>
+      </Container>
     </header>
   );
 }
