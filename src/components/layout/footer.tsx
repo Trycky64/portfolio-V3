@@ -7,14 +7,14 @@ export function Footer() {
         <p>© {year} Quentin Perriere. Tous droits réservés.</p>
         <p className="space-x-3">
           <a
-            href="https://github.com/Trycky64"
+            href="https://github.com/TON_USER_GITHUB"
             className="hover:text-sky-400"
             target="_blank"
           >
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/quentin-perriere-295045292/"
+            href="https://www.linkedin.com/in/TON_PROFIL_LINKEDIN"
             className="hover:text-sky-400"
             target="_blank"
           >

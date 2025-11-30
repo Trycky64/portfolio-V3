@@ -11,7 +11,7 @@ export function Badge({
   return (
     <span
       className={clsx(
-        "rounded-full border border-slate-700 bg-slate-900 px-2 py-1 text-[11px] text-slate-200",
+        "rounded-full border border-slate-700 bg-slate-900 px-2 py-1 text-[11px] text-sky-300",
         className,
       )}
     >

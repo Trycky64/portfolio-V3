@@ -4,16 +4,16 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="border-b border-slate-800 bg-gradient-to-b from-qp-bg-soft to-qp-bg"
+      className="border-b border-slate-800 bg-gradient-to-b from-slate-950 to-slate-900"
     >
       <Container>
         <div className="py-16 sm:py-24">
-          <p className="text-sm uppercase tracking-[0.3em] text-qp-primary">
+          <p className="text-sm uppercase tracking-[0.3em] text-sky-400">
             Quentin Perriere
           </p>
           <h1 className="mt-4 text-3xl font-semibold sm:text-5xl">
             Développeur web & applicatif
-            <span className="block text-qp-primary">
+            <span className="block text-sky-400">
               PHP / Symfony • React / Next.js • WordPress • Python
             </span>
           </h1>
@@ -30,13 +30,13 @@ export function HeroSection() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center rounded-full border border-qp-primary px-5 py-2 text-sm font-medium text-qp-primary hover:bg-qp-primary/10"
+              className="inline-flex items-center rounded-full border border-sky-500 px-5 py-2 text-sm font-medium text-sky-400 hover:bg-sky-500/10"
             >
               Voir mes projets
             </a>
             <a
               href="/cv-quentin-perriere.pdf"
-              className="inline-flex items-center rounded-full bg-qp-primary px-5 py-2 text-sm font-medium text-slate-950 hover:bg-qp-primary-soft"
+              className="inline-flex items-center rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400"
             >
               Télécharger mon CV
             </a>

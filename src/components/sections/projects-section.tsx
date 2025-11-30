@@ -1,4 +1,3 @@
-// src/components/sections/projects-section.tsx
 import { Container } from "@/components/layout/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Card } from "@/components/ui/card";
@@ -10,7 +9,7 @@ export function ProjectsSection() {
   const projects = getAllProjects();
 
   return (
-    <section id="projects" className="border-b border-slate-800 bg-qp-bg">
+    <section id="projects" className="border-b border-slate-800 bg-slate-950">
       <Container>
         <div className="py-section-y">
           <SectionTitle
@@ -22,7 +21,7 @@ export function ProjectsSection() {
             {projects.map((project) => (
               <Card key={project.slug}>
                 <h3 className="text-lg font-semibold">{project.title}</h3>
-                <p className="mt-1 text-xs uppercase tracking-wide text-qp-primary">
+                <p className="mt-1 text-xs uppercase tracking-wide text-sky-400">
                   {project.tagLine}
                 </p>
                 <p className="mt-3 text-sm text-slate-200">
@@ -36,7 +35,7 @@ export function ProjectsSection() {
                 <div className="mt-4 flex flex-wrap gap-3 text-xs">
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="text-qp-primary hover:underline"
+                    className="text-sky-400 hover:underline"
                   >
                     Voir le projet →
                   </Link>
@@ -44,7 +43,7 @@ export function ProjectsSection() {
                     <a
                       href={project.links.github}
                       target="_blank"
-                      className="text-slate-300 hover:text-qp-primary"
+                      className="text-slate-300 hover:text-sky-400"
                     >
                       Code source
                     </a>
@@ -53,7 +52,7 @@ export function ProjectsSection() {
                     <a
                       href={project.links.demo}
                       target="_blank"
-                      className="text-slate-300 hover:text-qp-primary"
+                      className="text-slate-300 hover:text-sky-400"
                     >
                       Démo
                     </a>

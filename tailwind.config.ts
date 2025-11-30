@@ -1,22 +1,10 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: {
-    files: [
-      "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-      "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    ],
-    safelist: [
-      "bg-qp-bg",
-      "bg-qp-bg/80",
-      "bg-qp-bg-soft",
-      "text-qp-primary",
-      "bg-qp-primary",
-      "bg-qp-primary-soft",
-      "hover:bg-qp-primary/10",
-      "focus:border-qp-primary",
-    ],
-  },
+  content: [
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -35,16 +23,6 @@ const config: Config = {
       },
     },
   },
-  safelist: [
-    "bg-qp-bg",
-    "bg-qp-bg/80",
-    "bg-qp-bg-soft",
-    "text-qp-primary",
-    "bg-qp-primary",
-    "bg-qp-primary-soft",
-    "hover:bg-qp-primary/10",
-    "focus:border-qp-primary",
-  ],
   plugins: [],
 };
 

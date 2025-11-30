@@ -1,4 +1,3 @@
-// src/components/sections/skills-section.tsx
 import { Container } from "@/components/layout/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Badge } from "@/components/ui/badge";
@@ -8,7 +7,7 @@ export function SkillsSection() {
   const groups = getSkillGroups();
 
   return (
-    <section id="skills" className="border-b border-slate-800 bg-qp-bg">
+    <section id="skills" className="border-b border-slate-800 bg-slate-950">
       <Container>
         <div className="py-section-y">
           <SectionTitle

@@ -1,4 +1,3 @@
-// src/components/sections/contact-section.tsx
 "use client";
 
 import { FormEvent, useState } from "react";
@@ -53,7 +52,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-qp-bg">
+    <section id="contact" className="bg-slate-950">
       <Container>
         <div className="py-section-y">
           <SectionTitle
@@ -74,7 +73,7 @@ export function ContactSection() {
                   id="name"
                   name="name"
                   required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary"
+                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-sky-400"
                 />
               </div>
 
@@ -87,7 +86,7 @@ export function ContactSection() {
                   name="email"
                   type="email"
                   required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary"
+                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-sky-400"
                 />
               </div>
 
@@ -100,14 +99,14 @@ export function ContactSection() {
                   name="message"
                   rows={5}
                   required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary"
+                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-sky-400"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "sending" || status === "sent"}
-                className="inline-flex items-center rounded-full bg-qp-primary px-5 py-2 text-sm font-medium text-slate-950 hover:bg-qp-primary-soft disabled:opacity-60"
+                className="inline-flex items-center rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 disabled:opacity-60"
               >
                 {status === "idle" && "Envoyer le message"}
                 {status === "sending" && "Envoi en cours..."}
@@ -128,7 +127,7 @@ export function ContactSection() {
                 Email :{" "}
                 <a
                   href="mailto:q.perriere@gmail.com"
-                  className="text-qp-primary hover:underline"
+                  className="text-sky-400 hover:underline"
                 >
                   q.perriere@gmail.com
                 </a>
@@ -137,7 +136,7 @@ export function ContactSection() {
                 GitHub :{" "}
                 <a
                   href="https://github.com/TON_USER_GITHUB"
-                  className="text-qp-primary hover:underline"
+                  className="text-sky-400 hover:underline"
                   target="_blank"
                 >
                   github.com/TON_USER_GITHUB
@@ -147,7 +146,7 @@ export function ContactSection() {
                 LinkedIn :{" "}
                 <a
                   href="https://www.linkedin.com/in/TON_PROFIL_LINKEDIN"
-                  className="text-qp-primary hover:underline"
+                  className="text-sky-400 hover:underline"
                   target="_blank"
                 >
                   linkedin.com/in/TON_PROFIL_LINKEDIN

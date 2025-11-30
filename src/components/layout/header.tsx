@@ -26,7 +26,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-full px-3 py-1 text-slate-300 transition hover:bg-slate-800 hover:text-sky-400"
+              className="rounded-full px-3 py-1 text-slate-300 transition hover:bg-slate-800 hover:text-sky-300"
             >
               {item.label}
             </a>
