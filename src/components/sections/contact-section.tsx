@@ -162,7 +162,7 @@ export function ContactSection() {
                 rel="noreferrer"
                 className="underline underline-offset-4 hover:text-qp-primary"
               >
-                Linkedin
+                LinkedIn
               </a>
             </p>
           </div>
