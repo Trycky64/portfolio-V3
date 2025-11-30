@@ -139,8 +139,8 @@ export function ContactSection() {
             <h3 className="text-base font-semibold text-slate-100">Contact direct & réseaux</h3>
             <p>
               Email :{" "}
-              <a href="mailto:q.perriere@gmail.com" className="underline underline-offset-4 hover:text-qp-primary">
-                q.perriere@gmail.com
+              <a href="mailto:quentin.perriere64@gmail.com" className="underline underline-offset-4 hover:text-qp-primary">
+                quentin.perriere64@gmail.com
               </a>
             </p>
             <p>
