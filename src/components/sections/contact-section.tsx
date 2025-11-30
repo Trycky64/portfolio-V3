@@ -136,23 +136,23 @@ export function ContactSection() {
               <p>
                 GitHub :{" "}
                 <a
-                  href="https://github.com/TON_USER_GITHUB"
+                  href="https://github.com/Trycky64"
                   className="text-qp-primary hover:underline focus-ring rounded"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  github.com/TON_USER_GITHUB
+                  Github
                 </a>
               </p>
               <p>
                 LinkedIn :{" "}
                 <a
-                  href="https://www.linkedin.com/in/TON_PROFIL_LINKEDIN"
+                  href="https://www.linkedin.com/in/quentin-perriere-295045292/"
                   className="text-qp-primary hover:underline focus-ring rounded"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  linkedin.com/in/TON_PROFIL_LINKEDIN
+                  LinkedIn
                 </a>
               </p>
             </div>

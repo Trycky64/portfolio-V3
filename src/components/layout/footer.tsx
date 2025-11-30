@@ -7,7 +7,7 @@ export function Footer() {
         <p>© {year} Quentin Perriere. Tous droits réservés.</p>
         <p className="space-x-3">
           <a
-            href="https://github.com/TON_USER_GITHUB"
+            href="https://github.com/Trycky64"
             className="hover:text-qp-primary focus-ring"
             target="_blank"
             rel="noreferrer"
@@ -15,7 +15,7 @@ export function Footer() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/TON_PROFIL_LINKEDIN"
+            href="https://www.linkedin.com/in/quentin-perriere-295045292/"
             className="hover:text-qp-primary focus-ring"
             target="_blank"
             rel="noreferrer"
