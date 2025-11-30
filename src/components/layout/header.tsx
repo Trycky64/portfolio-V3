@@ -10,15 +10,15 @@ const NAV_ITEMS = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-800 bg-qp-bg/80 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <Link
           href="#hero"
           className="text-sm font-semibold tracking-wide text-slate-100"
         >
-          <span className="text-qp-primary">{"<"}</span>
+          <span className="text-sky-400">{"<"}</span>
           Quentin Perriere
-          <span className="text-qp-primary">{"/>"}</span>
+          <span className="text-sky-400">{"/>"}</span>
         </Link>
 
         <nav className="hidden gap-4 text-xs sm:flex">
@@ -26,7 +26,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-full px-3 py-1 text-slate-300 transition hover:bg-slate-800 hover:text-qp-primary"
+              className="rounded-full px-3 py-1 text-slate-300 transition hover:bg-slate-800 hover:text-sky-400"
             >
               {item.label}
             </a>

@@ -30,7 +30,7 @@ export function ProjectsSection() {
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
-                    <Badge key={tech} variant="blue">{tech}</Badge>
+                    <Badge key={tech}>{tech}</Badge>
                   ))}
                 </div>
                 <div className="mt-4 flex flex-wrap gap-3 text-xs">

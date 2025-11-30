@@ -28,7 +28,7 @@ export function SkillsSection() {
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {group.items.map((item) => (
-                    <Badge key={item} variant="blue">{item}</Badge>
+                    <Badge key={item}>{item}</Badge>
                   ))}
                 </div>
               </article>
