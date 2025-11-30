@@ -11,14 +11,6 @@ export type TimelineItem = {
 
 export const timelineItems: TimelineItem[] = [
   {
-    id: "bachelor-dev-web",
-    period: "2025 — 2026",
-    title: "Bachelor développement web & applicatif",
-    description:
-      "Spécialisation en développement web & applicatif moderne, avec un focus sur PHP/Symfony, React / Next.js et les bonnes pratiques de développement.",
-    type: "education",
-  },
-  {
     id: "bts-sio-slam",
     period: "2023 — 2025",
     title: "BTS SIO — option SLAM",
@@ -28,18 +20,10 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: "mcdo",
-    period: "01/2025 — 02/2025",
+    period: "12/2023 — 12/2024",
     title: "Équipier polyvalent — McDonald’s, Anglet",
     description:
       "Travail en équipe dans un environnement dynamique, gestion de la pression et respect des standards de service.",
-    type: "experience",
-  },
-  {
-    id: "qa-maxsea",
-    period: "12/2023 — 12/2024",
-    title: "Testeur QA — Maxsea International",
-    description:
-      "Tests automatisés sur une application Android et Windows, scénarios avec Pytest et Airtest, remontée de bugs.",
     type: "experience",
   },
   {
@@ -73,6 +57,22 @@ export const timelineItems: TimelineItem[] = [
     description:
       "Jeu de tower defense 2D en Python avec une architecture de code claire.",
     type: "project",
+  },
+  {
+    id: "qa-maxsea",
+    period: "01/2025 — 02/2025",
+    title: "Testeur QA — Maxsea International",
+    description:
+      "Tests automatisés sur une application Android et Windows, scénarios avec Pytest et Airtest, remontée de bugs.",
+    type: "experience",
+  },
+  {
+    id: "bachelor-dev-web",
+    period: "2025 — 2026",
+    title: "Bachelor développement web & applicatif",
+    description:
+      "Spécialisation en développement web & applicatif moderne, avec un focus sur PHP/Symfony, React / Next.js et les bonnes pratiques de développement.",
+    type: "education",
   },
 ];
 
