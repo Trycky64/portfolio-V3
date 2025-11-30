@@ -3,9 +3,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  experimental: {
-    turbopack: { root: path.resolve(__dirname) },
-  },
+  // Keep experimental empty for now to avoid TypeScript mismatch with turbopack
+  experimental: {},
 };
 
 export default nextConfig;
