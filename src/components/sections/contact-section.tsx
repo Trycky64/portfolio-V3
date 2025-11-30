@@ -52,9 +52,9 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-slate-950">
+    <section id="contact" className="bg-qp-bg">
       <Container>
-        <div className="py-section-y">
+        <div className="py-12 sm:py-section-y">
           <SectionTitle
             title="On travaille ensemble ?"
             description="Basé à Bordeaux (33800), je suis ouvert aux opportunités d’alternance et de poste en développement web & applicatif."
@@ -73,7 +73,7 @@ export function ContactSection() {
                   id="name"
                   name="name"
                   required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-sky-400"
+                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus-ring"
                 />
               </div>
 
@@ -86,7 +86,7 @@ export function ContactSection() {
                   name="email"
                   type="email"
                   required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-sky-400"
+                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus-ring"
                 />
               </div>
 
@@ -99,14 +99,14 @@ export function ContactSection() {
                   name="message"
                   rows={5}
                   required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-sky-400"
+                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus-ring"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "sending" || status === "sent"}
-                className="inline-flex items-center rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400 disabled:opacity-60"
+                className="inline-flex items-center rounded-full bg-qp-primary px-5 py-2 text-sm font-medium text-slate-950 hover:bg-qp-primary-soft disabled:opacity-60 focus-ring"
               >
                 {status === "idle" && "Envoyer le message"}
                 {status === "sending" && "Envoi en cours..."}
@@ -114,9 +114,17 @@ export function ContactSection() {
                 {status === "error" && "Réessayer"}
               </button>
 
-              {errorMessage && (
-                <p className="text-xs text-red-400">{errorMessage}</p>
-              )}
+              <div aria-live="polite" className="min-h-[1.25rem]">
+                {errorMessage && (
+                  <p className="text-xs text-red-400">{errorMessage}</p>
+                )}
+                {status === "sent" && !errorMessage && (
+                  <p className="text-xs text-qp-accent">
+                    Merci pour votre message ! Je vous répondrai dès que
+                    possible.
+                  </p>
+                )}
+              </div>
             </form>
 
             <div className="space-y-3 text-sm text-slate-300">
@@ -127,7 +135,7 @@ export function ContactSection() {
                 Email :{" "}
                 <a
                   href="mailto:q.perriere@gmail.com"
-                  className="text-sky-400 hover:underline"
+                  className="text-qp-primary hover:underline focus-ring rounded"
                 >
                   q.perriere@gmail.com
                 </a>
@@ -136,8 +144,9 @@ export function ContactSection() {
                 GitHub :{" "}
                 <a
                   href="https://github.com/TON_USER_GITHUB"
-                  className="text-sky-400 hover:underline"
+                  className="text-qp-primary hover:underline focus-ring rounded"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   github.com/TON_USER_GITHUB
                 </a>
@@ -146,8 +155,9 @@ export function ContactSection() {
                 LinkedIn :{" "}
                 <a
                   href="https://www.linkedin.com/in/TON_PROFIL_LINKEDIN"
-                  className="text-sky-400 hover:underline"
+                  className="text-qp-primary hover:underline focus-ring rounded"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   linkedin.com/in/TON_PROFIL_LINKEDIN
                 </a>

@@ -7,9 +7,9 @@ export function SkillsSection() {
   const groups = getSkillGroups();
 
   return (
-    <section id="skills" className="border-b border-slate-800 bg-slate-950">
+    <section id="skills" className="border-b border-slate-800 bg-qp-bg">
       <Container>
-        <div className="py-section-y">
+        <div className="py-12 sm:py-section-y">
           <SectionTitle
             title="Compétences"
             description="Un aperçu rapide de mon stack actuel côté front, back, DevOps et qualité logicielle."
