@@ -5,9 +5,7 @@ import { Container } from "@/components/layout/container";
 import { SectionTitle } from "@/components/ui/section-title";
 
 export function ContactSection() {
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "sent" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -115,22 +113,17 @@ export function ContactSection() {
               </button>
 
               <div aria-live="polite" className="min-h-[1.25rem]">
-                {errorMessage && (
-                  <p className="text-xs text-red-400">{errorMessage}</p>
-                )}
+                {errorMessage && <p className="text-xs text-red-400">{errorMessage}</p>}
                 {status === "sent" && !errorMessage && (
                   <p className="text-xs text-qp-accent">
-                    Merci pour votre message ! Je vous répondrai dès que
-                    possible.
+                    Merci pour votre message ! Je vous répondrai dès que possible.
                   </p>
                 )}
               </div>
             </form>
 
             <div className="space-y-3 text-sm text-slate-300">
-              <p className="font-semibold text-slate-100">
-                Contact direct & réseaux
-              </p>
+              <p className="font-semibold text-slate-100">Contact direct & réseaux</p>
               <p>
                 Email :{" "}
                 <a

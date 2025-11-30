@@ -22,9 +22,7 @@ export function SkillsSection() {
                 className="rounded-xl border border-slate-800 bg-slate-900/40 p-5"
               >
                 <h3 className="text-sm font-semibold">{group.title}</h3>
-                <p className="mt-1 text-sm text-slate-300">
-                  {group.description}
-                </p>
+                <p className="mt-1 text-sm text-slate-300">{group.description}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {group.items.map((item) => (
                     <Badge key={item}>{item}</Badge>

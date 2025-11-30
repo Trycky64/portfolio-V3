@@ -10,8 +10,7 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "frontend",
     title: "Frontend",
-    description:
-      "Je construis des interfaces modernes, responsives et maintenables.",
+    description: "Je construis des interfaces modernes, responsives et maintenables.",
     items: [
       "JavaScript",
       "TypeScript",

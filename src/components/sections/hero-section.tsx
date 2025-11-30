@@ -18,13 +18,12 @@ export function HeroSection() {
             </span>
           </h1>
           <p className="mt-6 max-w-2xl text-sm text-slate-300 sm:text-base">
-            Actuellement en Bachelor développement web et applicatif, après un
-            BTS SIO option SLAM, j&apos;ai une expérience concrète en
-            développement et en tests QA : automatisation de tests pour une
-            application Android et Windows, développement d&apos;un site pro
-            sous Symfony, et auto-hébergement de projets sur Linux et Raspberry
-            Pi. Je conçois des applications modernes de bout en bout, du code au
-            déploiement.
+            Actuellement en Bachelor développement web et applicatif, après un BTS SIO
+            option SLAM, j&apos;ai une expérience concrète en développement et en tests QA
+            : automatisation de tests pour une application Android et Windows,
+            développement d&apos;un site pro sous Symfony, et auto-hébergement de projets
+            sur Linux et Raspberry Pi. Je conçois des applications modernes de bout en
+            bout, du code au déploiement.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">

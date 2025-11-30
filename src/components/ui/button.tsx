@@ -18,15 +18,11 @@ export function Button({
     "inline-flex items-center rounded-full px-5 py-2 text-sm font-medium transition disabled:opacity-60";
   const variants: Record<ButtonVariant, string> = {
     primary: "bg-qp-primary text-slate-950 hover:bg-qp-primary-soft",
-    outline:
-      "border border-qp-primary text-qp-primary hover:bg-qp-primary/10",
+    outline: "border border-qp-primary text-qp-primary hover:bg-qp-primary/10",
   };
 
   return (
-    <button
-      className={clsx(base, variants[variant], "focus-ring", className)}
-      {...props}
-    >
+    <button className={clsx(base, variants[variant], "focus-ring", className)} {...props}>
       {children}
     </button>
   );

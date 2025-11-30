@@ -4,11 +4,7 @@ interface SectionTitleProps {
   description?: string;
 }
 
-export function SectionTitle({
-  title,
-  eyebrow,
-  description,
-}: SectionTitleProps) {
+export function SectionTitle({ title, eyebrow, description }: SectionTitleProps) {
   return (
     <div className="max-w-2xl">
       {eyebrow && (
@@ -17,9 +13,7 @@ export function SectionTitle({
         </p>
       )}
       <h2 className="mt-1 text-2xl font-semibold sm:text-3xl">{title}</h2>
-      {description && (
-        <p className="mt-2 text-sm text-slate-300">{description}</p>
-      )}
+      {description && <p className="mt-2 text-sm text-slate-300">{description}</p>}
     </div>
   );
 }

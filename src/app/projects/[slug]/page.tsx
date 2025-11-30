@@ -71,9 +71,7 @@ export default function ProjectPage({ params }: Props) {
           </Link>
 
           <header className="mt-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-qp-primary">
-              Projet
-            </p>
+            <p className="text-xs uppercase tracking-[0.2em] text-qp-primary">Projet</p>
             <h1 className="mt-2 text-3xl font-semibold">{project.title}</h1>
             <p className="mt-1 text-sm text-slate-300">{project.tagLine}</p>
           </header>

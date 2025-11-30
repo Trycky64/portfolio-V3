@@ -25,9 +25,7 @@ export default function ProjectsListPage() {
                 <p className="mt-1 text-xs uppercase tracking-wide text-qp-primary">
                   {project.tagLine}
                 </p>
-                <p className="mt-3 text-sm text-slate-200">
-                  {project.shortDescription}
-                </p>
+                <p className="mt-3 text-sm text-slate-200">{project.shortDescription}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
                     <Badge key={tech}>{tech}</Badge>

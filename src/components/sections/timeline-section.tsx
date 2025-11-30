@@ -20,9 +20,7 @@ export function TimelineSection() {
                 <span className="absolute -left-[9px] mt-1 h-3 w-3 rounded-full border border-qp-primary bg-qp-bg" />
                 <div className="text-xs text-qp-primary">{item.period}</div>
                 <div className="text-sm font-semibold">{item.title}</div>
-                <p className="mt-1 text-sm text-slate-300">
-                  {item.description}
-                </p>
+                <p className="mt-1 text-sm text-slate-300">{item.description}</p>
               </li>
             ))}
           </ol>
