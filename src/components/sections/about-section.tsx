@@ -5,7 +5,7 @@ export function AboutSection() {
   return (
     <section id="about" className="border-b border-slate-800 bg-qp-bg-soft">
       <Container>
-        <div className="py-12 sm:py-section-y">
+        <div className="py-12 sm:py-section-y animate-fade-in-up">
           <SectionTitle title="À propos" />
           <div className="mt-4 space-y-4 text-sm text-slate-300">
             <p>

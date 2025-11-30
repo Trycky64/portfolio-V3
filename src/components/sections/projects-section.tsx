@@ -11,7 +11,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="border-b border-slate-800 bg-qp-bg">
       <Container>
-        <div className="py-12 sm:py-section-y">
+        <div className="py-12 sm:py-section-y animate-fade-in-up">
           <SectionTitle
             title="Projets phares"
             description="Une sélection de projets qui représentent le mieux ma manière de travailler : du front au backend, jusqu’au déploiement."

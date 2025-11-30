@@ -54,7 +54,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="bg-qp-bg">
       <Container>
-        <div className="py-12 sm:py-section-y">
+        <div className="py-12 sm:py-section-y animate-fade-in-up">
           <SectionTitle
             title="On travaille ensemble ?"
             description="Basé à Bordeaux (33800), je suis ouvert aux opportunités d’alternance et de poste en développement web & applicatif."

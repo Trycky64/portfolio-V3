@@ -8,7 +8,7 @@ export function TimelineSection() {
   return (
     <section id="timeline" className="border-b border-slate-800 bg-qp-bg-soft">
       <Container>
-        <div className="py-12 sm:py-section-y">
+        <div className="py-12 sm:py-section-y animate-fade-in-up">
           <SectionTitle
             title="Parcours"
             description="Entre formation, expériences en entreprise et projets perso, voici les grandes étapes de mon parcours."

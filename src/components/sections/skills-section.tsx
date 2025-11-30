@@ -9,7 +9,7 @@ export function SkillsSection() {
   return (
     <section id="skills" className="border-b border-slate-800 bg-qp-bg">
       <Container>
-        <div className="py-12 sm:py-section-y">
+        <div className="py-12 sm:py-section-y animate-fade-in-up">
           <SectionTitle
             title="Compétences"
             description="Un aperçu rapide de mon stack actuel côté front, back, DevOps et qualité logicielle."

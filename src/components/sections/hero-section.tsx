@@ -7,7 +7,7 @@ export function HeroSection() {
       className="border-b border-slate-800 bg-gradient-to-b from-qp-bg-soft to-qp-bg"
     >
       <Container>
-        <div className="py-16 sm:py-24">
+        <div className="py-16 sm:py-24 animate-fade-in-up">
           <p className="text-sm uppercase tracking-[0.3em] text-qp-primary">
             Quentin Perriere
           </p>
