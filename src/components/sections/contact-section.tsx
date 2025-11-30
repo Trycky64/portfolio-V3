@@ -4,158 +4,167 @@ import { FormEvent, useState } from "react";
 import { Container } from "@/components/layout/container";
 import { SectionTitle } from "@/components/ui/section-title";
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export function ContactSection() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("loading");
+    setErrorMessage(null);
+
+    const form = event.currentTarget;
     const formData = new FormData(form);
 
     const payload = {
-      name: (formData.get("name") as string) ?? "",
-      email: (formData.get("email") as string) ?? "",
-      message: (formData.get("message") as string) ?? "",
+      name: (formData.get("name") ?? "").toString().trim(),
+      email: (formData.get("email") ?? "").toString().trim(),
+      message: (formData.get("message") ?? "").toString().trim(),
     };
-
-    setStatus("sending");
-    setErrorMessage(null);
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       if (!res.ok) {
         setStatus("error");
         setErrorMessage(
-          "Impossible d’envoyer le message. Vérifiez les champs ou réessayez plus tard.",
+          res.status === 400
+            ? "Certains champs ne sont pas valides. Vérifie les informations saisies."
+            : "Impossible d'envoyer le message. Réessaie plus tard.",
         );
         return;
       }
 
-      setStatus("sent");
+      setStatus("success");
       form.reset();
-    } catch {
+    } catch (error) {
+      console.error("Erreur envoi formulaire contact :", error);
       setStatus("error");
-      setErrorMessage(
-        "Une erreur est survenue. Vous pouvez aussi me contacter directement par email.",
-      );
+      setErrorMessage("Impossible d'envoyer le message (erreur réseau). Réessaie plus tard.");
     }
   }
 
+  const buttonLabel =
+    status === "loading"
+      ? "Envoi..."
+      : status === "error"
+      ? "Réessayer"
+      : status === "success"
+      ? "Envoyé !"
+      : "Envoyer";
+
+  const isSubmitting = status === "loading";
+
   return (
     <section id="contact" className="bg-qp-bg">
-      <Container>
-        <div className="py-12 sm:py-section-y animate-fade-in-up">
-          <SectionTitle
-            title="On travaille ensemble ?"
-            description="Basé à Bordeaux (33800), je suis ouvert aux opportunités d’alternance et de poste en développement web & applicatif."
-          />
+      <Container className="py-16 sm:py-24">
+        <SectionTitle
+          title="On discute de votre projet ?"
+          description="Contactez-moi via le formulaire ou directement par email / réseaux."
+        />
 
-          <div className="mt-8 grid gap-8 md:grid-cols-[2fr,1fr]">
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/40 p-5"
-            >
-              <div className="space-y-1 text-sm">
-                <label htmlFor="name" className="block text-slate-200">
-                  Nom
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus-ring"
-                />
-              </div>
+        <div className="mt-8 grid gap-10 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          {/* Formulaire */}
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/40 p-5"
+          >
+            <div className="space-y-1 text-sm">
+              <label htmlFor="name" className="block font-medium text-slate-100">
+                Nom
+              </label>
+              <input
+                id="name"
+                name="name"
+                required
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
+              />
+            </div>
 
-              <div className="space-y-1 text-sm">
-                <label htmlFor="email" className="block text-slate-200">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus-ring"
-                />
-              </div>
+            <div className="space-y-1 text-sm">
+              <label htmlFor="email" className="block font-medium text-slate-100">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
+              />
+            </div>
 
-              <div className="space-y-1 text-sm">
-                <label htmlFor="message" className="block text-slate-200">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus-ring"
-                />
-              </div>
+            <div className="space-y-1 text-sm">
+              <label htmlFor="message" className="block font-medium text-slate-100">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={5}
+                required
+                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
+              />
+            </div>
 
+            <div className="space-y-2">
               <button
                 type="submit"
-                disabled={status === "sending" || status === "sent"}
-                className="inline-flex items-center rounded-full bg-qp-primary px-5 py-2 text-sm font-medium text-slate-950 hover:bg-qp-primary-soft disabled:opacity-60 focus-ring"
+                disabled={isSubmitting}
+                className="inline-flex items-center justify-center rounded-md bg-qp-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-qp-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                {status === "idle" && "Envoyer le message"}
-                {status === "sending" && "Envoi en cours..."}
-                {status === "sent" && "Message envoyé ✔"}
-                {status === "error" && "Réessayer"}
+                {buttonLabel}
               </button>
 
-              <div aria-live="polite" className="min-h-[1.25rem]">
-                {errorMessage && <p className="text-xs text-red-400">{errorMessage}</p>}
-                {status === "sent" && !errorMessage && (
-                  <p className="text-xs text-qp-accent">
-                    Merci pour votre message ! Je vous répondrai dès que possible.
-                  </p>
-                )}
-              </div>
-            </form>
+              {status === "success" && (
+                <p className="text-sm text-emerald-400">
+                  Message envoyé avec succès, merci ! Je vous répondrai dès que possible.
+                </p>
+              )}
 
-            <div className="space-y-3 text-sm text-slate-300">
-              <p className="font-semibold text-slate-100">Contact direct & réseaux</p>
-              <p>
-                Email :{" "}
-                <a
-                  href="mailto:q.perriere@gmail.com"
-                  className="text-qp-primary hover:underline focus-ring rounded"
-                >
-                  q.perriere@gmail.com
-                </a>
-              </p>
-              <p>
-                GitHub :{" "}
-                <a
-                  href="https://github.com/Trycky64"
-                  className="text-qp-primary hover:underline focus-ring rounded"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Github
-                </a>
-              </p>
-              <p>
-                LinkedIn :{" "}
-                <a
-                  href="https://www.linkedin.com/in/quentin-perriere-295045292/"
-                  className="text-qp-primary hover:underline focus-ring rounded"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </p>
+              {status === "error" && errorMessage && (
+                <p className="text-sm text-red-400">{errorMessage}</p>
+              )}
             </div>
+          </form>
+
+          {/* Coordonnées directes */}
+          <div className="space-y-4 text-sm text-slate-300">
+            <h3 className="text-base font-semibold text-slate-100">Contact direct & réseaux</h3>
+            <p>
+              Email :{" "}
+              <a href="mailto:q.perriere@gmail.com" className="underline underline-offset-4 hover:text-qp-primary">
+                q.perriere@gmail.com
+              </a>
+            </p>
+            <p>
+              GitHub :{" "}
+              <a
+                href="https://github.com/Trycky64"
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-4 hover:text-qp-primary"
+              >
+                Github
+              </a>
+            </p>
+            <p>
+              LinkedIn :{" "}
+              <a
+                href="https://www.linkedin.com/in/quentin-perriere-295045292/"
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-4 hover:text-qp-primary"
+              >
+                Linkedin
+              </a>
+            </p>
           </div>
         </div>
       </Container>
