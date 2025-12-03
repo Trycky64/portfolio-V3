@@ -1,0 +1,72 @@
+{
+  "common": {
+    "see_project": "Voir le projet →",
+    "demo": "Démo",
+    "view_projects": "Voir mes projets",
+    "download_cv": "Télécharger mon CV",
+    "source_code": "Code source",
+    "all_rights": "© {{year}} Quentin Perriere. Tous droits réservés."
+  },
+  "header": {
+    "home_name": "<Quentin Perriere/>",
+    "projects": "Projets",
+    "timeline": "Parcours",
+    "skills": "Compétences",
+    "about": "À propos",
+    "contact": "Contact",
+    "lang_fr": "FR",
+    "lang_en": "EN"
+  },
+  "hero": {
+    "subtitle": "Développeur web & applicatif",
+    "stack": "PHP / Symfony • React / Next.js • WordPress • Python",
+    "intro": "Actuellement en Bachelor développement web et applicatif, après un BTS SIO option SLAM, j'ai une expérience concrète en développement et en tests QA : automatisation de tests pour une application Android et Windows, développement d'un site pro sous Symfony, et auto-hébergement de projets sur Linux et Raspberry Pi. Je conçois des applications modernes de bout en bout, du code au déploiement."
+  },
+  "projects_section": {
+    "title": "Projets phares",
+    "description": "Une sélection de projets qui représentent le mieux ma manière de travailler : du front au backend, jusqu’au déploiement."
+  },
+  "projects_page": {
+    "tech_used": "Technologies utilisées",
+    "highlights": "Points clés",
+    "links": "Liens",
+    "project_not_found": "Projet introuvable",
+    "project_not_found_desc": "Le projet {{slug}} n'est pas trouvé."
+  },
+  "projects_list": {
+    "title": "Tous les projets",
+    "description": "Retrouvez ici l’ensemble de mes projets majeurs."
+  },
+  "skills_section": {
+    "title": "Compétences"
+    ,"description":"Un aperçu rapide de mon stack actuel côté front, back, DevOps et qualité logicielle."
+  },
+  "timeline_section": {
+    "description": "Entre formation, expériences en entreprise et projets perso, voici les grandes étapes de mon parcours."
+  },
+  "about_section": {
+    "title": "À propos"
+    ,"p1":"Je m’appelle Quentin Perriere et je suis développeur web & applicatif, actuellement en Bachelor après un BTS SIO option SLAM. Je travaille aussi bien sur le back-end (PHP/Symfony, APIs REST, bases de données) que sur le front-end (React, Next.js, Tailwind, WordPress) avec une vraie curiosité pour les tests automatisés et la qualité logicielle.",
+    "p2":"J’ai eu l’occasion de travailler comme testeur QA sur une application Android et Windows, ainsi que comme développeur web sur un site professionnel Symfony. En parallèle, je m’intéresse fortement à Linux, aux serveurs et à l’auto-hébergement, notamment via Raspberry Pi et Cloudflare Tunnel.",
+    "p3":"On me décrit comme quelqu’un de rigoureux, adaptable et organisé, à l’aise en équipe et capable de garder son calme sous pression. Je suis passionné par le développement web, les systèmes Linux, le hardware et les jeux vidéo, que je retrouve aussi dans mes projets perso."
+  },
+  "contact_section": {
+    "title": "Contact",
+    "name_label": "Nom",
+    "email_label": "Email",
+    "message_label": "Message",
+    "send": "Envoyer",
+    "sending": "Envoi...",
+    "sent": "Envoyé !",
+    "retry": "Réessayer",
+    "error_invalid_fields": "Certains champs ne sont pas valides. Vérifie les informations saisies.",
+    "error_network": "Impossible d'envoyer le message (erreur réseau). Réessaie plus tard.",
+    "contact_direct_title": "Contact direct & réseaux",
+    "success": "Merci ! Votre message a bien été envoyé.",
+    "error": "Impossible d'envoyer le message. Veuillez réessayer plus tard."
+  },
+  "seo": {
+    "title_default": "Quentin Perriere — Développeur web & applicatif",
+    "description": "Portfolio de Quentin Perriere, développeur web & applicatif. PHP/Symfony, React, Next.js, WordPress, Python, tests QA, auto-hébergement Linux & Raspberry Pi."
+  }
+}

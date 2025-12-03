@@ -1,10 +1,14 @@
+"use client";
+import { useI18n } from "@/lib/i18n/context";
+
 export function Footer() {
+  const { t } = useI18n();
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-slate-800 bg-qp-bg">
       <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-        <p>© {year} Quentin Perriere. Tous droits réservés.</p>
+        <p>{t("common.all_rights", { year })}</p>
         <p className="space-x-3">
           <a
             href="https://github.com/Trycky64"

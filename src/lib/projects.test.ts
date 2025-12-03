@@ -11,5 +11,9 @@ describe("lib/projects", () => {
     const project = getProjectBySlug("portfolio-v3");
     expect(project).toBeDefined();
     expect(project?.slug).toBe("portfolio-v3");
+    expect(project?.shortDescription.fr).toBeDefined();
+    expect(project?.shortDescription.en).toBeDefined();
+    expect(project?.highlights.fr.length).toBeGreaterThan(0);
+    expect(project?.highlights.en.length).toBeGreaterThan(0);
   });
 });

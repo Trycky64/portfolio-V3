@@ -3,10 +3,12 @@
 import { FormEvent, useState } from "react";
 import { Container } from "@/components/layout/container";
 import { SectionTitle } from "@/components/ui/section-title";
+import { useI18n } from "@/lib/i18n/context";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export function ContactSection() {
+  const { t, locale } = useI18n();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -22,6 +24,7 @@ export function ContactSection() {
       name: (formData.get("name") ?? "").toString().trim(),
       email: (formData.get("email") ?? "").toString().trim(),
       message: (formData.get("message") ?? "").toString().trim(),
+      locale,
     };
 
     try {
@@ -33,11 +36,7 @@ export function ContactSection() {
 
       if (!res.ok) {
         setStatus("error");
-        setErrorMessage(
-          res.status === 400
-            ? "Certains champs ne sont pas valides. Vérifie les informations saisies."
-            : "Impossible d'envoyer le message. Réessaie plus tard.",
-        );
+        setErrorMessage(res.status === 400 ? t("contact_section.error_invalid_fields") : t("contact_section.error"));
         return;
       }
 
@@ -46,28 +45,25 @@ export function ContactSection() {
     } catch (error) {
       console.error("Erreur envoi formulaire contact :", error);
       setStatus("error");
-      setErrorMessage("Impossible d'envoyer le message (erreur réseau). Réessaie plus tard.");
+      setErrorMessage(t("contact_section.error_network"));
     }
   }
 
   const buttonLabel =
     status === "loading"
-      ? "Envoi..."
+      ? t("contact_section.sending")
       : status === "error"
-      ? "Réessayer"
+      ? t("contact_section.retry")
       : status === "success"
-      ? "Envoyé !"
-      : "Envoyer";
+      ? t("contact_section.sent")
+      : t("contact_section.send");
 
   const isSubmitting = status === "loading";
 
   return (
     <section id="contact" className="bg-qp-bg">
       <Container className="py-16 sm:py-24">
-        <SectionTitle
-          title="On discute de votre projet ?"
-          description="Contactez-moi via le formulaire ou directement par email / réseaux."
-        />
+        <SectionTitle title={t("contact_section.title")} description={t("contact_section.description")} />
 
         <div className="mt-8 grid gap-10 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           {/* Formulaire */}
@@ -77,7 +73,7 @@ export function ContactSection() {
           >
             <div className="space-y-1 text-sm">
               <label htmlFor="name" className="block font-medium text-slate-100">
-                Nom
+                {t("contact_section.name_label")}
               </label>
               <input
                 id="name"
@@ -89,7 +85,7 @@ export function ContactSection() {
 
             <div className="space-y-1 text-sm">
               <label htmlFor="email" className="block font-medium text-slate-100">
-                Email
+                {t("contact_section.email_label")}
               </label>
               <input
                 id="email"
@@ -102,7 +98,7 @@ export function ContactSection() {
 
             <div className="space-y-1 text-sm">
               <label htmlFor="message" className="block font-medium text-slate-100">
-                Message
+                {t("contact_section.message_label")}
               </label>
               <textarea
                 id="message"
@@ -123,9 +119,7 @@ export function ContactSection() {
               </button>
 
               {status === "success" && (
-                <p className="text-sm text-emerald-400">
-                  Message envoyé avec succès, merci ! Je vous répondrai dès que possible.
-                </p>
+                <p className="text-sm text-emerald-400">{t("contact_section.success")}</p>
               )}
 
               {status === "error" && errorMessage && (
@@ -136,7 +130,7 @@ export function ContactSection() {
 
           {/* Coordonnées directes */}
           <div className="space-y-4 text-sm text-slate-300">
-            <h3 className="text-base font-semibold text-slate-100">Contact direct & réseaux</h3>
+            <h3 className="text-base font-semibold text-slate-100">{t("contact_section.contact_direct_title")}</h3>
             <p>
               Email :{" "}
               <a href="mailto:quentin.perriere64@gmail.com" className="underline underline-offset-4 hover:text-qp-primary">

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { getTranslations } from "@/lib/i18n";
+import { I18nProvider } from "@/lib/i18n/context";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
@@ -33,15 +35,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const messages = await getTranslations("fr");
   return (
     <html lang="fr">
       <body className="bg-qp-bg text-slate-100 antialiased">
-        <div className="flex min-h-screen flex-col">
-          <Header />
+        <I18nProvider locale="fr" messages={messages}>
+          <div className="flex min-h-screen flex-col">
+            <Header />
           <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+            <Footer />
+          </div>
+        </I18nProvider>
       </body>
     </html>
   );

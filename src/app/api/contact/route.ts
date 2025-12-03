@@ -5,6 +5,7 @@ const contactSchema = z.object({
   name: z.string().min(1, "Le nom est requis").max(200),
   email: z.string().email("Email invalide").max(200),
   message: z.string().min(1, "Le message est requis").max(5000),
+  locale: z.enum(["fr", "en"]).optional(),
 });
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -42,19 +43,25 @@ export async function POST(request: Request) {
     }
 
     // Contenu de l’email
-    const subject = `Nouveau message depuis le portfolio — ${data.name}`;
+    const locale = data.locale === "en" ? "en" : "fr";
+    const subject =
+      locale === "en"
+        ? `[EN] New message from portfolio — ${data.name}`
+        : `[FR] Nouveau message depuis le portfolio — ${data.name}`;
     const textBody = [
       `Nom: ${data.name}`,
       `Email: ${data.email}`,
+      `Langue: ${locale}`,
       "",
       "Message:",
       data.message,
     ].join("\n");
 
     const htmlBody = `
-      <h2>Nouveau message depuis le portfolio</h2>
-      <p><strong>Nom :</strong> ${data.name}</p>
+      <h2>${locale === "en" ? "New message from portfolio" : "Nouveau message depuis le portfolio"}</h2>
+      <p><strong>${locale === "en" ? "Name" : "Nom"} :</strong> ${data.name}</p>
       <p><strong>Email :</strong> ${data.email}</p>
+      <p><strong>Langue :</strong> ${locale}</p>
       <p><strong>Message :</strong></p>
       <p>${data.message.replace(/\n/g, "<br />")}</p>
     `;
