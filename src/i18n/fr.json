@@ -52,6 +52,8 @@
   },
   "contact_section": {
     "title": "Contact",
+    "description": "Un projet, une question, une opportunité ? Écris‑moi via le formulaire ou contacte‑moi directement.",
+    "description": "Un projet, une question, une opportunité ? Écris‑moi via le formulaire ou contacte‑moi directement.",
     "name_label": "Nom",
     "email_label": "Email",
     "message_label": "Message",

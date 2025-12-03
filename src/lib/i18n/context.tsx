@@ -17,10 +17,11 @@ export function I18nProvider({ locale, messages, children }: I18nContextValue & 
 export function useI18n() {
   const ctx = useContext(I18nContext);
   if (!ctx) throw new Error("useI18n must be used within an I18nProvider");
+  const { messages, locale } = ctx;
 
   function t(key: string, vars?: Record<string, string | number | undefined>) {
     const parts = key.split(".");
-    let value: any = ctx.messages;
+    let value: any = messages;
     for (const part of parts) {
       if (value && typeof value === "object" && part in value) {
         value = value[part];
@@ -37,5 +38,5 @@ export function useI18n() {
     return value;
   }
 
-  return { t, locale: ctx.locale } as const;
+  return { t, locale } as const;
 }

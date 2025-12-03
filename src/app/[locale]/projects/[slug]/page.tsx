@@ -1,5 +1,6 @@
-import ProjectPage from "@/components/projects/project-page";
+import { redirect } from "next/navigation";
 
 export default function LocaleProjectPage({ params }: { params: { slug: string } }) {
-  return <ProjectPage slug={params.slug} />;
+  // Redirect to canonical non-locale project route
+  redirect(`/projects/${params.slug}`);
 }

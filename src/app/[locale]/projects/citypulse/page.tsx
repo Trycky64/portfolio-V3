@@ -1,5 +1,5 @@
-import CityPulseProjectPage from "../../projects/citypulse/page";
+import { redirect } from "next/navigation";
 
 export default function LocaleCityPulseProjectPage() {
-  return <CityPulseProjectPage />;
+  redirect("/projects/citypulse");
 }

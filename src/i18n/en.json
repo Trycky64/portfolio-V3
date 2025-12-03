@@ -52,6 +52,8 @@
   },
   "contact_section": {
     "title": "Contact",
+    "description": "A project, a question, an opportunity? Reach out using the form or contact me directly.",
+    "description": "A project, a question, an opportunity? Reach out using the form or contact me directly.",
     "name_label": "Name",
     "email_label": "Email",
     "message_label": "Message",

@@ -1,5 +1,5 @@
-import PortfolioV3ProjectPage from "../../projects/portfolio-v3/page";
+import { redirect } from "next/navigation";
 
 export default function LocalePortfolioV3ProjectPage() {
-  return <PortfolioV3ProjectPage />;
+  redirect("/projects/portfolio-v3");
 }

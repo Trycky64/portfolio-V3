@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { getTranslations } from "@/lib/i18n";
-import { I18nProvider } from "@/lib/i18n/context";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+import { ClientRoot } from "./root-client";
 
 export const metadata: Metadata = {
   // À adapter quand ton domaine sera fixé
@@ -35,18 +32,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const messages = await getTranslations("fr");
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body className="bg-qp-bg text-slate-100 antialiased">
-        <I18nProvider locale="fr" messages={messages}>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-          <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </I18nProvider>
+        <ClientRoot>{children}</ClientRoot>
       </body>
     </html>
   );
