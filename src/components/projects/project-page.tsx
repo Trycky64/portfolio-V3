@@ -5,9 +5,11 @@ import { Container } from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
 import { getProjectBySlug } from "@/lib/projects";
 import { useI18n } from "@/lib/i18n/context";
+import Link from "next/link";
 
 export default function ProjectPage({ slug }: { slug: string }) {
   const { t, locale } = useI18n();
+  const base = locale === "en" ? "/en" : "";
   const project = getProjectBySlug(slug);
 
   if (!project) {
@@ -69,9 +71,15 @@ export default function ProjectPage({ slug }: { slug: string }) {
             </a>
           )}
           {project.links.demo && (
-            <a href={project.links.demo} target="_blank" rel="noreferrer" className="text-qp-primary hover:underline">
-              {t("common.demo")} →
-            </a>
+            project.links.demo.startsWith("/") ? (
+              <Link href={`${base}${project.links.demo}`} className="text-qp-primary hover:underline">
+                {t("common.demo")} →
+              </Link>
+            ) : (
+              <a href={project.links.demo} target="_blank" rel="noreferrer" className="text-qp-primary hover:underline">
+                {t("common.demo")} →
+              </a>
+            )
           )}
         </div>
       </Container>

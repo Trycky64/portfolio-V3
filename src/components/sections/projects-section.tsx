@@ -61,14 +61,23 @@ export function ProjectsSection() {
                     </a>
                   )}
                   {project.links.demo && (
-                    <a
-                      href={project.links.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-full px-2 py-1 text-slate-300 hover:text-qp-primary focus-ring"
-                    >
-                      {t("common.demo")}
-                    </a>
+                    project.links.demo.startsWith("/") ? (
+                      <Link
+                        href={`${base}${project.links.demo}`}
+                        className="rounded-full px-2 py-1 text-slate-300 hover:text-qp-primary focus-ring"
+                      >
+                        {t("common.demo")}
+                      </Link>
+                    ) : (
+                      <a
+                        href={project.links.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-full px-2 py-1 text-slate-300 hover:text-qp-primary focus-ring"
+                      >
+                        {t("common.demo")}
+                      </a>
+                    )
                   )}
                 </div>
               </Card>

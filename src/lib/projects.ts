@@ -49,7 +49,8 @@ const projects: Project[] = [
     },
     links: {
       github: "https://github.com/Trycky64/portfolio-V3",
-      demo: "https://quentinperriere.com",
+      // Demo points to site root — components will add locale base when required
+      demo: "/",
     },
   },
   {
