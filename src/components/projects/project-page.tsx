@@ -72,9 +72,9 @@ export default function ProjectPage({ slug }: { slug: string }) {
           )}
           {project.links.demo && (
             project.links.demo.startsWith("/") ? (
-              <Link href={`${base}${project.links.demo}`} className="text-qp-primary hover:underline">
+              <a href={`${base}${project.links.demo}`} target="_blank" rel="noreferrer" className="text-qp-primary hover:underline">
                 {t("common.demo")} →
-              </Link>
+              </a>
             ) : (
               <a href={project.links.demo} target="_blank" rel="noreferrer" className="text-qp-primary hover:underline">
                 {t("common.demo")} →

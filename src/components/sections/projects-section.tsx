@@ -62,12 +62,14 @@ export function ProjectsSection() {
                   )}
                   {project.links.demo && (
                     project.links.demo.startsWith("/") ? (
-                      <Link
+                      <a
                         href={`${base}${project.links.demo}`}
+                        target="_blank"
+                        rel="noreferrer"
                         className="rounded-full px-2 py-1 text-slate-300 hover:text-qp-primary focus-ring"
                       >
                         {t("common.demo")}
-                      </Link>
+                      </a>
                     ) : (
                       <a
                         href={project.links.demo}
