@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "common": {
     "see_project": "See project →",
     "demo": "Demo",
@@ -70,5 +71,126 @@
   "seo": {
     "title_default": "Quentin Perriere — Web & application developer",
     "description": "Portfolio of Quentin Perriere, web & application developer. PHP/Symfony, React, Next.js, WordPress, Python, QA testing, self-hosting on Linux & Raspberry Pi."
+=======
+  "nav": {
+    "projects": "Projects",
+    "services": "Services",
+    "timeline": "Journey",
+    "skills": "Skills",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "kicker": "Freelance web developer",
+    "title": "I design, build and deploy modern web applications.",
+    "stackLine": "Next.js / React / TypeScript / Node / DevOps",
+    "subtitle": "I help startups, SMEs and solo founders with landing pages, web apps, APIs and reliable deployments. Fast delivery, clean code, maintainable results.",
+    "ctaContact": "Contact me",
+    "ctaMalt": "View my Malt profile",
+    "statusNote": "Micro-business filed — validation in progress (SIRET coming soon)."
+  },
+  "services": {
+    "title": "Services",
+    "description": "Clear deliverables, outcome-driven: polished UI, clean code and reliable deployments.",
+    "items": {
+      "website": {
+        "title": "Website / Landing page",
+        "desc": "A fast, clear and conversion-friendly site with solid SEO basics and performance.",
+        "b1": "Mobile-first responsive design",
+        "b2": "Tailwind integration / components",
+        "b3": "Technical SEO + best practices"
+      },
+      "webapp": {
+        "title": "Web app / Dashboard",
+        "desc": "Rich interfaces with business logic, forms, tables and robust UI states.",
+        "b1": "Next.js App Router architecture",
+        "b2": "Auth, roles, protected pages",
+        "b3": "Quality: lint, types, components"
+      },
+      "nextreact": {
+        "title": "Next.js / React integration",
+        "desc": "Support on an existing project: components, refactor, migration, performance.",
+        "b1": "Refactor & design system",
+        "b2": "Accessibility + responsive",
+        "b3": "Performance & bundle optimization"
+      },
+      "api": {
+        "title": "Backend / API",
+        "desc": "Clean, documented APIs: stable endpoints, validation and security basics.",
+        "b1": "Node.js (REST) / integrations",
+        "b2": "Input validation (Zod)",
+        "b3": "Logging & error handling"
+      },
+      "deploy": {
+        "title": "Deployment / Cloudflare",
+        "desc": "Reliable production setup: DNS, SSL, tunnel, CI/CD and self-hosting.",
+        "b1": "Cloudflare Tunnel / routing",
+        "b2": "systemd + safe restarts",
+        "b3": "Next.js build & optimizations"
+      },
+      "maintenance": {
+        "title": "Maintenance / Perf / SEO",
+        "desc": "Stabilize and improve a product: fixes, speed, code quality.",
+        "b1": "Quick audit + action plan",
+        "b2": "Bugfixes & tech debt",
+        "b3": "Core Web Vitals optimization"
+      }
+    }
+  },
+  "about": {
+    "title": "About",
+    "description": "Pragmatic approach: quality, clarity, delivery and follow-up.",
+    "value": {
+      "title": "What I bring",
+      "p1": "I build web applications with a strong focus on user experience, maintainable code and performance.",
+      "p2": "I like delivering end-to-end solutions: frontend, backend, and deployment (Cloudflare, self-hosting, CI/CD)."
+    },
+    "availability": {
+      "title": "Availability",
+      "status": "Micro-business filed. Administrative validation in progress (SIRET coming soon). I’m available for missions now."
+    },
+    "process": {
+      "title": "Process (4 steps)",
+      "step1": "Scoping: needs, scope, constraints and timeline",
+      "step2": "Quote: clear estimate + planning",
+      "step3": "Build: short iterations, regular demos",
+      "step4": "Delivery & follow-up: production, monitoring, small evolutions"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Share your context, timeline and budget — I’ll get back to you quickly.",
+    "responseTime": "Reply within 24–48 hours.",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message"
+    },
+    "button": {
+      "send": "Send",
+      "sending": "Sending…",
+      "retry": "Retry",
+      "sent": "Sent!"
+    },
+    "success": "Message sent successfully, thanks! I’ll reply as soon as possible.",
+    "errors": {
+      "invalid": "Some fields are invalid. Please check your inputs.",
+      "server": "Unable to send your message. Please try again later.",
+      "network": "Unable to send your message (network error). Please try again later."
+    },
+    "direct": {
+      "title": "Direct contact & links",
+      "emailLabel": "Email:",
+      "githubLabel": "GitHub:",
+      "linkedinLabel": "LinkedIn:"
+    }
+  },
+  "footer": {
+    "copyright": "© Quentin Perriere. All rights reserved.",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "malt": "Malt",
+    "maltAria": "View Malt profile"
+>>>>>>> 30e29c1 (feat(freelance): i18n + services section + hero avatar + header lang switch)
   }
 }

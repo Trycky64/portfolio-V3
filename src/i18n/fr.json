@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "common": {
     "see_project": "Voir le projet →",
     "demo": "Démo",
@@ -70,5 +71,126 @@
   "seo": {
     "title_default": "Quentin Perriere — Développeur web & applicatif",
     "description": "Portfolio de Quentin Perriere, développeur web & applicatif. PHP/Symfony, React, Next.js, WordPress, Python, tests QA, auto-hébergement Linux & Raspberry Pi."
+=======
+  "nav": {
+    "projects": "Projets",
+    "services": "Services",
+    "timeline": "Parcours",
+    "skills": "Compétences",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "kicker": "Développeur web freelance",
+    "title": "Je conçois, développe et déploie des applications web modernes.",
+    "stackLine": "Next.js / React / TypeScript / Node / DevOps",
+    "subtitle": "J’accompagne startups, PME et indépendants sur des sites vitrine, apps web, APIs et déploiements. Objectif : livrer vite, proprement, et maintenable.",
+    "ctaContact": "Me contacter",
+    "ctaMalt": "Voir mon profil Malt",
+    "statusNote": "Micro-entreprise déposée — validation et SIRET en cours (bientôt)."
+  },
+  "services": {
+    "title": "Services",
+    "description": "Des prestations claires, orientées résultat : UI soignée, code propre, et déploiement fiable.",
+    "items": {
+      "website": {
+        "title": "Site vitrine / Landing",
+        "desc": "Un site rapide, clair et orienté conversion, avec SEO de base et performance.",
+        "b1": "Design responsive (mobile-first)",
+        "b2": "Intégration Tailwind / composants",
+        "b3": "SEO technique + bonnes pratiques"
+      },
+      "webapp": {
+        "title": "App web / Dashboard",
+        "desc": "Des interfaces riches avec logique métier, formulaires, tableaux et états UI.",
+        "b1": "Architecture Next.js App Router",
+        "b2": "Auth, rôles, pages protégées",
+        "b3": "Qualité : lint, types, composants"
+      },
+      "nextreact": {
+        "title": "Intégration Next.js / React",
+        "desc": "Renfort sur un projet existant : composants, refactor, migration, perf.",
+        "b1": "Refactor & design system",
+        "b2": "Accessibilité + responsive",
+        "b3": "Optimisation perf & bundle"
+      },
+      "api": {
+        "title": "Backend / API",
+        "desc": "APIs propres et documentées : endpoints stables, validation, sécurité.",
+        "b1": "Node.js (REST) / intégrations",
+        "b2": "Validation des inputs (Zod)",
+        "b3": "Logs & gestion d’erreurs"
+      },
+      "deploy": {
+        "title": "Déploiement / Cloudflare",
+        "desc": "Mise en production fiable : DNS, SSL, tunnel, CI/CD, auto-hébergement.",
+        "b1": "Cloudflare Tunnel / routes",
+        "b2": "systemd + redémarrage propre",
+        "b3": "Build & optimisations Next.js"
+      },
+      "maintenance": {
+        "title": "Maintenance / Perf / SEO",
+        "desc": "Stabiliser et faire évoluer un produit : corrections, vitesse, qualité.",
+        "b1": "Audit rapide + plan d’action",
+        "b2": "Corrections bugs & dettes tech",
+        "b3": "Optimisation Core Web Vitals"
+      }
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "description": "Une approche pragmatique : qualité, clarté, livraison, et suivi.",
+    "value": {
+      "title": "Ce que j’apporte",
+      "p1": "Je construis des applications web avec une attention particulière à l’expérience utilisateur, au code maintenable et à la performance.",
+      "p2": "J’aime livrer des solutions complètes : du front au backend, jusqu’au déploiement (Cloudflare, auto-hébergement, CI/CD)."
+    },
+    "availability": {
+      "title": "Disponibilité",
+      "status": "Micro-entreprise déposée. Validation administrative en cours (SIRET bientôt). Je prends des missions dès maintenant."
+    },
+    "process": {
+      "title": "Process (4 étapes)",
+      "step1": "Cadrage : besoin, périmètre, contraintes et délais",
+      "step2": "Devis : estimation claire + planning",
+      "step3": "Développement : itérations courtes, démos régulières",
+      "step4": "Livraison & suivi : mise en prod, monitoring, petites évolutions"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Explique-moi ton besoin (contexte, délai, budget) et je te réponds rapidement.",
+    "responseTime": "Réponse sous 24 à 48h.",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message"
+    },
+    "button": {
+      "send": "Envoyer",
+      "sending": "Envoi…",
+      "retry": "Réessayer",
+      "sent": "Envoyé !"
+    },
+    "success": "Message envoyé avec succès, merci ! Je reviens vers vous dès que possible.",
+    "errors": {
+      "invalid": "Certains champs ne sont pas valides. Vérifie les informations saisies.",
+      "server": "Impossible d'envoyer le message. Réessaie plus tard.",
+      "network": "Impossible d'envoyer le message (erreur réseau). Réessaie plus tard."
+    },
+    "direct": {
+      "title": "Contact direct & réseaux",
+      "emailLabel": "Email :",
+      "githubLabel": "GitHub :",
+      "linkedinLabel": "LinkedIn :"
+    }
+  },
+  "footer": {
+    "copyright": "© Quentin Perriere. Tous droits réservés.",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "malt": "Malt",
+    "maltAria": "Voir le profil Malt"
+>>>>>>> 30e29c1 (feat(freelance): i18n + services section + hero avatar + header lang switch)
   }
 }
