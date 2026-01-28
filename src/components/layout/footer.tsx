@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-"use client";
-import { useI18n } from "@/lib/i18n/context";
-
-export function Footer() {
-  const { t } = useI18n();
-  const year = new Date().getFullYear();
-
-  return (
-    <footer className="border-t border-slate-800 bg-qp-bg">
-      <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-        <p>{t("common.all_rights", { year })}</p>
-        <p className="space-x-3">
-          <a
-            href="https://github.com/Trycky64"
-            className="hover:text-qp-primary focus-ring"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/quentin-perriere-295045292/"
-            className="hover:text-qp-primary focus-ring"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
-        </p>
-      </div>
-    </footer>
-  );
-}
-=======
 "use client";
 
 import { Container } from "@/components/layout/container";
@@ -82,4 +47,3 @@ export function Footer() {
     </footer>
   );
 }
->>>>>>> 30e29c1 (feat(freelance): i18n + services section + hero avatar + header lang switch)

@@ -1,77 +1,4 @@
 {
-<<<<<<< HEAD
-  "common": {
-    "see_project": "Voir le projet →",
-    "demo": "Démo",
-    "view_projects": "Voir mes projets",
-    "download_cv": "Télécharger mon CV",
-    "source_code": "Code source",
-    "all_rights": "© {{year}} Quentin Perriere. Tous droits réservés."
-  },
-  "header": {
-    "home_name": "<Quentin Perriere/>",
-    "projects": "Projets",
-    "timeline": "Parcours",
-    "skills": "Compétences",
-    "about": "À propos",
-    "contact": "Contact",
-    "lang_fr": "FR",
-    "lang_en": "EN"
-  },
-  "hero": {
-    "subtitle": "Développeur web & applicatif",
-    "stack": "PHP / Symfony • React / Next.js • WordPress • Python",
-    "intro": "Actuellement en Bachelor développement web et applicatif, après un BTS SIO option SLAM, j'ai une expérience concrète en développement et en tests QA : automatisation de tests pour une application Android et Windows, développement d'un site pro sous Symfony, et auto-hébergement de projets sur Linux et Raspberry Pi. Je conçois des applications modernes de bout en bout, du code au déploiement."
-  },
-  "projects_section": {
-    "title": "Projets phares",
-    "description": "Une sélection de projets qui représentent le mieux ma manière de travailler : du front au backend, jusqu’au déploiement."
-  },
-  "projects_page": {
-    "tech_used": "Technologies utilisées",
-    "highlights": "Points clés",
-    "links": "Liens",
-    "project_not_found": "Projet introuvable",
-    "project_not_found_desc": "Le projet {{slug}} n'est pas trouvé."
-  },
-  "projects_list": {
-    "title": "Tous les projets",
-    "description": "Retrouvez ici l’ensemble de mes projets majeurs."
-  },
-  "skills_section": {
-    "title": "Compétences"
-    ,"description":"Un aperçu rapide de mon stack actuel côté front, back, DevOps et qualité logicielle."
-  },
-  "timeline_section": {
-    "description": "Entre formation, expériences en entreprise et projets perso, voici les grandes étapes de mon parcours."
-  },
-  "about_section": {
-    "title": "À propos"
-    ,"p1":"Je m’appelle Quentin Perriere et je suis développeur web & applicatif, actuellement en Bachelor après un BTS SIO option SLAM. Je travaille aussi bien sur le back-end (PHP/Symfony, APIs REST, bases de données) que sur le front-end (React, Next.js, Tailwind, WordPress) avec une vraie curiosité pour les tests automatisés et la qualité logicielle.",
-    "p2":"J’ai eu l’occasion de travailler comme testeur QA sur une application Android et Windows, ainsi que comme développeur web sur un site professionnel Symfony. En parallèle, je m’intéresse fortement à Linux, aux serveurs et à l’auto-hébergement, notamment via Raspberry Pi et Cloudflare Tunnel.",
-    "p3":"On me décrit comme quelqu’un de rigoureux, adaptable et organisé, à l’aise en équipe et capable de garder son calme sous pression. Je suis passionné par le développement web, les systèmes Linux, le hardware et les jeux vidéo, que je retrouve aussi dans mes projets perso."
-  },
-  "contact_section": {
-    "title": "Contact",
-    "description": "Un projet, une question, une opportunité ? Écris‑moi via le formulaire ou contacte‑moi directement.",
-    "description": "Un projet, une question, une opportunité ? Écris‑moi via le formulaire ou contacte‑moi directement.",
-    "name_label": "Nom",
-    "email_label": "Email",
-    "message_label": "Message",
-    "send": "Envoyer",
-    "sending": "Envoi...",
-    "sent": "Envoyé !",
-    "retry": "Réessayer",
-    "error_invalid_fields": "Certains champs ne sont pas valides. Vérifie les informations saisies.",
-    "error_network": "Impossible d'envoyer le message (erreur réseau). Réessaie plus tard.",
-    "contact_direct_title": "Contact direct & réseaux",
-    "success": "Merci ! Votre message a bien été envoyé.",
-    "error": "Impossible d'envoyer le message. Veuillez réessayer plus tard."
-  },
-  "seo": {
-    "title_default": "Quentin Perriere — Développeur web & applicatif",
-    "description": "Portfolio de Quentin Perriere, développeur web & applicatif. PHP/Symfony, React, Next.js, WordPress, Python, tests QA, auto-hébergement Linux & Raspberry Pi."
-=======
   "nav": {
     "projects": "Projets",
     "services": "Services",
@@ -80,14 +7,21 @@
     "about": "À propos",
     "contact": "Contact"
   },
+  "header": {
+    "timeline": "Parcours"
+  },
+  "common": {
+    "see_project": "Voir le projet →",
+    "source_code": "Code source",
+    "demo": "Démo"
+  },
   "hero": {
     "kicker": "Développeur web freelance",
     "title": "Je conçois, développe et déploie des applications web modernes.",
-    "stackLine": "Next.js / React / TypeScript / Node / DevOps",
-    "subtitle": "J’accompagne startups, PME et indépendants sur des sites vitrine, apps web, APIs et déploiements. Objectif : livrer vite, proprement, et maintenable.",
+    "subtitle": "Next.js, React, TypeScript, API & déploiement. Disponible pour des missions : site vitrine, dashboard, intégration, backend et mise en production.",
     "ctaContact": "Me contacter",
     "ctaMalt": "Voir mon profil Malt",
-    "statusNote": "Micro-entreprise déposée — validation et SIRET en cours (bientôt)."
+    "statusNote": "Micro-entreprise déposée — SIRET en cours (bientôt)."
   },
   "services": {
     "title": "Services",
@@ -96,101 +30,112 @@
       "website": {
         "title": "Site vitrine / Landing",
         "desc": "Un site rapide, clair et orienté conversion, avec SEO de base et performance.",
-        "b1": "Design responsive (mobile-first)",
-        "b2": "Intégration Tailwind / composants",
-        "b3": "SEO technique + bonnes pratiques"
+        "b1": "Structure claire (sections, CTA, contenu)",
+        "b2": "SEO essentiel (meta, indexation, perf)",
+        "b3": "Déploiement & mise en ligne"
       },
       "webapp": {
         "title": "App web / Dashboard",
         "desc": "Des interfaces riches avec logique métier, formulaires, tableaux et états UI.",
-        "b1": "Architecture Next.js App Router",
-        "b2": "Auth, rôles, pages protégées",
-        "b3": "Qualité : lint, types, composants"
+        "b1": "UI responsive, states & feedback",
+        "b2": "Auth, CRUD, tableaux, filtres",
+        "b3": "Qualité & perf (DX, lighthouse)"
       },
       "nextreact": {
         "title": "Intégration Next.js / React",
         "desc": "Renfort sur un projet existant : composants, refactor, migration, perf.",
-        "b1": "Refactor & design system",
-        "b2": "Accessibilité + responsive",
+        "b1": "Refactor & composants réutilisables",
+        "b2": "Migration App Router / pages",
         "b3": "Optimisation perf & bundle"
       },
       "api": {
         "title": "Backend / API",
         "desc": "APIs propres et documentées : endpoints stables, validation, sécurité.",
-        "b1": "Node.js (REST) / intégrations",
-        "b2": "Validation des inputs (Zod)",
-        "b3": "Logs & gestion d’erreurs"
+        "b1": "API REST (Node / Symfony selon besoin)",
+        "b2": "Validation, erreurs, logs",
+        "b3": "Connexion DB (SQL) si nécessaire"
       },
       "deploy": {
         "title": "Déploiement / Cloudflare",
         "desc": "Mise en production fiable : DNS, SSL, tunnel, CI/CD, auto-hébergement.",
-        "b1": "Cloudflare Tunnel / routes",
-        "b2": "systemd + redémarrage propre",
-        "b3": "Build & optimisations Next.js"
+        "b1": "Cloudflare Tunnel, DNS & SSL",
+        "b2": "systemd, reverse proxy, monitoring",
+        "b3": "CI/CD GitHub Actions"
       },
       "maintenance": {
         "title": "Maintenance / Perf / SEO",
         "desc": "Stabiliser et faire évoluer un produit : corrections, vitesse, qualité.",
-        "b1": "Audit rapide + plan d’action",
-        "b2": "Corrections bugs & dettes tech",
-        "b3": "Optimisation Core Web Vitals"
+        "b1": "Corrections & évolutions",
+        "b2": "Optimisations (images, cache, perf)",
+        "b3": "SEO technique & accessibilité"
       }
     }
   },
+  "projects_section": {
+    "title": "Projets phares",
+    "description": "Une sélection de projets qui représentent le mieux ma manière de travailler : du front au backend, jusqu’au déploiement."
+  },
+  "timeline_section": {
+    "title": "Parcours",
+    "description": "Entre formation, expériences et projets perso, voici les grandes étapes de mon parcours."
+  },
+  "skills_section": {
+    "title": "Compétences",
+    "description": "Un aperçu rapide de mon stack actuel côté front, back, DevOps et qualité logicielle."
+  },
+
   "about": {
     "title": "À propos",
-    "description": "Une approche pragmatique : qualité, clarté, livraison, et suivi.",
+    "description": "Je suis développeur web freelance. J’aide à concevoir des interfaces propres, des APIs solides et des déploiements fiables, avec une approche orientée produit.",
     "value": {
       "title": "Ce que j’apporte",
-      "p1": "Je construis des applications web avec une attention particulière à l’expérience utilisateur, au code maintenable et à la performance.",
-      "p2": "J’aime livrer des solutions complètes : du front au backend, jusqu’au déploiement (Cloudflare, auto-hébergement, CI/CD)."
+      "p1": "Code propre et maintenable, UI soignée, et attention portée à la performance et à l’accessibilité.",
+      "p2": "Une livraison pragmatique : cadrage clair, priorisation, et suivi après mise en production."
     },
     "availability": {
-      "title": "Disponibilité",
-      "status": "Micro-entreprise déposée. Validation administrative en cours (SIRET bientôt). Je prends des missions dès maintenant."
+      "title": "Disponibilité & statut",
+      "status": "Micro-entreprise déposée — validation et SIRET en cours. J’accepte des missions dès maintenant."
     },
     "process": {
       "title": "Process (4 étapes)",
-      "step1": "Cadrage : besoin, périmètre, contraintes et délais",
-      "step2": "Devis : estimation claire + planning",
-      "step3": "Développement : itérations courtes, démos régulières",
-      "step4": "Livraison & suivi : mise en prod, monitoring, petites évolutions"
+      "step1": "Cadrage : besoin, objectifs, contraintes",
+      "step2": "Devis : estimation, planning, livrables",
+      "step3": "Développement : itérations, validation, qualité",
+      "step4": "Livraison & suivi : mise en prod, corrections, évolutions"
     }
   },
+
   "contact": {
-    "title": "Contact",
-    "description": "Explique-moi ton besoin (contexte, délai, budget) et je te réponds rapidement.",
-    "responseTime": "Réponse sous 24 à 48h.",
+    "title": "On travaille ensemble ?",
+    "description": "Décris ton besoin (contexte, objectifs, deadline) et je te réponds rapidement.",
+    "responseTime": "Réponse sous 24/48h.",
     "form": {
       "name": "Nom",
       "email": "Email",
       "message": "Message"
     },
     "button": {
-      "send": "Envoyer",
-      "sending": "Envoi…",
-      "retry": "Réessayer",
-      "sent": "Envoyé !"
-    },
-    "success": "Message envoyé avec succès, merci ! Je reviens vers vous dès que possible.",
-    "errors": {
-      "invalid": "Certains champs ne sont pas valides. Vérifie les informations saisies.",
-      "server": "Impossible d'envoyer le message. Réessaie plus tard.",
-      "network": "Impossible d'envoyer le message (erreur réseau). Réessaie plus tard."
+      "send": "Envoyer le message",
+      "retry": "Réessayer"
     },
     "direct": {
       "title": "Contact direct & réseaux",
-      "emailLabel": "Email :",
-      "githubLabel": "GitHub :",
-      "linkedinLabel": "LinkedIn :"
+      "emailLabel": "Email",
+      "githubLabel": "GitHub",
+      "linkedinLabel": "LinkedIn",
+      "maltLabel": "Malt"
+    },
+    "status": {
+      "sending": "Envoi en cours…",
+      "success": "Message envoyé. Merci !",
+      "error": "Impossible d’envoyer le message. Vérifiez les champs ou réessayez plus tard."
     }
   },
+
   "footer": {
-    "copyright": "© Quentin Perriere. Tous droits réservés.",
-    "github": "GitHub",
-    "linkedin": "LinkedIn",
+    "copyright": "© 2026 Quentin Perriere. Tous droits réservés.",
     "malt": "Malt",
-    "maltAria": "Voir le profil Malt"
->>>>>>> 30e29c1 (feat(freelance): i18n + services section + hero avatar + header lang switch)
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
   }
 }

@@ -1,19 +1,5 @@
 "use client";
 
-<<<<<<< HEAD
-import React, { createContext, useContext } from "react";
-import type { Messages, Locale } from "../i18n";
-
-type I18nContextValue = {
-  locale: Locale;
-  messages: Messages;
-};
-
-const I18nContext = createContext<I18nContextValue | undefined>(undefined);
-
-export function I18nProvider({ locale, messages, children }: I18nContextValue & { children: React.ReactNode }) {
-  return <I18nContext.Provider value={{ locale, messages }}>{children}</I18nContext.Provider>;
-=======
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
 import fr from "@/i18n/fr.json";
 import en from "@/i18n/en.json";
@@ -21,12 +7,13 @@ import en from "@/i18n/en.json";
 export type Locale = "fr" | "en";
 
 type Messages = Record<string, unknown>;
+type Vars = Record<string, string | number>;
 
 type I18nContextValue = {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   toggleLocale: () => void;
-  t: (key: string) => string;
+  t: (key: string, vars?: Vars) => string;
 };
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -38,6 +25,16 @@ function getNestedValue(obj: Messages, path: string): unknown {
     }
     return undefined;
   }, obj);
+}
+
+function interpolate(template: string, vars?: Vars): string {
+  if (!vars) return template;
+
+  return template.replace(/\{(\w+)\}/g, (match, key) => {
+    const value = vars[key];
+    if (value === undefined || value === null) return match;
+    return String(value);
+  });
 }
 
 const STORAGE_KEY = "qp_locale";
@@ -71,9 +68,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   const t = useMemo(() => {
-    return (key: string) => {
+    return (key: string, vars?: Vars) => {
       const value = getNestedValue(messages, key);
-      if (typeof value === "string") return value;
+      if (typeof value === "string") return interpolate(value, vars);
       return key; // visible fallback if missing translation
     };
   }, [messages]);
@@ -88,39 +85,12 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
->>>>>>> 30e29c1 (feat(freelance): i18n + services section + hero avatar + header lang switch)
 }
 
 export function useI18n() {
   const ctx = useContext(I18nContext);
-<<<<<<< HEAD
-  if (!ctx) throw new Error("useI18n must be used within an I18nProvider");
-  const { messages, locale } = ctx;
-
-  function t(key: string, vars?: Record<string, string | number | undefined>) {
-    const parts = key.split(".");
-    let value: any = messages;
-    for (const part of parts) {
-      if (value && typeof value === "object" && part in value) {
-        value = value[part];
-      } else {
-        return key; // Fallback: return key itself
-      }
-    }
-    if (typeof value === "string") {
-      if (!vars) return value;
-      return value.replace(/{{(.*?)}}/g, (_, v: string) => {
-        return String(vars[v.trim()] ?? "");
-      });
-    }
-    return value;
-  }
-
-  return { t, locale } as const;
-=======
   if (!ctx) {
     throw new Error("useI18n must be used within an I18nProvider");
   }
   return ctx;
->>>>>>> 30e29c1 (feat(freelance): i18n + services section + hero avatar + header lang switch)
 }
