@@ -137,5 +137,10 @@
     "malt": "Malt",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+  "cookies": {
+    "text": "This website uses cookies only to ensure proper operation and, with your consent, to measure traffic. You can accept or refuse.",
+    "accept": "Accept",
+    "refuse": "Refuse"
   }
 }

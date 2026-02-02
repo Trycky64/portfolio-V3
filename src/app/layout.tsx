@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { I18nProvider } from "@/lib/i18n/context";
+import { CookieConsent } from "@/components/ui/cookie-consent";
 
 export const metadata: Metadata = {
   title: {
@@ -42,9 +43,12 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <body>
         <I18nProvider>
-          <Header />
-          {children}
-          <Footer />
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <CookieConsent />
+          </div>
         </I18nProvider>
       </body>
     </html>
