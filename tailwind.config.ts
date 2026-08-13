@@ -8,24 +8,41 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "qp-bg": "#020617",
-        "qp-bg-soft": "#050816",
-        "qp-primary": "#6366F1",
-        "qp-primary-soft": "#4F46E5",
-        "qp-accent": "#22C55E",
+        background: "rgb(var(--color-background) / <alpha-value>)",
+        surface: "rgb(var(--color-surface) / <alpha-value>)",
+        "surface-soft": "rgb(var(--color-surface-soft) / <alpha-value>)",
+        border: "rgb(var(--color-border) / <alpha-value>)",
+        primary: "rgb(var(--color-primary) / <alpha-value>)",
+        "primary-strong": "rgb(var(--color-primary-strong) / <alpha-value>)",
+        "text-primary": "rgb(var(--color-text-primary) / <alpha-value>)",
+        "text-muted": "rgb(var(--color-text-muted) / <alpha-value>)",
+        success: "rgb(var(--color-success) / <alpha-value>)",
+        danger: "rgb(var(--color-danger) / <alpha-value>)",
+
+        // Transitional aliases kept while V3 components are migrated.
+        "qp-bg": "rgb(var(--color-background) / <alpha-value>)",
+        "qp-bg-soft": "rgb(var(--color-surface-soft) / <alpha-value>)",
+        "qp-primary": "rgb(var(--color-primary) / <alpha-value>)",
+        "qp-primary-soft": "rgb(var(--color-primary-strong) / <alpha-value>)",
+        "qp-accent": "rgb(var(--color-success) / <alpha-value>)",
       },
       borderRadius: {
-        lg: "0.75rem",
-        xl: "1rem",
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
       },
       spacing: {
-        "section-y": "4rem",
+        "section-y": "var(--space-section-y)",
+      },
+      maxWidth: {
+        prose: "68ch",
       },
       keyframes: {
         "fade-in-up": {
           "0%": {
             opacity: "0",
-            transform: "translateY(12px)",
+            transform: "translateY(10px)",
           },
           "100%": {
             opacity: "1",
@@ -34,7 +51,7 @@ const config: Config = {
         },
       },
       animation: {
-        "fade-in-up": "fade-in-up 0.6s ease-out forwards",
+        "fade-in-up": "fade-in-up 0.45s ease-out both",
       },
     },
   },

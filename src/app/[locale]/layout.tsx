@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "@/app/globals.css";
@@ -6,11 +7,19 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { CookieConsent } from "@/components/ui/cookie-consent";
 import { I18nProvider, type Locale } from "@/lib/i18n/context";
-import {
-  PERSON_NAME,
-  ROLE,
-  SITE_URL,
-} from "@/lib/site";
+import { PERSON_NAME, SITE_URL } from "@/lib/site";
+
+const geistSans = Geist({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const LOCALES = ["fr", "en"] as const;
 
@@ -88,7 +97,10 @@ export default async function LocaleLayout({
   const locale = rawLocale;
 
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html
+      lang={locale}
+      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
+    >
       <body>
         <I18nProvider locale={locale}>
           <div className="flex min-h-screen flex-col">

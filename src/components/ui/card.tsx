@@ -1,19 +1,35 @@
-import type { ReactNode } from "react";
 import clsx from "clsx";
+import type { HTMLAttributes, ReactNode } from "react";
+
+export type CardVariant = "default" | "project" | "experience" | "info";
+
+interface CardProps extends HTMLAttributes<HTMLElement> {
+  variant?: CardVariant;
+  children: ReactNode;
+}
+
+const variants: Record<CardVariant, string> = {
+  default: "bg-surface/55",
+  project:
+    "bg-surface/70 transition-colors hover:border-primary/45 hover:bg-surface",
+  experience: "bg-surface-soft/80",
+  info: "bg-surface/35",
+};
 
 export function Card({
+  variant = "default",
   children,
   className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+  ...props
+}: CardProps) {
   return (
     <article
       className={clsx(
-        "flex h-full flex-col rounded-xl border border-slate-800 bg-slate-900/40 p-5 transition hover:-translate-y-0.5 hover:border-qp-primary/70 hover:bg-slate-900/80 hover:shadow-lg",
+        "flex h-full flex-col rounded-lg border border-border p-5 shadow-sm sm:p-6",
+        variants[variant],
         className,
       )}
+      {...props}
     >
       {children}
     </article>

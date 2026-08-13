@@ -45,7 +45,7 @@ export function CookieConsent() {
         </Button>
 
         <Button
-          variant="outline"
+          variant="secondary"
           onClick={() => handleChoice("refused")}
         >
           {t("cookies.refuse")}
