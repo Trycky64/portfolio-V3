@@ -42,30 +42,28 @@ export function Header() {
               >
                 {t("nav.projects")}
               </Link>
-              <Link
-                href={`${base}#services`}
-                className="transition hover:text-qp-primary"
-              >
-                {t("nav.services")}
-              </Link>
-              <Link
-                href={`${base}#timeline`}
-                className="transition hover:text-qp-primary"
-              >
-                {t("nav.timeline")}
-              </Link>
+
               <Link
                 href={`${base}#skills`}
                 className="transition hover:text-qp-primary"
               >
                 {t("nav.skills")}
               </Link>
+
+              <Link
+                href={`${base}#timeline`}
+                className="transition hover:text-qp-primary"
+              >
+                {t("nav.timeline")}
+              </Link>
+
               <Link
                 href={`${base}#about`}
                 className="transition hover:text-qp-primary"
               >
                 {t("nav.about")}
               </Link>
+
               <Link
                 href={`${base}#contact`}
                 className="transition hover:text-qp-primary"
