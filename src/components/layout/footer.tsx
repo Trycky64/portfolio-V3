@@ -2,9 +2,11 @@
 
 import { Container } from "@/components/layout/container";
 import { useI18n } from "@/lib/i18n/context";
+import { GITHUB_URL, LINKEDIN_URL } from "@/lib/site";
 
 const MALT_URL =
-  process.env.NEXT_PUBLIC_MALT_URL ?? "https://www.malt.fr/profile/quentinperriere1";
+  process.env.NEXT_PUBLIC_MALT_URL ??
+  "https://www.malt.fr/profile/quentinperriere1";
 
 export function Footer() {
   const { t } = useI18n();
@@ -19,26 +21,26 @@ export function Footer() {
             href={MALT_URL}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-qp-primary transition focus-ring"
+            className="transition hover:text-qp-primary focus-ring"
             aria-label={t("footer.maltAria")}
           >
             {t("footer.malt")}
           </a>
 
           <a
-            href="https://github.com/Trycky64"
+            href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-qp-primary transition focus-ring"
+            className="transition hover:text-qp-primary focus-ring"
           >
             {t("footer.github")}
           </a>
 
           <a
-            href="https://www.linkedin.com/"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-qp-primary transition focus-ring"
+            className="transition hover:text-qp-primary focus-ring"
           >
             {t("footer.linkedin")}
           </a>

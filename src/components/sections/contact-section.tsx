@@ -1,14 +1,16 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+
 import { Container } from "../layout/container";
 import { SectionTitle } from "../ui/section-title";
 import { useI18n } from "@/lib/i18n/context";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/site";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export function ContactSection() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -24,6 +26,7 @@ export function ContactSection() {
       name: (formData.get("name") ?? "").toString().trim(),
       email: (formData.get("email") ?? "").toString().trim(),
       message: (formData.get("message") ?? "").toString().trim(),
+      locale,
     };
 
     try {
@@ -68,7 +71,10 @@ export function ContactSection() {
   return (
     <section id="contact" className="bg-qp-bg">
       <Container className="py-16 sm:py-24">
-        <SectionTitle title={t("contact.title")} description={t("contact.description")} />
+        <SectionTitle
+          title={t("contact.title")}
+          description={t("contact.description")}
+        />
 
         <p className="mt-3 text-sm text-slate-300">
           {t("contact.responseTime")}
@@ -80,7 +86,10 @@ export function ContactSection() {
             className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/40 p-5"
           >
             <div className="space-y-1 text-sm">
-              <label htmlFor="name" className="block font-medium text-slate-100">
+              <label
+                htmlFor="name"
+                className="block font-medium text-slate-100"
+              >
                 {t("contact.form.name")}
               </label>
               <input
@@ -148,19 +157,21 @@ export function ContactSection() {
             <h3 className="text-base font-semibold text-slate-100">
               {t("contact.direct.title")}
             </h3>
+
             <p>
               {t("contact.direct.emailLabel")}{" "}
               <a
-                href="mailto:quentin.perriere64@gmail.com"
+                href={`mailto:${EMAIL}`}
                 className="underline underline-offset-4 hover:text-qp-primary"
               >
-                quentin.perriere64@gmail.com
+                {EMAIL}
               </a>
             </p>
+
             <p>
               {t("contact.direct.githubLabel")}{" "}
               <a
-                href="https://github.com/Trycky64"
+                href={GITHUB_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="underline underline-offset-4 hover:text-qp-primary"
@@ -168,10 +179,11 @@ export function ContactSection() {
                 GitHub
               </a>
             </p>
+
             <p>
               {t("contact.direct.linkedinLabel")}{" "}
               <a
-                href="https://www.linkedin.com/"
+                href={LINKEDIN_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="underline underline-offset-4 hover:text-qp-primary"

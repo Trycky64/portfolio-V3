@@ -1,11 +1,10 @@
 "use client";
 
-import React, {
+import {
   createContext,
   useCallback,
   useContext,
   useMemo,
-  useState,
 } from "react";
 
 import en from "@/i18n/en.json";
@@ -18,12 +17,8 @@ type Vars = Record<string, string | number>;
 
 type I18nContextValue = {
   locale: Locale;
-  setLocale: (locale: Locale) => void;
-  toggleLocale: () => void;
   t: (key: string, vars?: Vars) => string;
 };
-
-const STORAGE_KEY = "qp_locale";
 
 const I18nContext = createContext<I18nContextValue | null>(null);
 
@@ -57,55 +52,13 @@ function interpolate(template: string, vars?: Vars): string {
   });
 }
 
-function getInitialLocale(): Locale {
-  if (typeof window === "undefined") {
-    return "fr";
-  }
-
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-
-    if (stored === "fr" || stored === "en") {
-      return stored;
-    }
-  } catch {
-    // localStorage may be unavailable.
-  }
-
-  return "fr";
-}
-
 export function I18nProvider({
   children,
+  locale,
 }: {
   children: React.ReactNode;
+  locale: Locale;
 }) {
-  const [locale, setLocaleState] = useState<Locale>(getInitialLocale);
-
-  const setLocale = useCallback((nextLocale: Locale) => {
-    setLocaleState(nextLocale);
-
-    try {
-      window.localStorage.setItem(STORAGE_KEY, nextLocale);
-    } catch {
-      // localStorage may be unavailable.
-    }
-  }, []);
-
-  const toggleLocale = useCallback(() => {
-    setLocaleState((currentLocale) => {
-      const nextLocale = currentLocale === "fr" ? "en" : "fr";
-
-      try {
-        window.localStorage.setItem(STORAGE_KEY, nextLocale);
-      } catch {
-        // localStorage may be unavailable.
-      }
-
-      return nextLocale;
-    });
-  }, []);
-
   const messages = useMemo<Messages>(
     () => (locale === "fr" ? (fr as Messages) : (en as Messages)),
     [locale],
@@ -127,11 +80,9 @@ export function I18nProvider({
   const value = useMemo<I18nContextValue>(
     () => ({
       locale,
-      setLocale,
-      toggleLocale,
       t,
     }),
-    [locale, setLocale, toggleLocale, t],
+    [locale, t],
   );
 
   return (
@@ -145,9 +96,7 @@ export function useI18n() {
   const context = useContext(I18nContext);
 
   if (!context) {
-    throw new Error(
-      "useI18n must be used within an I18nProvider",
-    );
+    throw new Error("useI18n must be used within an I18nProvider");
   }
 
   return context;
