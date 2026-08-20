@@ -20,12 +20,12 @@
     "demo": "Démo"
   },
   "hero": {
-    "kicker": "Développeur web freelance",
-    "title": "Je conçois, développe et déploie des applications web modernes.",
-    "subtitle": "Next.js, React, TypeScript, API & déploiement. Disponible pour des missions : site vitrine, dashboard, intégration, backend et mise en production.",
-    "ctaContact": "Me contacter",
-    "ctaMalt": "Voir mon profil Malt",
-    "statusNote": "Micro-entreprise déposée — SIRET en cours (bientôt)."
+    "title": "Je développe des applications, API et outils logiciels utiles et fiables.",
+    "subtitle": "Je conçois des solutions principalement avec Python et des technologies backend, avec une attention particulière portée à la qualité du code, aux tests et au déploiement.",
+    "ctaProjects": "Voir mes projets",
+    "stackAria": "Technologies principales",
+    "openToWork": "Ouvert aux opportunités",
+    "avatarAlt": "Portrait de Quentin Perriere"
   },
   "services": {
     "title": "Services",
@@ -90,15 +90,15 @@
 
   "about": {
     "title": "À propos",
-    "description": "Je suis développeur web freelance. J’aide à concevoir des interfaces propres, des APIs solides et des déploiements fiables, avec une approche orientée produit.",
+    "description": "Développeur orienté Python et backend, je construis des applications et outils logiciels en gardant une attention particulière à la qualité, aux tests et au déploiement.",
     "value": {
       "title": "Ce que j’apporte",
       "p1": "Code propre et maintenable, UI soignée, et attention portée à la performance et à l’accessibilité.",
       "p2": "Une livraison pragmatique : cadrage clair, priorisation, et suivi après mise en production."
     },
     "availability": {
-      "title": "Disponibilité & statut",
-      "status": "Micro-entreprise déposée — validation et SIRET en cours. J’accepte des missions dès maintenant."
+      "title": "Disponibilité",
+      "status": "Basé à Bordeaux, je recherche activement un poste à temps plein en hybride ou télétravail."
     },
     "process": {
       "title": "Process (4 étapes)",
@@ -126,8 +126,7 @@
       "title": "Contact direct & réseaux",
       "emailLabel": "Email",
       "githubLabel": "GitHub",
-      "linkedinLabel": "LinkedIn",
-      "maltLabel": "Malt"
+      "linkedinLabel": "LinkedIn"
     },
     "status": {
       "sending": "Envoi en cours…",
@@ -140,7 +139,6 @@
     "copyright": "© 2026 Quentin Perriere. Tous droits réservés.",
     "email": "Email",
     "stackNote": "Portfolio développé avec Next.js et TypeScript.",
-    "malt": "Malt",
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },

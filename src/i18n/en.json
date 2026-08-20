@@ -20,12 +20,12 @@
     "demo": "Live demo"
   },
   "hero": {
-    "kicker": "Freelance web developer",
-    "title": "I design, build and ship modern web applications.",
-    "subtitle": "Next.js, React, TypeScript, APIs & deployment. Available for freelance work: landing pages, dashboards, integrations, backend and production setup.",
-    "ctaContact": "Contact me",
-    "ctaMalt": "View my Malt profile",
-    "statusNote": "Micro-business registered — SIRET pending (coming soon)."
+    "title": "I build useful and reliable applications, APIs and software tools.",
+    "subtitle": "I primarily build with Python and backend technologies, with close attention to code quality, testing and deployment.",
+    "ctaProjects": "View my projects",
+    "stackAria": "Core technologies",
+    "openToWork": "Open to opportunities",
+    "avatarAlt": "Portrait of Quentin Perriere"
   },
   "services": {
     "title": "Services",
@@ -90,15 +90,15 @@
 
   "about": {
     "title": "About",
-    "description": "I’m a freelance web developer. I help build clean interfaces, solid APIs and reliable deployments, with a product-driven mindset.",
+    "description": "I am a Python and backend-focused developer building applications and software tools with close attention to quality, testing and deployment.",
     "value": {
       "title": "What I bring",
       "p1": "Clean, maintainable code, polished UI, and strong focus on performance and accessibility.",
       "p2": "Pragmatic delivery: clear scope, prioritization, and post-launch support."
     },
     "availability": {
-      "title": "Availability & status",
-      "status": "Micro-business registered — validation and SIRET pending. I’m available for freelance work now."
+      "title": "Availability",
+      "status": "Based in Bordeaux, I am actively looking for a full-time hybrid or remote role."
     },
     "process": {
       "title": "Process (4 steps)",
@@ -126,8 +126,7 @@
       "title": "Direct contact & links",
       "emailLabel": "Email",
       "githubLabel": "GitHub",
-      "linkedinLabel": "LinkedIn",
-      "maltLabel": "Malt"
+      "linkedinLabel": "LinkedIn"
     },
     "status": {
       "sending": "Sending…",
@@ -140,7 +139,6 @@
     "copyright": "© 2026 Quentin Perriere. All rights reserved.",
     "email": "Email",
     "stackNote": "Portfolio built with Next.js and TypeScript.",
-    "malt": "Malt",
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
