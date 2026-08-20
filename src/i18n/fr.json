@@ -9,7 +9,8 @@
     "skills": "Compétences",
     "experience": "Expérience",
     "about": "À propos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "cv": "CV"
   },
   "header": {
     "timeline": "Parcours"
@@ -23,6 +24,7 @@
     "title": "Je développe des applications, API et outils logiciels utiles et fiables.",
     "subtitle": "Je conçois des solutions principalement avec Python et des technologies backend, avec une attention particulière portée à la qualité du code, aux tests et au déploiement.",
     "ctaProjects": "Voir mes projets",
+    "ctaCv": "Télécharger mon CV",
     "stackAria": "Technologies principales",
     "openToWork": "Ouvert aux opportunités",
     "avatarAlt": "Portrait de Quentin Perriere"

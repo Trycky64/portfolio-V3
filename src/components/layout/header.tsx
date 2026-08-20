@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Container } from "@/components/layout/container";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { useI18n, type Locale } from "@/lib/i18n/context";
-import { PERSON_NAME } from "@/lib/site";
+import { CV_URL, PERSON_NAME } from "@/lib/site";
 
 const NAV_ITEMS = [
   { id: "projects", key: "nav.projects" },
@@ -72,6 +72,14 @@ export function Header() {
                 </Link>
               ))}
             </nav>
+
+            <a
+              href={CV_URL}
+              download="cv-quentin-perriere.pdf"
+              className="focus-ring hidden min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-primary-strong hover:text-white sm:inline-flex"
+            >
+              {t("nav.cv")}
+            </a>
 
             <Link
               href={targetPath}

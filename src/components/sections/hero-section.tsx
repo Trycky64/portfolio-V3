@@ -9,6 +9,7 @@ import { IconLink } from "@/components/ui/icon-link";
 import { useI18n } from "@/lib/i18n/context";
 import {
   AVAILABILITY,
+  CV_URL,
   GITHUB_URL,
   LINKEDIN_URL,
   LOCATION,
@@ -55,7 +56,10 @@ export function HeroSection() {
                 {t("hero.subtitle")}
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-2" aria-label={t("hero.stackAria")}>
+              <div
+                className="mt-7 flex flex-wrap gap-2"
+                aria-label={t("hero.stackAria")}
+              >
                 {HERO_STACK.map((item) => (
                   <Badge key={item} variant="tech">
                     {item}
@@ -70,6 +74,14 @@ export function HeroSection() {
                 >
                   {t("hero.ctaProjects")}
                 </Link>
+
+                <a
+                  href={CV_URL}
+                  download="cv-quentin-perriere.pdf"
+                  className="focus-ring inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-surface/70 px-5 py-2.5 text-sm font-semibold text-text-primary transition-colors hover:border-primary/50 hover:bg-surface"
+                >
+                  {t("hero.ctaCv")}
+                </a>
 
                 <IconLink
                   href={GITHUB_URL}

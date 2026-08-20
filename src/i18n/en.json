@@ -9,7 +9,8 @@
     "skills": "Skills",
     "experience": "Experience",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "cv": "CV"
   },
   "header": {
     "timeline": "Journey"
@@ -23,6 +24,7 @@
     "title": "I build useful and reliable applications, APIs and software tools.",
     "subtitle": "I primarily build with Python and backend technologies, with close attention to code quality, testing and deployment.",
     "ctaProjects": "View my projects",
+    "ctaCv": "Download my CV (FR)",
     "stackAria": "Core technologies",
     "openToWork": "Open to opportunities",
     "avatarAlt": "Portrait of Quentin Perriere"
