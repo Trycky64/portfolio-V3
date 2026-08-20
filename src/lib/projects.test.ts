@@ -12,14 +12,19 @@ describe("lib/projects", () => {
     expect(getAllProjects().length).toBeGreaterThanOrEqual(1);
   });
 
-  it("permet de récupérer un projet par slug", () => {
-    const project = getProjectBySlug("portfolio-v3");
+  it("permet de récupérer Portfolio V5 par son slug", () => {
+    const project = getProjectBySlug("portfolio-v5");
 
     expect(project).toBeDefined();
-    expect(project?.slug).toBe("portfolio-v3");
+    expect(project?.title).toBe("Portfolio V5");
+    expect(project?.status).toBe("active");
     expect(project?.shortDescription.fr).toBeTruthy();
     expect(project?.longDescription.en).toBeTruthy();
     expect(project?.highlights.fr.length).toBeGreaterThan(0);
+  });
+
+  it("ne conserve plus la fiche Portfolio V3", () => {
+    expect(getProjectBySlug("portfolio-v3")).toBeUndefined();
   });
 
   it("trie tous les projets par ordre décroissant", () => {
