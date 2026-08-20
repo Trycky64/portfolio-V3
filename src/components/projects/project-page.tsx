@@ -4,8 +4,30 @@ import Image from "next/image";
 
 import { Container } from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
+import { IconLink } from "@/components/ui/icon-link";
 import { useI18n } from "@/lib/i18n/context";
-import { getProjectBySlug } from "@/lib/projects";
+import { getProjectBySlug, type LocalizedList } from "@/lib/projects";
+
+function ProjectList({
+  title,
+  items,
+}: {
+  title: string;
+  items: string[];
+}) {
+  if (!items.length) return null;
+
+  return (
+    <section>
+      <h2 className="text-xl font-semibold text-text-primary">{title}</h2>
+      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-text-muted">
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </section>
+  );
+}
 
 export default function ProjectPage({ slug }: { slug: string }) {
   const { t, locale } = useI18n();
@@ -14,12 +36,12 @@ export default function ProjectPage({ slug }: { slug: string }) {
 
   if (!project) {
     return (
-      <section className="min-h-screen bg-qp-bg py-16">
+      <section className="min-h-screen bg-background py-16">
         <Container>
-          <h1 className="text-3xl font-bold text-white">
+          <h1 className="text-3xl font-bold text-text-primary">
             {t("projects_page.project_not_found")}
           </h1>
-          <p className="mt-4 text-sm text-slate-300">
+          <p className="mt-4 text-sm text-text-muted">
             {t("projects_page.project_not_found_desc", { slug })}
           </p>
         </Container>
@@ -27,88 +49,142 @@ export default function ProjectPage({ slug }: { slug: string }) {
     );
   }
 
+  const localized = (value: LocalizedList) => value[locale];
+
   return (
-    <section className="min-h-screen bg-qp-bg py-16">
+    <main className="min-h-screen bg-background py-16">
       <Container>
-        <h1 className="text-3xl font-bold text-white">{project.title}</h1>
-        <p className="mt-1 text-sm uppercase tracking-wide text-qp-primary">
-          {project.tagLine}
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge variant="muted">{project.type}</Badge>
+          <Badge variant="muted">{project.year}</Badge>
+          <Badge variant={project.status === "production" ? "success" : "muted"}>
+            {project.status}
+          </Badge>
+          {project.categories.map((category) => (
+            <Badge key={category} variant="tech">
+              {category}
+            </Badge>
+          ))}
+        </div>
+
+        <h1 className="mt-5 text-3xl font-bold text-text-primary sm:text-4xl">
+          {project.title}
+        </h1>
+
+        <p className="mt-4 max-w-3xl text-base leading-7 text-text-muted">
+          {project.longDescription[locale]}
         </p>
 
         {project.image && (
-          <div className="relative mt-6 h-60 overflow-hidden rounded-xl border border-slate-800 bg-slate-900">
+          <div className="relative mt-8 h-64 overflow-hidden rounded-xl border border-border bg-surface sm:h-80">
             <Image
               src={project.image}
               alt={`Capture du projet ${project.title}`}
               fill
               className="object-cover"
+              sizes="100vw"
             />
           </div>
         )}
 
-        <p className="mt-6 text-sm leading-relaxed text-slate-200">
-          {project.shortDescription[locale]}
-        </p>
-
-        <h2 className="mt-10 text-lg font-semibold text-white">
-          {t("projects_page.tech_used")}
-        </h2>
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-10 flex flex-wrap gap-2">
           {project.stack.map((tech) => (
-            <Badge key={tech}>{tech}</Badge>
+            <Badge key={tech} variant="muted">
+              {tech}
+            </Badge>
           ))}
         </div>
 
-        {project.highlights?.[locale]?.length ? (
-          <>
-            <h2 className="mt-10 text-lg font-semibold text-white">
-              {t("projects_page.highlights")}
+        <div className="mt-12 grid gap-10 lg:grid-cols-2">
+          <section>
+            <h2 className="text-xl font-semibold text-text-primary">
+              {locale === "fr" ? "Problème" : "Problem"}
             </h2>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-300">
-              {project.highlights[locale].map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </>
-        ) : null}
+            <p className="mt-3 text-sm leading-6 text-text-muted">
+              {project.problem[locale]}
+            </p>
+          </section>
 
-        <h2 className="mt-10 text-lg font-semibold text-white">
-          {t("projects_page.links")}
-        </h2>
-        <div className="mt-4 flex flex-wrap gap-4 text-sm">
-          {project.links.github && (
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="text-qp-primary hover:underline"
-            >
-              {t("common.source_code")} →
-            </a>
-          )}
+          <ProjectList
+            title={locale === "fr" ? "Objectifs" : "Goals"}
+            items={localized(project.goals)}
+          />
 
-          {project.links.demo &&
-            (project.links.demo.startsWith("/") ? (
-              <a
-                href={`${base}${project.links.demo}`}
-                target="_blank"
-                rel="noreferrer"
-                className="text-qp-primary hover:underline"
-              >
-                {t("common.demo")} →
-              </a>
-            ) : (
-              <a
-                href={project.links.demo}
-                target="_blank"
-                rel="noreferrer"
-                className="text-qp-primary hover:underline"
-              >
-                {t("common.demo")} →
-              </a>
-            ))}
+          <ProjectList
+            title={locale === "fr" ? "Architecture" : "Architecture"}
+            items={localized(project.architecture)}
+          />
+
+          <ProjectList
+            title={locale === "fr" ? "Défis" : "Challenges"}
+            items={localized(project.challenges)}
+          />
+
+          <ProjectList
+            title={locale === "fr" ? "Solutions" : "Solutions"}
+            items={localized(project.solutions)}
+          />
+
+          <ProjectList
+            title={locale === "fr" ? "Résultats" : "Results"}
+            items={localized(project.results)}
+          />
+
+          <ProjectList
+            title={locale === "fr" ? "Points forts" : "Highlights"}
+            items={localized(project.highlights)}
+          />
+
+          <ProjectList
+            title={locale === "fr" ? "Tests & qualité" : "Tests & quality"}
+            items={project.tests}
+          />
+
+          <ProjectList
+            title={locale === "fr" ? "Infrastructure" : "Infrastructure"}
+            items={project.infrastructure}
+          />
         </div>
+
+        <section className="mt-12">
+          <h2 className="text-xl font-semibold text-text-primary">
+            {t("projects_page.links")}
+          </h2>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            {project.links.github && (
+              <IconLink
+                href={project.links.github}
+                icon="github"
+                label={t("common.source_code")}
+                external
+              />
+            )}
+
+            {project.links.demo && (
+              <IconLink
+                href={
+                  project.links.demo.startsWith("/")
+                    ? `${base}${project.links.demo}`
+                    : project.links.demo
+                }
+                icon="external"
+                label={t("common.demo")}
+                external={!project.links.demo.startsWith("/")}
+              />
+            )}
+
+            {project.links.docs && (
+              <IconLink
+                href={project.links.docs}
+                icon="external"
+                label={locale === "fr" ? "Documentation" : "Documentation"}
+                external
+              />
+            )}
+          </div>
+        </section>
       </Container>
-    </section>
+    </main>
   );
 }
