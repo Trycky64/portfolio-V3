@@ -27,6 +27,26 @@ describe("lib/projects", () => {
     expect(getProjectBySlug("portfolio-v3")).toBeUndefined();
   });
 
+  it("décrit CityPulse avec sa stack réelle et sa démo vérifiée", () => {
+    const city = getProjectBySlug("citypulse");
+
+    expect(city).toBeDefined();
+    expect(city?.stack).toEqual(
+      expect.arrayContaining([
+        "Vue 3",
+        "TypeScript",
+        "Vite",
+        "Pinia",
+        "Vue Router",
+        "Zod",
+        "IndexedDB",
+      ]),
+    );
+    expect(city?.tests).toEqual(expect.arrayContaining(["Vitest", "Playwright"]));
+    expect(city?.links.demo).toBe("https://citypulse.quentinperriere.com/");
+    expect(city?.infrastructure.join(" ")).not.toMatch(/Raspberry Pi|Node\.js backend/i);
+  });
+
   it("trie tous les projets par ordre décroissant", () => {
     const all = getAllProjects();
     const orders = all.map((project) => project.order);
