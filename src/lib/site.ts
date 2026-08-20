@@ -1,7 +1,15 @@
 export const SITE_URL = "https://quentinperriere.com";
 export const GITHUB_URL = "https://github.com/Trycky64";
+
+const configuredLinkedInUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL?.trim();
+
 export const LINKEDIN_URL =
-  process.env.NEXT_PUBLIC_LINKEDIN_URL?.trim() || "https://www.linkedin.com/";
+  configuredLinkedInUrl &&
+  configuredLinkedInUrl !== "https://www.linkedin.com/" &&
+  configuredLinkedInUrl !== "https://www.linkedin.com"
+    ? configuredLinkedInUrl
+    : null;
+
 export const EMAIL = "quentin.perriere64@gmail.com";
 export const CV_URL = "/cv-quentin-perriere.pdf";
 export const LOCATION = "Bordeaux, Nouvelle-Aquitaine";

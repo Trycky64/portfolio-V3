@@ -180,17 +180,19 @@ export function ContactSection() {
               </a>
             </p>
 
-            <p>
-              {t("contact.direct.linkedinLabel")}{" "}
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="underline underline-offset-4 hover:text-qp-primary"
-              >
-                LinkedIn
-              </a>
-            </p>
+            {LINKEDIN_URL && (
+              <p>
+                {t("contact.direct.linkedinLabel")}{" "}
+                <a
+                  href={LINKEDIN_URL}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="underline underline-offset-4 hover:text-primary"
+                >
+                  LinkedIn
+                </a>
+              </p>
+            )}
           </div>
         </div>
       </Container>

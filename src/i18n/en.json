@@ -1,9 +1,13 @@
 {
   "nav": {
+    "home": "Home",
+    "primaryAria": "Primary navigation",
+    "mobileAria": "Mobile navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "projects": "Projects",
-    "services": "Services",
-    "timeline": "Journey",
     "skills": "Skills",
+    "experience": "Experience",
     "about": "About",
     "contact": "Contact"
   },
@@ -134,6 +138,8 @@
 
   "footer": {
     "copyright": "© 2026 Quentin Perriere. All rights reserved.",
+    "email": "Email",
+    "stackNote": "Portfolio built with Next.js and TypeScript.",
     "malt": "Malt",
     "github": "GitHub",
     "linkedin": "LinkedIn"
