@@ -16,7 +16,10 @@ export function ProjectsSection() {
   const projects = getAllProjects();
 
   return (
-    <section id="projects" className="border-b border-slate-800 bg-qp-bg">
+    <section
+      id="projects"
+      className="scroll-mt-20 border-b border-border bg-background"
+    >
       <Container>
         <div className="animate-fade-in-up py-12 sm:py-section-y">
           <SectionTitle

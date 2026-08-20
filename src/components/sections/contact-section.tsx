@@ -69,7 +69,7 @@ export function ContactSection() {
   const isSubmitting = status === "loading";
 
   return (
-    <section id="contact" className="bg-qp-bg">
+    <section id="contact" className="scroll-mt-20 bg-background">
       <Container className="py-16 sm:py-24">
         <SectionTitle
           title={t("contact.title")}

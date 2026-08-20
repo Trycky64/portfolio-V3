@@ -9,7 +9,10 @@ export function AboutSection() {
   const { t } = useI18n();
 
   return (
-    <section id="about" className="border-b border-slate-800 bg-qp-bg">
+    <section
+      id="about"
+      className="scroll-mt-20 border-b border-border bg-background"
+    >
       <Container>
         <div className="py-12 sm:py-section-y animate-fade-in-up">
           <SectionTitle

@@ -11,7 +11,10 @@ export function SkillsSection() {
   const { t, locale } = useI18n();
 
   return (
-    <section id="skills" className="border-b border-slate-800 bg-qp-bg">
+    <section
+      id="skills"
+      className="scroll-mt-20 border-b border-border bg-background"
+    >
       <Container>
         <div className="py-12 sm:py-section-y animate-fade-in-up">
           <SectionTitle title={t("skills_section.title")} description={t("skills_section.description")} />
