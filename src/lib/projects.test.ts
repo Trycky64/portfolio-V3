@@ -47,6 +47,28 @@ describe("lib/projects", () => {
     expect(city?.infrastructure.join(" ")).not.toMatch(/Raspberry Pi|Node\.js backend/i);
   });
 
+  it("décrit Trycky's RTP comme projet Java serveur avec dépôt public", () => {
+    const rtp = getProjectBySlug("tryckys-rtp");
+
+    expect(rtp).toBeDefined();
+    expect(rtp?.categories).toEqual(
+      expect.arrayContaining(["Java", "Backend"]),
+    );
+    expect(rtp?.stack).toEqual(
+      expect.arrayContaining([
+        "Java",
+        "NeoForge",
+        "Minecraft 1.21.1",
+        "Gradle",
+      ]),
+    );
+    expect(rtp?.links.github).toBe(
+      "https://github.com/Trycky64/Tryckys-RTP",
+    );
+    expect(rtp?.links.docs).toBe("https://rtp.quentinperriere.com/");
+    expect(rtp?.problem.fr).not.toMatch(/plugin magique|simple commande/i);
+  });
+
   it("trie tous les projets par ordre décroissant", () => {
     const all = getAllProjects();
     const orders = all.map((project) => project.order);
