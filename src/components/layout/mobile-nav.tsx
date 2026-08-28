@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import type { Locale } from "@/lib/i18n/context";
 
@@ -33,13 +33,19 @@ export function MobileNav({
 }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const menuId = useId();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!open) return;
 
+    const firstLink = menuRef.current?.querySelector<HTMLAnchorElement>("a");
+    firstLink?.focus();
+
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setOpen(false);
+        triggerRef.current?.focus();
       }
     }
 
@@ -50,16 +56,15 @@ export function MobileNav({
   return (
     <div className="relative sm:hidden">
       <button
+        ref={triggerRef}
         type="button"
         className="focus-ring inline-flex min-h-11 min-w-11 items-center justify-center rounded-md border border-border bg-surface/60 text-text-primary"
         aria-expanded={open}
         aria-controls={menuId}
+        aria-haspopup="true"
         aria-label={open ? labels.close : labels.open}
         onClick={() => setOpen((current) => !current)}
       >
-        <span className="sr-only">
-          {open ? labels.close : labels.open}
-        </span>
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
@@ -86,11 +91,13 @@ export function MobileNav({
       </button>
 
       {open && (
-        <div
-          id={menuId}
-          className="absolute right-0 top-[calc(100%+0.5rem)] w-[min(19rem,calc(100vw-2rem))] rounded-lg border border-border bg-background p-2 shadow-xl"
-        >
-          <nav aria-label={labels.navigation} className="flex flex-col gap-1">
+        <div className="absolute right-0 top-[calc(100%+0.5rem)] w-[min(19rem,calc(100vw-2rem))] rounded-lg border border-border bg-background p-2 shadow-xl">
+          <nav
+            ref={menuRef}
+            id={menuId}
+            aria-label={labels.navigation}
+            className="flex flex-col gap-1"
+          >
             {items.map((item) => (
               <Link
                 key={item.id}
@@ -107,7 +114,7 @@ export function MobileNav({
               </Link>
             ))}
 
-            <div className="my-1 border-t border-border" />
+            <div className="my-1 border-t border-border" aria-hidden="true" />
 
             <Link
               href={targetPath}

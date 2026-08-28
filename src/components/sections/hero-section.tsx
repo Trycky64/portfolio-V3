@@ -21,10 +21,10 @@ const HERO_STACK = [
   "Backend",
   "API REST",
   "SQL",
-  "Git",
+  "Pytest",
   "Docker",
   "Linux",
-  "TypeScript",
+  "Git",
 ] as const;
 
 export function HeroSection() {
@@ -90,14 +90,12 @@ export function HeroSection() {
                   external
                 />
 
-                {LINKEDIN_URL && (
-                  <IconLink
-                    href={LINKEDIN_URL}
-                    icon="linkedin"
-                    label="LinkedIn"
-                    external
-                  />
-                )}
+                <IconLink
+                  href={LINKEDIN_URL}
+                  icon="linkedin"
+                  label="LinkedIn"
+                  external
+                />
               </div>
 
               <div className="mt-7 flex flex-col gap-2 text-sm text-text-muted sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5">
