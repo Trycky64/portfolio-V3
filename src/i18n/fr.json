@@ -21,6 +21,7 @@
     "demo": "Démo"
   },
   "projects_page": {
+    "back_to_list": "Retour aux projets",
     "links": "Liens",
     "project_not_found": "Projet introuvable",
     "project_not_found_desc": "Le projet {slug} est introuvable."

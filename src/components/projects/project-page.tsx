@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import { Container } from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
@@ -54,6 +55,14 @@ export default function ProjectPage({ slug }: { slug: string }) {
   return (
     <main className="min-h-screen bg-background py-16">
       <Container>
+        <Link
+          href={`${base}/projects`}
+          className="focus-ring mb-8 inline-flex min-h-11 items-center gap-2 rounded-md border border-border bg-surface/70 px-4 py-2.5 text-sm font-semibold text-text-primary transition-colors hover:border-primary/50 hover:bg-surface"
+        >
+          <span aria-hidden="true">←</span>
+          {t("projects_page.back_to_list")}
+        </Link>
+
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="muted">{getProjectType(project, locale)}</Badge>
           <Badge variant="muted">{project.year}</Badge>

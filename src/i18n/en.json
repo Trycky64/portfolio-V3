@@ -21,6 +21,7 @@
     "demo": "Live demo"
   },
   "projects_page": {
+    "back_to_list": "Back to projects",
     "links": "Links",
     "project_not_found": "Project not found",
     "project_not_found_desc": "The project {slug} could not be found."
