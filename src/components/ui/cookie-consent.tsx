@@ -1,18 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useI18n } from "@/lib/i18n/context";
 import { Button } from "@/components/ui/button";
 
 const STORAGE_KEY = "qp_cookie_consent";
+const CONSENT_CHANGE_EVENT = "qp_cookie_consent_change";
 
 type Consent = "accepted" | "refused" | null;
 
-function getInitialConsent(): Consent {
-  if (typeof window === "undefined") {
-    return null;
-  }
-
+function getConsentSnapshot(): Consent {
   const stored = window.localStorage.getItem(STORAGE_KEY);
 
   if (stored === "accepted" || stored === "refused") {
@@ -22,13 +19,30 @@ function getInitialConsent(): Consent {
   return null;
 }
 
+function getServerSnapshot(): Consent {
+  return null;
+}
+
+function subscribeToConsent(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener(CONSENT_CHANGE_EVENT, callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(CONSENT_CHANGE_EVENT, callback);
+  };
+}
+
 export function CookieConsent() {
   const { t } = useI18n();
-  const [consent, setConsent] = useState<Consent>(getInitialConsent);
+  const consent = useSyncExternalStore(
+    subscribeToConsent,
+    getConsentSnapshot,
+    getServerSnapshot,
+  );
 
   const handleChoice = (value: Exclude<Consent, null>) => {
     window.localStorage.setItem(STORAGE_KEY, value);
-    setConsent(value);
+    window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT));
   };
 
   if (consent) {

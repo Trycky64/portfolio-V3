@@ -98,7 +98,8 @@ export default function ProjectPage({ slug }: { slug: string }) {
               }
               fill
               className={ready ? "object-contain" : "object-cover"}
-              sizes="100vw"
+              sizes="(min-width: 1024px) 992px, calc(100vw - 32px)"
+              loading={ready ? "eager" : "lazy"}
             />
           </div>
         )}
