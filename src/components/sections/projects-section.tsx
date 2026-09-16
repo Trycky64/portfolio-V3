@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionTitle } from "@/components/ui/section-title";
 import { useI18n } from "@/lib/i18n/context";
-import { getFeaturedProjects } from "@/lib/projects";
+import { getFeaturedProjects, getProjectType } from "@/lib/projects";
 
 export function ProjectsSection() {
   const { t, locale } = useI18n();
@@ -16,10 +16,7 @@ export function ProjectsSection() {
   const projects = getFeaturedProjects(4);
 
   return (
-    <section
-      id="projects"
-      className="scroll-mt-20 border-b border-border bg-background"
-    >
+    <section id="projects" className="scroll-mt-20 border-b border-border bg-background">
       <Container>
         <div className="animate-fade-in-up py-12 sm:py-section-y">
           <SectionTitle
@@ -31,7 +28,7 @@ export function ProjectsSection() {
             {projects.map((project) => (
               <Card key={project.slug} variant="project">
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="muted">{project.type}</Badge>
+                  <Badge variant="muted">{getProjectType(project, locale)}</Badge>
                   {project.categories.slice(0, 2).map((category) => (
                     <Badge key={category} variant="tech">
                       {category}
@@ -47,7 +44,11 @@ export function ProjectsSection() {
                       src={project.image}
                       alt={`Capture du projet ${project.title}`}
                       fill
-                      className="object-cover"
+                      className={
+                        project.contentStatus === "ready"
+                          ? "object-contain"
+                          : "object-cover"
+                      }
                       sizes="(min-width: 1024px) 50vw, 100vw"
                     />
                   </div>

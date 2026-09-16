@@ -7,7 +7,7 @@ import { Container } from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { useI18n } from "@/lib/i18n/context";
-import { getAllProjects } from "@/lib/projects";
+import { getAllProjects, getProjectType } from "@/lib/projects";
 
 export default function ProjectsListPage() {
   const { t, locale } = useI18n();
@@ -20,15 +20,13 @@ export default function ProjectsListPage() {
         <h1 className="text-3xl font-bold text-text-primary">
           {t("projects_list.title")}
         </h1>
-        <p className="mt-2 text-text-muted">
-          {t("projects_list.description")}
-        </p>
+        <p className="mt-2 text-text-muted">{t("projects_list.description")}</p>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {projects.map((project) => (
             <Card key={project.slug} variant="project">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="muted">{project.type}</Badge>
+                <Badge variant="muted">{getProjectType(project, locale)}</Badge>
                 <Badge variant="muted">{project.year}</Badge>
                 {project.categories.map((category) => (
                   <Badge key={category} variant="tech">
@@ -37,9 +35,7 @@ export default function ProjectsListPage() {
                 ))}
               </div>
 
-              <h2 className="mt-4 text-lg font-semibold">
-                {project.title}
-              </h2>
+              <h2 className="mt-4 text-lg font-semibold">{project.title}</h2>
 
               {project.image && (
                 <div className="relative mt-4 h-40 overflow-hidden rounded-lg border border-border bg-surface">
@@ -47,7 +43,11 @@ export default function ProjectsListPage() {
                     src={project.image}
                     alt={`Image ${project.title}`}
                     fill
-                    className="object-cover"
+                    className={
+                      project.contentStatus === "ready"
+                        ? "object-contain"
+                        : "object-cover"
+                    }
                   />
                 </div>
               )}
