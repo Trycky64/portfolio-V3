@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  agentRules: false,
   // Keep experimental empty for now to avoid TypeScript mismatch with turbopack
   experimental: {},
 };

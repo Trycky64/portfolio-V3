@@ -20,6 +20,11 @@
     "source_code": "Code source",
     "demo": "Démo"
   },
+  "projects_page": {
+    "links": "Liens",
+    "project_not_found": "Projet introuvable",
+    "project_not_found_desc": "Le projet {slug} est introuvable."
+  },
   "hero": {
     "title": "Je développe des applications, API et outils logiciels utiles et fiables.",
     "subtitle": "Je conçois des solutions principalement avec Python et des technologies backend, avec une attention particulière portée à la qualité du code, aux tests et au déploiement.",

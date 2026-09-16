@@ -18,7 +18,7 @@ describe("lib/projects", () => {
   });
 
   it("conserve les autres projets sous forme de placeholders", () => {
-    for (const project of getAllProjects().filter((item) => item.slug !== "pygeolab")) {
+    for (const project of getAllProjects().filter((item) => !["pygeolab", "jellyfin-media-integrity"].includes(item.slug))) {
       expect(project.contentStatus).toBe("placeholder");
       expect(project.shortDescription.fr).toBeTruthy();
       expect(project.shortDescription.en).toBeTruthy();
@@ -29,6 +29,63 @@ describe("lib/projects", () => {
       expect(project.tests).toEqual([]);
       expect(project.infrastructure).toEqual([]);
     }
+  });
+
+  it("présente Jellyfin Media Integrity comme deuxième projet complet sans lien privé", () => {
+    const project = getProjectBySlug("jellyfin-media-integrity");
+    expect(project).toBeDefined();
+    if (!project) return;
+
+    expect(project.contentStatus).toBe("ready");
+    expect(project.featured).toBe(true);
+    expect(getFeaturedProjects()[0]?.slug).toBe("pygeolab");
+    expect(getFeaturedProjects()[1]?.slug).toBe(project.slug);
+    expect(project.categories).toContain("Backend");
+    expect(project.categories).toContain("Applications");
+    expect(project.links).toEqual({});
+    expect(project.image).toBeTruthy();
+    expect(project.gallery).toHaveLength(2);
+
+    for (const locale of ["fr", "en"] as const) {
+      expect(getProjectType(project, locale)).toContain("Jellyfin");
+      for (const value of [
+        project.shortDescription,
+        project.longDescription,
+        project.problem,
+        project.seoDescription!,
+      ]) {
+        expect(value[locale].length).toBeGreaterThan(50);
+      }
+      for (const section of [
+        project.goals,
+        project.architecture,
+        project.challenges,
+        project.solutions,
+        project.results,
+        project.highlights,
+      ]) {
+        expect(section[locale].length).toBeGreaterThan(0);
+      }
+      expect(
+        Array.isArray(project.tests) ? project.tests : project.tests[locale],
+      ).not.toHaveLength(0);
+      expect(
+        Array.isArray(project.infrastructure)
+          ? project.infrastructure
+          : project.infrastructure[locale],
+      ).not.toHaveLength(0);
+    }
+
+    for (const path of [project.image, ...project.gallery]) {
+      expect(existsSync(join(process.cwd(), "public", path!.replace(/^\//, "")))).toBe(
+        true,
+      );
+    }
+
+    const publishedText = JSON.stringify(project);
+    expect(publishedText).not.toMatch(
+      /(?:\/home\/|\/srv\/|jellyfin-private|127\.0\.0\.1|192\.168\.|10\.\d+\.\d+\.\d+)/i,
+    );
   });
 
   it("publie PyGeoLab comme projet Python principal avec une fiche FR/EN complète", () => {

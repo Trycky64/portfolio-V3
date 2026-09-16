@@ -20,6 +20,11 @@
     "source_code": "Source code",
     "demo": "Live demo"
   },
+  "projects_page": {
+    "links": "Links",
+    "project_not_found": "Project not found",
+    "project_not_found_desc": "The project {slug} could not be found."
+  },
   "hero": {
     "title": "I build useful and reliable applications, APIs and software tools.",
     "subtitle": "I primarily build with Python and backend technologies, with close attention to code quality, testing and deployment.",

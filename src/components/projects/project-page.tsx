@@ -47,6 +47,9 @@ export default function ProjectPage({ slug }: { slug: string }) {
   const localizedOrShared = (value: string[] | LocalizedList) =>
     Array.isArray(value) ? value : value[locale];
   const ready = project.contentStatus === "ready";
+  const hasLinks = Boolean(
+    project.links.github || project.links.demo || project.links.docs,
+  );
 
   return (
     <main className="min-h-screen bg-background py-16">
@@ -177,45 +180,50 @@ export default function ProjectPage({ slug }: { slug: string }) {
               title={locale === "fr" ? "Tests & qualité" : "Tests & quality"}
               items={localizedOrShared(project.tests)}
             />
-            <ProjectList title="Infrastructure" items={localizedOrShared(project.infrastructure)} />
+            <ProjectList
+              title="Infrastructure"
+              items={localizedOrShared(project.infrastructure)}
+            />
           </div>
         )}
 
-        <section className="mt-12">
-          <h2 className="text-xl font-semibold text-text-primary">
-            {t("projects_page.links")}
-          </h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.links.github && (
-              <IconLink
-                href={project.links.github}
-                icon="github"
-                label={t("common.source_code")}
-                external
-              />
-            )}
-            {project.links.demo && (
-              <IconLink
-                href={
-                  project.links.demo.startsWith("/")
-                    ? `${base}${project.links.demo}`
-                    : project.links.demo
-                }
-                icon="external"
-                label={t("common.demo")}
-                external={!project.links.demo.startsWith("/")}
-              />
-            )}
-            {project.links.docs && (
-              <IconLink
-                href={project.links.docs}
-                icon="external"
-                label="Documentation"
-                external
-              />
-            )}
-          </div>
-        </section>
+        {hasLinks && (
+          <section className="mt-12">
+            <h2 className="text-xl font-semibold text-text-primary">
+              {t("projects_page.links")}
+            </h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.links.github && (
+                <IconLink
+                  href={project.links.github}
+                  icon="github"
+                  label={t("common.source_code")}
+                  external
+                />
+              )}
+              {project.links.demo && (
+                <IconLink
+                  href={
+                    project.links.demo.startsWith("/")
+                      ? `${base}${project.links.demo}`
+                      : project.links.demo
+                  }
+                  icon="external"
+                  label={t("common.demo")}
+                  external={!project.links.demo.startsWith("/")}
+                />
+              )}
+              {project.links.docs && (
+                <IconLink
+                  href={project.links.docs}
+                  icon="external"
+                  label="Documentation"
+                  external
+                />
+              )}
+            </div>
+          </section>
+        )}
       </Container>
     </main>
   );
