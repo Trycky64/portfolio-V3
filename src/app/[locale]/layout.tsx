@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { CookieConsent } from "@/components/ui/cookie-consent";
 import { I18nProvider, type Locale } from "@/lib/i18n/context";
-import { PERSON_NAME, SITE_URL } from "@/lib/site";
+import { LOCATION, PERSON_NAME, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -48,8 +48,8 @@ export async function generateMetadata({
   const isFrench = locale === "fr";
 
   const title = isFrench
-    ? `${PERSON_NAME} — Développeur Python, backend et web à Bordeaux`
-    : `${PERSON_NAME} — Python, Backend & Web Developer in Bordeaux`;
+    ? `${PERSON_NAME} — Développeur Python, backend et web à ${LOCATION}`
+    : `${PERSON_NAME} — Python, Backend & Web Developer in ${LOCATION}`;
 
   const description = isFrench
     ? "Développeur Python orienté backend, web et applicatif. Projets, compétences, expérience et contact."

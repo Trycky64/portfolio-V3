@@ -106,7 +106,7 @@
     },
     "availability": {
       "title": "Disponibilité",
-      "status": "Basé à Bordeaux, je recherche activement un poste à temps plein en hybride ou télétravail."
+      "status": "Basé à {location}, je recherche activement un poste à temps plein en hybride ou télétravail."
     },
     "process": {
       "title": "Process (4 étapes)",

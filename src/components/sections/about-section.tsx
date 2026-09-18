@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/container";
 import { SectionTitle } from "@/components/ui/section-title";
 import { Card } from "@/components/ui/card";
 import { useI18n } from "@/lib/i18n/context";
+import { LOCATION } from "@/lib/site";
 
 export function AboutSection() {
   const { t } = useI18n();
@@ -37,7 +38,7 @@ export function AboutSection() {
               </h3>
 
               <p className="mt-3 text-sm text-slate-200">
-                {t("about.availability.status")}
+                {t("about.availability.status", { location: LOCATION })}
               </p>
 
               <div className="mt-5 rounded-lg border border-slate-800 bg-slate-900/40 p-4">

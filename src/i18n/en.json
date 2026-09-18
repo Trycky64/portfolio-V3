@@ -30,7 +30,7 @@
     "title": "I build useful and reliable applications, APIs and software tools.",
     "subtitle": "I primarily build with Python and backend technologies, with close attention to code quality, testing and deployment.",
     "ctaProjects": "View my projects",
-    "ctaCv": "Download my CV (FR)",
+    "ctaCv": "Download my CV",
     "stackAria": "Core technologies",
     "openToWork": "Open to opportunities",
     "avatarAlt": "Portrait of Quentin Perriere"
@@ -106,7 +106,7 @@
     },
     "availability": {
       "title": "Availability",
-      "status": "Based in Bordeaux, I am actively looking for a full-time hybrid or remote role."
+      "status": "Based in {location}, I am actively looking for a full-time hybrid or remote role."
     },
     "process": {
       "title": "Process (4 steps)",

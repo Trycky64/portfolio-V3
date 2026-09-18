@@ -29,6 +29,7 @@ export function Header() {
   const { t, locale } = useI18n();
 
   const base = `/${locale}`;
+  const cvUrl = CV_URL[locale];
   const targetLocale: Locale = locale === "fr" ? "en" : "fr";
   const targetPath = getLocalizedPath(pathname, targetLocale);
   const isProjectsRoute = pathname.startsWith(`${base}/projects`);
@@ -74,8 +75,8 @@ export function Header() {
             </nav>
 
             <a
-              href={CV_URL}
-              download="cv-quentin-perriere.pdf"
+              href={cvUrl}
+              download={cvUrl.slice(1)}
               className="focus-ring hidden min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-primary-strong hover:text-white sm:inline-flex"
             >
               {t("nav.cv")}

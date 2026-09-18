@@ -30,6 +30,7 @@ const HERO_STACK = [
 export function HeroSection() {
   const { t, locale } = useI18n();
   const base = `/${locale}`;
+  const cvUrl = CV_URL[locale];
 
   return (
     <section
@@ -76,8 +77,8 @@ export function HeroSection() {
                 </Link>
 
                 <a
-                  href={CV_URL}
-                  download="cv-quentin-perriere.pdf"
+                  href={cvUrl}
+                  download={cvUrl.slice(1)}
                   className="focus-ring inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-surface/70 px-5 py-2.5 text-sm font-semibold text-text-primary transition-colors hover:border-primary/50 hover:bg-surface"
                 >
                   {t("hero.ctaCv")}

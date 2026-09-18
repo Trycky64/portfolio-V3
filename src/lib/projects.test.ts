@@ -18,7 +18,9 @@ describe("lib/projects", () => {
   });
 
   it("conserve les autres projets sous forme de placeholders", () => {
-    for (const project of getAllProjects().filter((item) => !["pygeolab", "jellyfin-media-integrity"].includes(item.slug))) {
+    for (const project of getAllProjects().filter(
+      (item) => !["pygeolab", "jellyfin-media-integrity", "tec"].includes(item.slug),
+    )) {
       expect(project.contentStatus).toBe("placeholder");
       expect(project.shortDescription.fr).toBeTruthy();
       expect(project.shortDescription.en).toBeTruthy();
@@ -31,7 +33,7 @@ describe("lib/projects", () => {
     }
   });
 
-  it("présente Jellyfin Media Integrity comme deuxième projet complet sans lien privé", () => {
+  it("présente Jellyfin Media Integrity v1.2.0 comme deuxième projet complet et public", () => {
     const project = getProjectBySlug("jellyfin-media-integrity");
     expect(project).toBeDefined();
     if (!project) return;
@@ -42,7 +44,9 @@ describe("lib/projects", () => {
     expect(getFeaturedProjects()[1]?.slug).toBe(project.slug);
     expect(project.categories).toContain("Backend");
     expect(project.categories).toContain("Applications");
-    expect(project.links).toEqual({});
+    expect(project.links).toEqual({
+      github: "https://github.com/Trycky64/Jellyfin.Plugin.MediaIntegrity",
+    });
     expect(project.image).toBeTruthy();
     expect(project.gallery).toHaveLength(2);
 
@@ -83,6 +87,11 @@ describe("lib/projects", () => {
     }
 
     const publishedText = JSON.stringify(project);
+    expect(publishedText).toMatch(/A\/V Repair/);
+    expect(publishedText).toMatch(/229 tests xUnit/);
+    expect(publishedText).toMatch(/Video is never re-encoded/);
+    expect(publishedText).not.toMatch(/all FFmpeg (?:invocations|uses).*copy/i);
+    expect(publishedText).not.toMatch(/(?:69 tests|Version 1\.0\.0|Two scheduled tasks|deux tâches planifiées)/i);
     expect(publishedText).not.toMatch(
       /(?:\/home\/|\/srv\/|jellyfin-private|127\.0\.0\.1|192\.168\.|10\.\d+\.\d+\.\d+)/i,
     );
@@ -130,6 +139,62 @@ describe("lib/projects", () => {
         true,
       );
     }
+  });
+
+  it("présente Trycky's Enchantment Cracker comme troisième projet complet avec attribution ClientCommands", () => {
+    const project = getProjectBySlug("tec");
+    expect(project).toBeDefined();
+    if (!project) return;
+
+    expect(project.contentStatus).toBe("ready");
+    expect(project.featured).toBe(true);
+    expect(project.categories).toContain("Java");
+    expect(getFeaturedProjects()[2]?.slug).toBe(project.slug);
+
+    for (const locale of ["fr", "en"] as const) {
+      expect(getProjectType(project, locale)).toContain("NeoForge");
+      for (const value of [
+        project.shortDescription,
+        project.longDescription,
+        project.problem,
+        project.seoDescription!,
+      ]) {
+        expect(value[locale].length).toBeGreaterThan(50);
+      }
+      for (const section of [
+        project.goals,
+        project.architecture,
+        project.challenges,
+        project.solutions,
+        project.results,
+        project.highlights,
+      ]) {
+        expect(section[locale].length).toBeGreaterThan(0);
+      }
+      expect(
+        Array.isArray(project.tests) ? project.tests : project.tests[locale],
+      ).not.toHaveLength(0);
+      expect(
+        Array.isArray(project.infrastructure)
+          ? project.infrastructure
+          : project.infrastructure[locale],
+      ).not.toHaveLength(0);
+    }
+
+    const attributionText = JSON.stringify(project);
+    expect(attributionText).toMatch(/ClientCommands/);
+    expect(attributionText).toMatch(/Earthcomputer/);
+    expect(attributionText).toMatch(/LattiCG/);
+    expect(attributionText).toMatch(/LGPL-3\.0-or-later/);
+
+    expect(project.links.github).toBe("https://github.com/Trycky64/TEC");
+    expect(project.links.github).toMatch(/^https:\/\/github\.com\//);
+    expect(project.links.demo).toBeUndefined();
+
+    // No real gameplay screenshots exist yet; the model must not carry
+    // fabricated image paths for TEC.
+    expect(project.image).toBeUndefined();
+    expect(project.gallery).toEqual([]);
   });
 
   it("conserve les liens publics déjà vérifiés", () => {
