@@ -659,16 +659,16 @@ const projects: Project[] = [
     },
     results: {
       fr: [
-        "11 tests unitaires Vitest réussis dans 8 fichiers.",
+        "23 tests Vitest réussis dans 10 fichiers.",
         "6 scénarios Playwright réussis sur Chromium et Firefox.",
         "Lint, vérification TypeScript, build Vite et audit npm validés localement.",
-        "Couverture mesurée : 25,99 % des instructions et 27,78 % des lignes.",
+        "Couverture mesurée : 33,96 % des instructions et 35,29 % des lignes.",
       ],
       en: [
-        "11 Vitest unit tests passed across 8 files.",
+        "23 Vitest tests passed across 10 files.",
         "6 Playwright scenarios passed on Chromium and Firefox.",
         "Lint, TypeScript checks, Vite build, and npm audit passed locally.",
-        "Measured coverage: 25.99% statements and 27.78% lines.",
+        "Measured coverage: 33.96% statements and 35.29% lines.",
       ],
     },
     stack: [
@@ -709,14 +709,14 @@ const projects: Project[] = [
     },
     tests: {
       fr: [
-        "Vitest · 11 tests réussis dans 8 fichiers.",
+        "Vitest · 23 tests réussis dans 10 fichiers.",
         "Playwright · 6 scénarios réussis sur Chromium et Firefox.",
-        "Couverture Istanbul : 25,99 % instructions · 27,78 % lignes.",
+        "Couverture Istanbul : 33,96 % instructions · 35,29 % lignes.",
       ],
       en: [
-        "Vitest: 11 tests passed across 8 files.",
+        "Vitest: 23 tests passed across 10 files.",
         "Playwright: 6 scenarios passed on Chromium and Firefox.",
-        "Istanbul coverage: 25.99% statements · 27.78% lines.",
+        "Istanbul coverage: 33.96% statements · 35.29% lines.",
       ],
     },
     infrastructure: {
@@ -729,7 +729,10 @@ const projects: Project[] = [
         "Hono/Node API and Vite frontend; PWA caching application assets and API responses.",
       ],
     },
-    links: { github: "https://github.com/Trycky64/citypulse" },
+    links: {
+      github: "https://github.com/Trycky64/citypulse",
+      demo: "https://citypulse.quentinperriere.com/",
+    },
     seoDescription: {
       fr: "Application web Vue 3 et TypeScript pour rechercher et comparer météo et qualité de l’air, avec API Hono, cache IndexedDB, PWA et tests automatisés.",
       en: "Vue 3 and TypeScript web application for searching and comparing weather and air quality, with a Hono API, IndexedDB caching, PWA support, and automated tests.",
