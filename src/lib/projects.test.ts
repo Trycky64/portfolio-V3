@@ -11,26 +11,18 @@ import {
 } from "./projects";
 
 describe("lib/projects", () => {
-  it("conserve les projets réels sous forme de templates", () => {
-    expect(getAllProjects().map((project) => project.slug)).toEqual(
-      expect.arrayContaining(["portfolio-v5", "tryckys-rtp", "citypulse"]),
-    );
+  it("publie les quatre projets dans l'ordre attendu", () => {
+    expect(getAllProjects().map((project) => project.slug)).toEqual([
+      "pygeolab",
+      "jellyfin-media-integrity",
+      "tec",
+      "citypulse",
+    ]);
   });
 
-  it("conserve les autres projets sous forme de placeholders", () => {
-    for (const project of getAllProjects().filter(
-      (item) => !["pygeolab", "jellyfin-media-integrity", "tec"].includes(item.slug),
-    )) {
-      expect(project.contentStatus).toBe("placeholder");
-      expect(project.shortDescription.fr).toBeTruthy();
-      expect(project.shortDescription.en).toBeTruthy();
-      expect(project.problem.fr).toBe("");
-      expect(project.goals.fr).toEqual([]);
-      expect(project.architecture.fr).toEqual([]);
-      expect(project.results.fr).toEqual([]);
-      expect(project.tests).toEqual([]);
-      expect(project.infrastructure).toEqual([]);
-    }
+  it("retire les anciens projets secondaires", () => {
+    expect(getProjectBySlug("portfolio-v5")).toBeUndefined();
+    expect(getProjectBySlug("tryckys-rtp")).toBeUndefined();
   });
 
   it("présente Jellyfin Media Integrity v1.2.0 comme deuxième projet complet et public", () => {
@@ -91,7 +83,9 @@ describe("lib/projects", () => {
     expect(publishedText).toMatch(/229 tests xUnit/);
     expect(publishedText).toMatch(/Video is never re-encoded/);
     expect(publishedText).not.toMatch(/all FFmpeg (?:invocations|uses).*copy/i);
-    expect(publishedText).not.toMatch(/(?:69 tests|Version 1\.0\.0|Two scheduled tasks|deux tâches planifiées)/i);
+    expect(publishedText).not.toMatch(
+      /(?:69 tests|Version 1\.0\.0|Two scheduled tasks|deux tâches planifiées)/i,
+    );
     expect(publishedText).not.toMatch(
       /(?:\/home\/|\/srv\/|jellyfin-private|127\.0\.0\.1|192\.168\.|10\.\d+\.\d+\.\d+)/i,
     );
@@ -125,8 +119,14 @@ describe("lib/projects", () => {
       ]) {
         expect(section[locale].length).toBeGreaterThan(0);
       }
-      expect(Array.isArray(project.tests) ? project.tests : project.tests[locale]).toHaveLength(6);
-      expect(Array.isArray(project.infrastructure) ? project.infrastructure : project.infrastructure[locale]).toHaveLength(2);
+      expect(
+        Array.isArray(project.tests) ? project.tests : project.tests[locale],
+      ).toHaveLength(6);
+      expect(
+        Array.isArray(project.infrastructure)
+          ? project.infrastructure
+          : project.infrastructure[locale],
+      ).toHaveLength(2);
     }
     expect(project.categories).toContain("Python");
     expect(project.categories).toContain("Applications");
@@ -197,12 +197,67 @@ describe("lib/projects", () => {
     expect(project.gallery).toEqual([]);
   });
 
-  it("conserve les liens publics déjà vérifiés", () => {
-    expect(getProjectBySlug("citypulse")?.links.demo).toBe(
-      "https://citypulse.quentinperriere.com/",
-    );
-    expect(getProjectBySlug("tryckys-rtp")?.links.docs).toBe(
-      "https://rtp.quentinperriere.com/",
+  it("publie CityPulse comme quatrième projet secondaire complet", () => {
+    const project = getProjectBySlug("citypulse");
+    expect(project).toBeDefined();
+    if (!project) return;
+
+    expect(getAllProjects()[3]?.slug).toBe(project.slug);
+    expect(project.featured).toBe(false);
+    expect(project.contentStatus).toBe("ready");
+    expect(project.categories).toEqual(["Web", "Applications"]);
+    expect(project.links.github).toMatch(/^https:\/\/github\.com\//);
+    expect(project.links.demo).toBeUndefined();
+    expect(project.image).toBe("/images/projects/citypulse.png");
+    expect(
+      existsSync(join(process.cwd(), "public", project.image!.replace(/^\//, ""))),
+    ).toBe(true);
+
+    for (const locale of ["fr", "en"] as const) {
+      expect(getProjectType(project, locale)).toMatch(/Vue 3.*TypeScript/i);
+      for (const value of [
+        project.shortDescription,
+        project.longDescription,
+        project.problem,
+        project.seoDescription!,
+      ]) {
+        expect(value[locale].length).toBeGreaterThan(50);
+      }
+      for (const section of [
+        project.goals,
+        project.architecture,
+        project.challenges,
+        project.solutions,
+        project.results,
+        project.highlights,
+      ]) {
+        expect(section[locale].length).toBeGreaterThan(0);
+      }
+      expect(
+        Array.isArray(project.tests) ? project.tests : project.tests[locale],
+      ).not.toHaveLength(0);
+      expect(
+        Array.isArray(project.infrastructure)
+          ? project.infrastructure
+          : project.infrastructure[locale],
+      ).not.toHaveLength(0);
+    }
+
+    expect(project.stack).toEqual(
+      expect.arrayContaining([
+        "Vue 3",
+        "TypeScript",
+        "Vite",
+        "Pinia",
+        "Vue Router",
+        "Hono",
+        "Zod",
+        "IndexedDB",
+        "Leaflet",
+        "Chart.js",
+        "Vitest",
+        "Playwright",
+      ]),
     );
   });
 

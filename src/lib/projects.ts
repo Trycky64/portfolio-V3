@@ -2,19 +2,9 @@ export type LocalizedText = { fr: string; en: string };
 export type LocalizedList = { fr: string[]; en: string[] };
 
 export type ProjectCategory =
-  | "Python"
-  | "Applications"
-  | "Backend"
-  | "Web"
-  | "Java"
-  | "DevOps"
-  | "QA/Automation";
+  "Python" | "Applications" | "Backend" | "Web" | "Java" | "DevOps" | "QA/Automation";
 
-export type ProjectStatus =
-  | "production"
-  | "active"
-  | "completed"
-  | "experimental";
+export type ProjectStatus = "production" | "active" | "completed" | "experimental";
 
 export type ProjectContentStatus = "placeholder" | "ready";
 
@@ -52,45 +42,6 @@ export interface Project {
   seoDescription?: LocalizedText;
 }
 
-type TemplateInput = Pick<
-  Project,
-  | "slug"
-  | "title"
-  | "type"
-  | "categories"
-  | "status"
-  | "year"
-  | "featured"
-  | "order"
-  | "shortDescription"
-  | "stack"
-  | "links"
-> &
-  Partial<Pick<Project, "image" | "gallery">>;
-
-function projectTemplate(input: TemplateInput): Project {
-  return {
-    ...input,
-    contentStatus: "placeholder",
-    gallery: input.gallery ?? [],
-    longDescription: {
-      fr: "Étude de cas en cours de préparation.",
-      en: "Case study currently being prepared.",
-    },
-    problem: { fr: "", en: "" },
-    goals: { fr: [], en: [] },
-    architecture: { fr: [], en: [] },
-    challenges: { fr: [], en: [] },
-    solutions: { fr: [], en: [] },
-    results: { fr: [], en: [] },
-    highlights: { fr: [], en: [] },
-    tests: [],
-    infrastructure: [],
-  };
-}
-
-// Les fiches détaillées restent volontairement en template tant que les projets
-// et leurs assets ne sont pas considérés comme portfolio-ready.
 const projects: Project[] = [
   {
     slug: "pygeolab",
@@ -229,12 +180,32 @@ const projects: Project[] = [
       ],
     },
     tests: {
-      fr: ["pytest · 355 tests réussis localement", "pytest-qt pour les interactions UI", "Ruff : lint et format", "mypy en mode strict", "CI : Windows/Linux · Python 3.12/3.13/3.14", "Tests de démarrage des exécutables PyInstaller"],
-      en: ["pytest · 355 tests passed locally", "pytest-qt for UI interactions", "Ruff lint and format", "mypy in strict mode", "CI: Windows/Linux · Python 3.12/3.13/3.14", "PyInstaller executable smoke tests"],
+      fr: [
+        "pytest · 355 tests réussis localement",
+        "pytest-qt pour les interactions UI",
+        "Ruff : lint et format",
+        "mypy en mode strict",
+        "CI : Windows/Linux · Python 3.12/3.13/3.14",
+        "Tests de démarrage des exécutables PyInstaller",
+      ],
+      en: [
+        "pytest · 355 tests passed locally",
+        "pytest-qt for UI interactions",
+        "Ruff lint and format",
+        "mypy in strict mode",
+        "CI: Windows/Linux · Python 3.12/3.13/3.14",
+        "PyInstaller executable smoke tests",
+      ],
     },
     infrastructure: {
-      fr: ["GitHub Actions : CI Windows/Linux", "PyInstaller : archives Windows x64 et Linux x64"],
-      en: ["GitHub Actions: Windows/Linux CI", "PyInstaller: Windows x64 and Linux x64 archives"],
+      fr: [
+        "GitHub Actions : CI Windows/Linux",
+        "PyInstaller : archives Windows x64 et Linux x64",
+      ],
+      en: [
+        "GitHub Actions: Windows/Linux CI",
+        "PyInstaller: Windows x64 and Linux x64 archives",
+      ],
     },
     links: { github: "https://github.com/Trycky64/PyGeoLab" },
     seoDescription: {
@@ -597,67 +568,173 @@ const projects: Project[] = [
     },
   },
 
-  projectTemplate({
-    slug: "portfolio-v5",
-    title: "Portfolio V5",
-    type: "Portfolio de recrutement",
-    categories: ["Web", "DevOps"],
-    status: "active",
-    year: 2026,
-    featured: true,
-    order: 20,
-    image: "/images/projects/portfolio-v3.png",
-    shortDescription: {
-      fr: "Portfolio bilingue développé avec Next.js, React et TypeScript pour présenter mes projets et mon parcours.",
-      en: "Bilingual portfolio built with Next.js, React and TypeScript to present my projects and background.",
-    },
-    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Vitest"],
-    links: {
-      github: "https://github.com/Trycky64/portfolio-V3",
-      demo: "/",
-    },
-  }),
-
-  projectTemplate({
-    slug: "tryckys-rtp",
-    title: "Trycky's RTP",
-    type: "Mod serveur",
-    categories: ["Java", "Backend"],
-    status: "active",
-    year: 2026,
-    featured: true,
-    order: 15,
-    shortDescription: {
-      fr: "Projet Java/NeoForge côté serveur autour d'une téléportation aléatoire configurable et sécurisée.",
-      en: "Server-side Java/NeoForge project built around configurable and safe random teleportation.",
-    },
-    stack: ["Java", "NeoForge", "Minecraft 1.21.1", "Gradle", "Git", "GitHub"],
-    links: {
-      github: "https://github.com/Trycky64/Tryckys-RTP",
-      docs: "https://rtp.quentinperriere.com/",
-    },
-  }),
-
-  projectTemplate({
+  {
     slug: "citypulse",
     title: "CityPulse",
-    type: "Application web",
-    categories: ["Web"],
+    type: {
+      fr: "Application web Vue 3 / TypeScript de consultation et comparaison de données environnementales urbaines",
+      en: "Vue 3 / TypeScript web application for exploring and comparing urban environmental data",
+    },
+    categories: ["Web", "Applications"],
     status: "completed",
+    contentStatus: "ready",
     year: 2025,
-    featured: true,
-    order: 10,
+    featured: false,
+    order: 20,
     image: "/images/projects/citypulse.png",
+    gallery: [],
     shortDescription: {
-      fr: "Application Vue 3 + TypeScript exploitant des API publiques de données environnementales.",
-      en: "Vue 3 + TypeScript application using public environmental-data APIs.",
+      fr: "CityPulse est une application web Vue 3 et TypeScript qui réunit recherche géographique, météo et qualité de l’air. Elle normalise les réponses d’API publiques, conserve les préférences et favoris localement, et couvre les parcours principaux avec Vitest et Playwright.",
+      en: "CityPulse is a Vue 3 and TypeScript web application combining geographic search, weather, and air quality data. It normalizes public API responses, stores preferences and favorites locally, and covers its main flows with Vitest and Playwright.",
     },
-    stack: ["Vue 3", "TypeScript", "Vite", "Pinia", "Vue Router", "Zod", "Vitest", "Playwright"],
-    links: {
-      github: "https://github.com/Trycky64/citypulse",
-      demo: "https://citypulse.quentinperriere.com/",
+    longDescription: {
+      fr: "Le frontend Vue interroge une API Hono/Node qui relaie Nominatim et les API météo et qualité de l’air d’Open-Meteo. Les services TypeScript transforment les réponses en modèles utilisables par les pages de détail et de comparaison. Pinia et localStorage conservent les préférences et favoris, tandis qu’un cache stale-while-revalidate basé sur IndexedDB limite les requêtes répétées. Leaflet affiche la position de la ville et Chart.js les séries météo et pollution. Un manifeste et un service worker fournissent une installation PWA et un fonctionnement hors ligne limité.",
+      en: "The Vue frontend calls a Hono/Node API that proxies Nominatim plus Open-Meteo weather and air quality APIs. TypeScript services transform responses into models used by city detail and comparison pages. Pinia and localStorage retain preferences and favorites, while an IndexedDB-backed stale-while-revalidate cache limits repeated requests. Leaflet shows city locations and Chart.js renders weather and pollution series. A manifest and service worker provide PWA installation and limited offline behavior.",
     },
-  }),
+    problem: {
+      fr: "Présenter des données urbaines provenant de plusieurs API aux formats différents dans une interface unique, réactive et utilisable lorsque le réseau est intermittent.",
+      en: "Present urban data from several APIs with different response formats in one responsive interface that remains useful during intermittent connectivity.",
+    },
+    goals: {
+      fr: [
+        "Rechercher une ville et afficher ses données météo et de qualité de l’air.",
+        "Comparer deux villes avec une URL partageable.",
+        "Normaliser les réponses externes dans des modèles TypeScript stables.",
+        "Conserver localement les préférences et les villes favorites.",
+        "Tester les services et les principaux parcours utilisateur.",
+      ],
+      en: [
+        "Search for a city and display its weather and air quality data.",
+        "Compare two cities through a shareable URL.",
+        "Normalize external responses into stable TypeScript models.",
+        "Store preferences and favorite cities locally.",
+        "Test services and the main user flows.",
+      ],
+    },
+    architecture: {
+      fr: [
+        "SPA Vue 3 structurée par pages, composants, services et stores Pinia.",
+        "API Hono exécutée sous Node.js pour relayer Nominatim et Open-Meteo.",
+        "Client Axios centralisé et schémas Zod pour la recherche et la météo.",
+        "Cache stale-while-revalidate IndexedDB avec repli mémoire.",
+        "Service worker, manifeste et icônes pour la PWA.",
+      ],
+      en: [
+        "Vue 3 SPA organized into pages, components, services, and Pinia stores.",
+        "Node.js Hono API proxying Nominatim and Open-Meteo.",
+        "Central Axios client and Zod schemas for search and weather data.",
+        "IndexedDB stale-while-revalidate cache with an in-memory fallback.",
+        "Service worker, manifest, and icons for PWA support.",
+      ],
+    },
+    challenges: {
+      fr: [
+        "Composer avec des réponses externes hétérogènes ou partielles.",
+        "Maintenir la navigation, la comparaison et le cache sans état serveur applicatif.",
+        "Tester les parcours sans rendre la CI dépendante des API publiques.",
+        "Garder les graphiques et la carte lisibles dans les thèmes clair et sombre.",
+      ],
+      en: [
+        "Handle heterogeneous or partial external API responses.",
+        "Maintain navigation, comparison, and caching without application server state.",
+        "Test user flows without making CI depend on public APIs.",
+        "Keep charts and maps readable in light and dark themes.",
+      ],
+    },
+    solutions: {
+      fr: [
+        "Validation et normalisation des données dans les services TypeScript.",
+        "État Pinia persistant dans localStorage et données réseau mises en cache dans IndexedDB.",
+        "Routes API Playwright interceptées avec des réponses déterministes.",
+        "Variables de thème partagées par l’interface et les options Chart.js.",
+        "Validation des paramètres API et CORS limité à une origine configurable.",
+      ],
+      en: [
+        "Validate and normalize data in TypeScript services.",
+        "Persist Pinia state in localStorage and cache network data in IndexedDB.",
+        "Intercept API routes in Playwright with deterministic responses.",
+        "Share theme variables between the interface and Chart.js options.",
+        "Validate API parameters and restrict CORS to a configurable origin.",
+      ],
+    },
+    results: {
+      fr: [
+        "11 tests unitaires Vitest réussis dans 8 fichiers.",
+        "6 scénarios Playwright réussis sur Chromium et Firefox.",
+        "Lint, vérification TypeScript, build Vite et audit npm validés localement.",
+        "Couverture mesurée : 25,99 % des instructions et 27,78 % des lignes.",
+      ],
+      en: [
+        "11 Vitest unit tests passed across 8 files.",
+        "6 Playwright scenarios passed on Chromium and Firefox.",
+        "Lint, TypeScript checks, Vite build, and npm audit passed locally.",
+        "Measured coverage: 25.99% statements and 27.78% lines.",
+      ],
+    },
+    stack: [
+      "Vue 3",
+      "TypeScript",
+      "Vite",
+      "Pinia",
+      "Vue Router",
+      "Hono",
+      "Node.js",
+      "Axios",
+      "Zod",
+      "IndexedDB",
+      "idb-keyval",
+      "Leaflet",
+      "Chart.js",
+      "Vitest",
+      "Playwright",
+      "GitHub Actions",
+    ],
+    highlights: {
+      fr: [
+        "Recherche géographique et agrégation de données météo et air.",
+        "Comparaison de deux villes avec lien partageable et QR code.",
+        "Carte Leaflet et graphiques Chart.js.",
+        "Favoris et préférences persistés localement.",
+        "Cache IndexedDB et PWA avec service worker.",
+        "Tests unitaires et E2E déterministes intégrés à la CI.",
+      ],
+      en: [
+        "Geographic search with aggregated weather and air data.",
+        "Two-city comparison with a shareable link and QR code.",
+        "Leaflet map and Chart.js visualizations.",
+        "Locally persisted favorites and preferences.",
+        "IndexedDB cache and service-worker PWA.",
+        "Deterministic unit and E2E tests integrated into CI.",
+      ],
+    },
+    tests: {
+      fr: [
+        "Vitest · 11 tests réussis dans 8 fichiers.",
+        "Playwright · 6 scénarios réussis sur Chromium et Firefox.",
+        "Couverture Istanbul : 25,99 % instructions · 27,78 % lignes.",
+      ],
+      en: [
+        "Vitest: 11 tests passed across 8 files.",
+        "Playwright: 6 scenarios passed on Chromium and Firefox.",
+        "Istanbul coverage: 25.99% statements · 27.78% lines.",
+      ],
+    },
+    infrastructure: {
+      fr: [
+        "GitHub Actions : npm ci, audit, lint, type-check, couverture, build et Playwright.",
+        "API Hono/Node et frontend Vite ; PWA avec cache de ressources et réponses API.",
+      ],
+      en: [
+        "GitHub Actions: npm ci, audit, lint, type checking, coverage, build, and Playwright.",
+        "Hono/Node API and Vite frontend; PWA caching application assets and API responses.",
+      ],
+    },
+    links: { github: "https://github.com/Trycky64/citypulse" },
+    seoDescription: {
+      fr: "Application web Vue 3 et TypeScript pour rechercher et comparer météo et qualité de l’air, avec API Hono, cache IndexedDB, PWA et tests automatisés.",
+      en: "Vue 3 and TypeScript web application for searching and comparing weather and air quality, with a Hono API, IndexedDB caching, PWA support, and automated tests.",
+    },
+  },
 ];
 
 function byProjectOrder(a: Project, b: Project) {
