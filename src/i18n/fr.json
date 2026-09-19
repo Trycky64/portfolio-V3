@@ -110,7 +110,8 @@
   },
   "skills_section": {
     "title": "Compétences",
-    "description": "Un aperçu rapide de mon stack actuel côté front, back, DevOps et qualité logicielle."
+    "description": "Mes compétences principales en développement Python, backend, intégration d’API, tests et déploiement.",
+    "evidencePrefix": "Mis en pratique dans :"
   },
 
   "about": {

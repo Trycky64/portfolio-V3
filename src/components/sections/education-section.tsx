@@ -30,7 +30,7 @@ export function EducationSection() {
             {education.map((item) => (
               <Card key={item.id} variant="info">
                 <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                  {item.period}
+                  {item.period[locale]}
                 </p>
                 <h3 className="mt-2 text-lg font-semibold text-text-primary">
                   {item.title[locale]}

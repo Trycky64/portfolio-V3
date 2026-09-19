@@ -32,6 +32,12 @@ export function SkillsSection() {
                     <Badge key={item}>{item}</Badge>
                   ))}
                 </div>
+                <p className="mt-4 border-t border-slate-800 pt-3 text-xs leading-5 text-text-muted">
+                  <span className="font-medium text-slate-300">
+                    {t("skills_section.evidencePrefix")}
+                  </span>{" "}
+                  {group.evidence[locale].join(", ")}
+                </p>
               </article>
             ))}
           </div>

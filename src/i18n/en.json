@@ -110,7 +110,8 @@
   },
   "skills_section": {
     "title": "Skills",
-    "description": "A quick overview of my current stack: frontend, backend, DevOps and quality."
+    "description": "My core skills across Python development, backend systems, API integration, testing and deployment.",
+    "evidencePrefix": "Used in:"
   },
 
   "about": {
