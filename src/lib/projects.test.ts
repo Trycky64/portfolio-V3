@@ -3,6 +3,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import {
+  getAdjacentProjects,
   getAllProjects,
   getFeaturedProjects,
   getProjectBySlug,
@@ -266,6 +267,26 @@ describe("lib/projects", () => {
     expect(orders).toEqual([...orders].sort((a, b) => b - a));
   });
 
+  it("calcule la navigation précédente et suivante selon l'ordre publié", () => {
+    expect(getAdjacentProjects("pygeolab")).toMatchObject({
+      previous: undefined,
+      next: { slug: "jellyfin-media-integrity" },
+    });
+    expect(getAdjacentProjects("jellyfin-media-integrity")).toMatchObject({
+      previous: { slug: "pygeolab" },
+      next: { slug: "tec" },
+    });
+    expect(getAdjacentProjects("tec")).toMatchObject({
+      previous: { slug: "jellyfin-media-integrity" },
+      next: { slug: "citypulse" },
+    });
+    expect(getAdjacentProjects("citypulse")).toMatchObject({
+      previous: { slug: "tec" },
+      next: undefined,
+    });
+    expect(getAdjacentProjects("unknown")).toEqual({});
+  });
+
   it("respecte featured et la limite", () => {
     const featured = getFeaturedProjects(1);
     expect(featured).toHaveLength(1);
@@ -276,5 +297,18 @@ describe("lib/projects", () => {
     const webProjects = getProjectsByCategory("Web");
     expect(webProjects.length).toBeGreaterThan(0);
     expect(webProjects.every((project) => project.categories.includes("Web"))).toBe(true);
+    expect(getProjectsByCategory("Python").map((project) => project.slug)).toEqual([
+      "pygeolab",
+    ]);
+    expect(getProjectsByCategory("Backend").map((project) => project.slug)).toEqual([
+      "jellyfin-media-integrity",
+    ]);
+    expect(getProjectsByCategory("Java").map((project) => project.slug)).toEqual(["tec"]);
+    expect(getProjectsByCategory("Applications").map((project) => project.slug)).toEqual([
+      "pygeolab",
+      "jellyfin-media-integrity",
+      "tec",
+      "citypulse",
+    ]);
   });
 });

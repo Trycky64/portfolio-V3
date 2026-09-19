@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import ProjectPage from "@/components/projects/project-page";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
@@ -49,6 +50,10 @@ export default async function DynamicProjectPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { slug } = await params;
+
+  if (!getProjectBySlug(slug)) {
+    notFound();
+  }
 
   return <ProjectPage slug={slug} />;
 }

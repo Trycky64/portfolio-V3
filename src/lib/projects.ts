@@ -763,6 +763,21 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
 
+export function getAdjacentProjects(slug: string): {
+  previous?: Project;
+  next?: Project;
+} {
+  const orderedProjects = getAllProjects();
+  const index = orderedProjects.findIndex((project) => project.slug === slug);
+
+  if (index === -1) return {};
+
+  return {
+    previous: orderedProjects[index - 1],
+    next: orderedProjects[index + 1],
+  };
+}
+
 export function getProjectsByCategory(category: ProjectCategory): Project[] {
   return projects
     .filter((project) => project.categories.includes(category))

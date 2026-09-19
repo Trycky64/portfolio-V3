@@ -24,7 +24,24 @@
     "back_to_list": "Back to projects",
     "links": "Links",
     "project_not_found": "Project not found",
-    "project_not_found_desc": "The project {slug} could not be found."
+    "project_not_found_desc": "The project {slug} could not be found.",
+    "project_navigation": "Project navigation",
+    "previous_project": "Previous project",
+    "next_project": "Next project"
+  },
+  "projects_list": {
+    "eyebrow": "Selected work",
+    "title": "Projects",
+    "description": "Practical projects that show how I design, test, and deliver applications. Each case study covers the problem, the chosen architecture, and verified results.",
+    "filters": {
+      "label": "Filter projects by area",
+      "all": "All",
+      "python": "Python",
+      "backend": "Backend",
+      "java": "Java",
+      "applications": "Applications"
+    },
+    "result_count": "{count} projects displayed"
   },
   "hero": {
     "title": "I build useful and reliable applications, APIs and software tools.",

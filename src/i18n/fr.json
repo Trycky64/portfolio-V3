@@ -24,7 +24,24 @@
     "back_to_list": "Retour aux projets",
     "links": "Liens",
     "project_not_found": "Projet introuvable",
-    "project_not_found_desc": "Le projet {slug} est introuvable."
+    "project_not_found_desc": "Le projet {slug} est introuvable.",
+    "project_navigation": "Navigation entre les projets",
+    "previous_project": "Projet précédent",
+    "next_project": "Projet suivant"
+  },
+  "projects_list": {
+    "eyebrow": "Sélection de réalisations",
+    "title": "Projets",
+    "description": "Des projets concrets qui illustrent ma façon de concevoir, tester et livrer des applications. Chaque étude de cas présente le problème traité, l’architecture retenue et les résultats vérifiés.",
+    "filters": {
+      "label": "Filtrer les projets par domaine",
+      "all": "Tous",
+      "python": "Python",
+      "backend": "Backend",
+      "java": "Java",
+      "applications": "Applications"
+    },
+    "result_count": "{count} projets affichés"
   },
   "hero": {
     "title": "Je développe des applications, API et outils logiciels utiles et fiables.",

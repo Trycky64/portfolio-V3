@@ -7,7 +7,12 @@ import { Container } from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
 import { IconLink } from "@/components/ui/icon-link";
 import { useI18n } from "@/lib/i18n/context";
-import { getProjectBySlug, getProjectType, type LocalizedList } from "@/lib/projects";
+import {
+  getAdjacentProjects,
+  getProjectBySlug,
+  getProjectType,
+  type LocalizedList,
+} from "@/lib/projects";
 
 function ProjectList({ title, items }: { title: string; items: string[] }) {
   if (!items.length) return null;
@@ -48,6 +53,21 @@ export default function ProjectPage({ slug }: { slug: string }) {
   const localizedOrShared = (value: string[] | LocalizedList) =>
     Array.isArray(value) ? value : value[locale];
   const ready = project.contentStatus === "ready";
+  const { previous, next } = getAdjacentProjects(slug);
+  const statusLabel = {
+    fr: {
+      production: "Production",
+      active: "Actif",
+      completed: "Terminé",
+      experimental: "Expérimental",
+    },
+    en: {
+      production: "Production",
+      active: "Active",
+      completed: "Completed",
+      experimental: "Experimental",
+    },
+  }[locale][project.status];
   const hasLinks = Boolean(
     project.links.github || project.links.demo || project.links.docs,
   );
@@ -67,7 +87,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
           <Badge variant="muted">{getProjectType(project, locale)}</Badge>
           <Badge variant="muted">{project.year}</Badge>
           <Badge variant={project.status === "production" ? "success" : "muted"}>
-            {locale === "fr" && project.status === "active" ? "Actif" : project.status}
+            {statusLabel}
           </Badge>
           {project.categories.map((category) => (
             <Badge key={category} variant="tech">
@@ -117,7 +137,11 @@ export default function ProjectPage({ slug }: { slug: string }) {
         )}
 
         {ready && project.gallery.length > 0 && (
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div
+            className={
+              project.gallery.length === 1 ? "mt-4" : "mt-4 grid gap-4 md:grid-cols-2"
+            }
+          >
             {project.gallery.map((image, index) => (
               <div
                 key={image}
@@ -132,7 +156,11 @@ export default function ProjectPage({ slug }: { slug: string }) {
                   }
                   fill
                   className="object-contain"
-                  sizes="(min-width: 768px) 50vw, 100vw"
+                  sizes={
+                    project.gallery.length === 1
+                      ? "(min-width: 1024px) 992px, calc(100vw - 32px)"
+                      : "(min-width: 768px) 496px, calc(100vw - 32px)"
+                  }
                 />
               </div>
             ))}
@@ -232,6 +260,44 @@ export default function ProjectPage({ slug }: { slug: string }) {
               )}
             </div>
           </section>
+        )}
+
+        {(previous || next) && (
+          <nav
+            className="mt-14 border-t border-border pt-8"
+            aria-label={t("projects_page.project_navigation")}
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              {previous && (
+                <Link
+                  href={`${base}/projects/${previous.slug}`}
+                  className="focus-ring rounded-lg border border-border bg-surface/50 p-4 transition-colors hover:border-primary/50 hover:bg-surface"
+                >
+                  <span className="block text-xs font-semibold uppercase tracking-wide text-text-muted">
+                    ← {t("projects_page.previous_project")}
+                  </span>
+                  <span className="mt-2 block font-semibold text-text-primary">
+                    {previous.title}
+                  </span>
+                </Link>
+              )}
+              {next && (
+                <Link
+                  href={`${base}/projects/${next.slug}`}
+                  className={`focus-ring rounded-lg border border-border bg-surface/50 p-4 text-right transition-colors hover:border-primary/50 hover:bg-surface ${
+                    previous ? "" : "sm:col-start-2"
+                  }`}
+                >
+                  <span className="block text-xs font-semibold uppercase tracking-wide text-text-muted">
+                    {t("projects_page.next_project")} →
+                  </span>
+                  <span className="mt-2 block font-semibold text-text-primary">
+                    {next.title}
+                  </span>
+                </Link>
+              )}
+            </div>
+          </nav>
         )}
       </Container>
     </main>
