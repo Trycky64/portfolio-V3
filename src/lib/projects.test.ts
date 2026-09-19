@@ -207,7 +207,7 @@ describe("lib/projects", () => {
     expect(project.contentStatus).toBe("ready");
     expect(project.categories).toEqual(["Web", "Applications"]);
     expect(project.links.github).toMatch(/^https:\/\/github\.com\//);
-    expect(project.links.demo).toBeUndefined();
+    expect(project.links.demo).toBe("https://citypulse.quentinperriere.com/");
     expect(project.image).toBe("/images/projects/citypulse.png");
     expect(
       existsSync(join(process.cwd(), "public", project.image!.replace(/^\//, ""))),
