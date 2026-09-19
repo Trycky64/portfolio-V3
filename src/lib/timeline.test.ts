@@ -62,11 +62,27 @@ describe("lib/timeline — formation", () => {
     ]);
   });
 
-  it("publie le Bachelor développement web & applicatif avec une période localisée", () => {
+  it("publie la formation Bachelor de façon factuelle, sans laisser entendre qu’elle a été obtenue", () => {
     const bachelor = education.find((item) => item.id === "bachelor-dev-web")!;
-    expect(bachelor.period.fr).toBeTruthy();
-    expect(bachelor.period.en).toBeTruthy();
-    expect(bachelor.title.fr).toMatch(/Bachelor/i);
+    expect(bachelor.period).toEqual({ fr: "09/2025 — 12/2025", en: "Sep 2025 — Dec 2025" });
+    expect(bachelor.title).toEqual({
+      fr: "Formation Bachelor développement web & applicatif",
+      en: "Bachelor-level web & application development coursework",
+    });
+    expect(bachelor.description).toEqual({
+      fr: "Formation en développement web et applicatif moderne, suivie de septembre à décembre 2025.",
+      en: "Web and application development coursework completed from September to December 2025.",
+    });
+
+    for (const text of [bachelor.title.fr, bachelor.description.fr]) {
+      expect(text).not.toMatch(/obtenu|diplôme|diplômé/i);
+    }
+    for (const text of [bachelor.title.en, bachelor.description.en]) {
+      expect(text).not.toMatch(/graduated|degree obtained/i);
+    }
+    for (const text of [bachelor.description.fr, bachelor.description.en]) {
+      expect(text).not.toMatch(/alternance|apprenticeship|entreprise/i);
+    }
   });
 
   it("publie le BTS SIO option SLAM avec la période vérifiée sur les CV (2023 — 2025)", () => {

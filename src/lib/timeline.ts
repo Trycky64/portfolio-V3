@@ -16,10 +16,10 @@ export const timelineItems: TimelineItem[] = [
   {
     id: "bachelor-dev-web",
     period: { fr: "09/2025 — 12/2025", en: "Sep 2025 — Dec 2025" },
-    title: { fr: "Bachelor développement web & applicatif", en: "Bachelor in web & application development" },
+    title: { fr: "Formation Bachelor développement web & applicatif", en: "Bachelor-level web & application development coursework" },
     description: {
-      fr: "Spécialisation en développement web et applicatif moderne (PHP/Symfony, React/Next.js, bonnes pratiques, intégration continue).",
-      en: "Specialization in modern web and application development (PHP/Symfony, React/Next.js, best practices, CI/CD).",
+      fr: "Formation en développement web et applicatif moderne, suivie de septembre à décembre 2025.",
+      en: "Web and application development coursework completed from September to December 2025.",
     },
     type: "education",
   },
