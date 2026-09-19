@@ -52,54 +52,6 @@
     "openToWork": "Open to opportunities",
     "avatarAlt": "Portrait of Quentin Perriere"
   },
-  "services": {
-    "title": "Services",
-    "description": "Clear, outcome-driven services: polished UI, clean code, and reliable deployment.",
-    "items": {
-      "website": {
-        "title": "Landing page / Website",
-        "desc": "A fast, clear, conversion-oriented website with solid SEO basics and performance.",
-        "b1": "Clean structure (sections, CTAs, copy)",
-        "b2": "Core SEO (meta, indexing, performance)",
-        "b3": "Deployment & go-live"
-      },
-      "webapp": {
-        "title": "Web app / Dashboard",
-        "desc": "Rich interfaces with business logic, forms, tables and solid UI states.",
-        "b1": "Responsive UI, states & feedback",
-        "b2": "Auth, CRUD, tables, filters",
-        "b3": "Quality & performance (DX, lighthouse)"
-      },
-      "nextreact": {
-        "title": "Next.js / React integration",
-        "desc": "Support on an existing project: components, refactor, migration, performance.",
-        "b1": "Refactor & reusable components",
-        "b2": "Migration (Pages ↔ App Router)",
-        "b3": "Performance & bundle optimization"
-      },
-      "api": {
-        "title": "Backend / API",
-        "desc": "Clean, documented APIs: stable endpoints, validation and security.",
-        "b1": "REST API (Node / Symfony as needed)",
-        "b2": "Validation, errors, logging",
-        "b3": "Database integration (SQL) if needed"
-      },
-      "deploy": {
-        "title": "Deployment / Cloudflare",
-        "desc": "Reliable production setup: DNS, SSL, tunnel, CI/CD, self-hosting.",
-        "b1": "Cloudflare Tunnel, DNS & SSL",
-        "b2": "systemd, reverse proxy, monitoring",
-        "b3": "CI/CD with GitHub Actions"
-      },
-      "maintenance": {
-        "title": "Maintenance / Perf / SEO",
-        "desc": "Stabilize and improve a product: fixes, speed and quality.",
-        "b1": "Fixes & iterations",
-        "b2": "Optimizations (images, cache, perf)",
-        "b3": "Technical SEO & accessibility"
-      }
-    }
-  },
   "projects_section": {
     "title": "Featured projects",
     "description": "A selection of projects that best represent how I work: from frontend to backend, all the way to deployment."
@@ -116,29 +68,26 @@
 
   "about": {
     "title": "About",
-    "description": "I am a Python and backend-focused developer building applications and software tools with close attention to quality, testing and deployment.",
+    "description": "I'm a Python and backend-focused developer who enjoys designing applications and software tools where architecture, testing and reliability matter as much as the feature itself.",
     "value": {
       "title": "What I bring",
-      "p1": "Clean, maintainable code, polished UI, and strong focus on performance and accessibility.",
-      "p2": "Pragmatic delivery: clear scope, prioritization, and post-launch support."
+      "p1": "A structured approach to development: understanding the need, clearly separating responsibilities, testing the behaviors that matter, and keeping the code maintainable.",
+      "p2": "My personal projects also have me handling integration, packaging, CI and deployment through to a genuinely usable environment."
+    },
+    "build": {
+      "title": "What I like building",
+      "p1": "Applications, APIs and tools that automate a real problem, work with data, or integrate with an existing system."
     },
     "availability": {
       "title": "Availability",
-      "status": "Based in {location}, I am actively looking for a full-time hybrid or remote role."
-    },
-    "process": {
-      "title": "Process (4 steps)",
-      "step1": "Scope: needs, goals, constraints",
-      "step2": "Quote: estimate, timeline, deliverables",
-      "step3": "Build: iterations, validation, quality",
-      "step4": "Delivery & support: deployment, fixes, improvements"
+      "status": "Based in {location}, I am actively looking for a full-time position in Python, backend or application development, hybrid in the region or remote anywhere in France."
     }
   },
 
   "contact": {
-    "title": "Let’s work together",
-    "description": "Share your needs (context, goals, deadline) and I’ll get back to you quickly.",
-    "responseTime": "Reply within 24/48h.",
+    "title": "Contact me",
+    "description": "Hiring a Python, backend or application developer? I'm happy to talk about a role, a team or a software project.",
+    "responseTime": "I usually reply within 24 to 48 hours.",
     "form": {
       "name": "Name",
       "email": "Email",
@@ -146,6 +95,8 @@
     },
     "button": {
       "send": "Send message",
+      "sending": "Sending…",
+      "sent": "Message sent",
       "retry": "Try again"
     },
     "direct": {
@@ -154,10 +105,13 @@
       "githubLabel": "GitHub",
       "linkedinLabel": "LinkedIn"
     },
-    "status": {
-      "sending": "Sending…",
-      "success": "Message sent. Thanks!",
-      "error": "Unable to send your message. Please check the fields or try again later."
+    "success": "Message sent, thanks! I'll get back to you shortly.",
+    "errors": {
+      "invalid": "Please check the form fields.",
+      "tooLarge": "The message is too long.",
+      "rateLimited": "Too many attempts. Please try again in a few minutes.",
+      "server": "Unable to send the message right now. Please try again later.",
+      "network": "Connection failed. Check your network and try again."
     }
   },
 

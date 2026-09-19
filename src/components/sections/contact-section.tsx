@@ -1,21 +1,41 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 import { Container } from "../layout/container";
 import { SectionTitle } from "../ui/section-title";
 import { useI18n } from "@/lib/i18n/context";
+import { CONTACT_LIMITS, HONEYPOT_FIELD } from "@/lib/contact";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/site";
 
 type Status = "idle" | "loading" | "success" | "error";
+
+function errorKeyForResponse(status: number, code: string | undefined): string {
+  if (code === "RATE_LIMITED" || status === 429) {
+    return "contact.errors.rateLimited";
+  }
+  if (code === "PAYLOAD_TOO_LARGE" || status === 413) {
+    return "contact.errors.tooLarge";
+  }
+  if (code === "INVALID_DATA" || status === 400) {
+    return "contact.errors.invalid";
+  }
+  return "contact.errors.server";
+}
 
 export function ContactSection() {
   const { t, locale } = useI18n();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const isSubmittingRef = useRef(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (isSubmittingRef.current) {
+      return;
+    }
+    isSubmittingRef.current = true;
     setStatus("loading");
     setErrorMessage(null);
 
@@ -27,6 +47,7 @@ export function ContactSection() {
       email: (formData.get("email") ?? "").toString().trim(),
       message: (formData.get("message") ?? "").toString().trim(),
       locale,
+      [HONEYPOT_FIELD]: (formData.get(HONEYPOT_FIELD) ?? "").toString(),
     };
 
     try {
@@ -39,12 +60,9 @@ export function ContactSection() {
       });
 
       if (!res.ok) {
+        const body = await res.json().catch(() => null);
         setStatus("error");
-        setErrorMessage(
-          res.status === 400
-            ? t("contact.errors.invalid")
-            : t("contact.errors.server"),
-        );
+        setErrorMessage(t(errorKeyForResponse(res.status, body?.error)));
         return;
       }
 
@@ -54,6 +72,8 @@ export function ContactSection() {
       console.error("Erreur envoi formulaire contact :", error);
       setStatus("error");
       setErrorMessage(t("contact.errors.network"));
+    } finally {
+      isSubmittingRef.current = false;
     }
   }
 
@@ -85,6 +105,21 @@ export function ContactSection() {
             onSubmit={handleSubmit}
             className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/40 p-5"
           >
+            <div
+              aria-hidden="true"
+              className="absolute h-px w-px overflow-hidden whitespace-nowrap"
+              style={{ clip: "rect(0 0 0 0)", clipPath: "inset(50%)" }}
+            >
+              <label htmlFor={HONEYPOT_FIELD}>Website</label>
+              <input
+                id={HONEYPOT_FIELD}
+                name={HONEYPOT_FIELD}
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="space-y-1 text-sm">
               <label
                 htmlFor="name"
@@ -96,6 +131,8 @@ export function ContactSection() {
                 id="name"
                 name="name"
                 required
+                autoComplete="name"
+                maxLength={CONTACT_LIMITS.name.max}
                 className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
               />
             </div>
@@ -112,6 +149,8 @@ export function ContactSection() {
                 name="email"
                 type="email"
                 required
+                autoComplete="email"
+                maxLength={CONTACT_LIMITS.email.max}
                 className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
               />
             </div>
@@ -128,6 +167,8 @@ export function ContactSection() {
                 name="message"
                 rows={5}
                 required
+                minLength={CONTACT_LIMITS.message.min}
+                maxLength={CONTACT_LIMITS.message.max}
                 className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
               />
             </div>
@@ -141,15 +182,20 @@ export function ContactSection() {
                 {buttonLabel}
               </button>
 
-              {status === "success" && (
-                <p className="text-sm text-emerald-400">
-                  {t("contact.success")}
-                </p>
-              )}
+              <div
+                role={status === "error" ? "alert" : "status"}
+                aria-live={status === "error" ? "assertive" : "polite"}
+              >
+                {status === "success" && (
+                  <p className="text-sm text-emerald-400">
+                    {t("contact.success")}
+                  </p>
+                )}
 
-              {status === "error" && errorMessage && (
-                <p className="text-sm text-red-400">{errorMessage}</p>
-              )}
+                {status === "error" && errorMessage && (
+                  <p className="text-sm text-red-400">{errorMessage}</p>
+                )}
+              </div>
             </div>
           </form>
 

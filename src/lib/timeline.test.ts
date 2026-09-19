@@ -51,3 +51,28 @@ describe("lib/timeline", () => {
     });
   });
 });
+
+describe("lib/timeline — formation", () => {
+  const education = getTimeline().filter((item) => item.type === "education");
+
+  it("classe les formations de la plus récente à la plus ancienne", () => {
+    expect(education.map((item) => item.id)).toEqual([
+      "bachelor-dev-web",
+      "bts-sio-slam",
+    ]);
+  });
+
+  it("publie le Bachelor développement web & applicatif avec une période localisée", () => {
+    const bachelor = education.find((item) => item.id === "bachelor-dev-web")!;
+    expect(bachelor.period.fr).toBeTruthy();
+    expect(bachelor.period.en).toBeTruthy();
+    expect(bachelor.title.fr).toMatch(/Bachelor/i);
+  });
+
+  it("publie le BTS SIO option SLAM avec la période vérifiée sur les CV (2023 — 2025)", () => {
+    const bts = education.find((item) => item.id === "bts-sio-slam")!;
+    expect(bts.title.fr).toMatch(/BTS SIO/i);
+    expect(bts.title.fr).toMatch(/SLAM/i);
+    expect(bts.period).toEqual({ fr: "2023 — 2025", en: "2023 — 2025" });
+  });
+});
