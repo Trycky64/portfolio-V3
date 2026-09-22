@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { CookieConsent } from "@/components/ui/cookie-consent";
 import { I18nProvider, type Locale } from "@/lib/i18n/context";
+import { localeAlternates, socialMetadata } from "@/lib/seo";
 import { LOCATION, PERSON_NAME, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
@@ -62,22 +63,14 @@ export async function generateMetadata({
       template: `%s — ${PERSON_NAME}`,
     },
     description,
+    authors: [{ name: PERSON_NAME, url: SITE_URL }],
+    creator: PERSON_NAME,
+    publisher: PERSON_NAME,
     alternates: {
       canonical: `/${locale}`,
-      languages: {
-        fr: "/fr",
-        en: "/en",
-      },
+      languages: localeAlternates(),
     },
-    openGraph: {
-      title,
-      description,
-      url: `${SITE_URL}/${locale}`,
-      siteName: PERSON_NAME,
-      type: "website",
-      locale: isFrench ? "fr_FR" : "en_GB",
-      alternateLocale: isFrench ? ["en_GB"] : ["fr_FR"],
-    },
+    ...socialMetadata(locale, title, description, `/${locale}`),
   };
 }
 

@@ -12,9 +12,6 @@
     "contact": "Contact",
     "cv": "CV"
   },
-  "header": {
-    "timeline": "Parcours"
-  },
   "common": {
     "see_project": "Voir le projet →",
     "source_code": "Code source",
@@ -56,16 +53,11 @@
     "title": "Projets phares",
     "description": "Une sélection de projets qui représentent le mieux ma manière de travailler : du front au backend, jusqu’au déploiement."
   },
-  "timeline_section": {
-    "title": "Parcours",
-    "description": "Entre formation, expériences et projets perso, voici les grandes étapes de mon parcours."
-  },
   "skills_section": {
     "title": "Compétences",
     "description": "Mes compétences principales en développement Python, backend, intégration d’API, tests et déploiement.",
     "evidencePrefix": "Mis en pratique dans :"
   },
-
   "about": {
     "title": "À propos",
     "description": "Développeur orienté Python et backend, j’aime concevoir des applications et outils logiciels où l’architecture, les tests et la fiabilité comptent autant que la fonctionnalité elle-même.",
@@ -83,7 +75,6 @@
       "status": "Basé à {location}, je recherche activement un poste à temps plein en développement Python, backend ou applicatif, en hybride dans la région ou en télétravail partout en France."
     }
   },
-
   "contact": {
     "title": "Me contacter",
     "description": "Vous recrutez un développeur Python, backend ou applicatif ? Je suis disponible pour échanger sur un poste, une équipe ou un projet logiciel.",
@@ -114,13 +105,9 @@
       "network": "Connexion impossible. Vérifiez votre réseau et réessayez."
     }
   },
-
   "footer": {
-    "copyright": "© 2026 Quentin Perriere. Tous droits réservés.",
     "email": "Email",
-    "stackNote": "Portfolio développé avec Next.js et TypeScript.",
-    "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "stackNote": "Portfolio développé avec Next.js et TypeScript."
   },
   "cookies": {
     "text": "Ce site utilise des cookies uniquement pour assurer son bon fonctionnement et, avec votre accord, mesurer l’audience. Vous pouvez accepter ou refuser.",

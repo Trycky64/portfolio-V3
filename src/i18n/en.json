@@ -12,9 +12,6 @@
     "contact": "Contact",
     "cv": "CV"
   },
-  "header": {
-    "timeline": "Journey"
-  },
   "common": {
     "see_project": "View project →",
     "source_code": "Source code",
@@ -56,16 +53,11 @@
     "title": "Featured projects",
     "description": "A selection of projects that best represent how I work: from frontend to backend, all the way to deployment."
   },
-  "timeline_section": {
-    "title": "Journey",
-    "description": "From education to projects and experience — here are the key milestones."
-  },
   "skills_section": {
     "title": "Skills",
     "description": "My core skills across Python development, backend systems, API integration, testing and deployment.",
     "evidencePrefix": "Used in:"
   },
-
   "about": {
     "title": "About",
     "description": "I'm a Python and backend-focused developer who enjoys designing applications and software tools where architecture, testing and reliability matter as much as the feature itself.",
@@ -83,7 +75,6 @@
       "status": "Based in {location}, I am actively looking for a full-time position in Python, backend or application development, hybrid in the region or remote anywhere in France."
     }
   },
-
   "contact": {
     "title": "Contact me",
     "description": "Hiring a Python, backend or application developer? I'm happy to talk about a role, a team or a software project.",
@@ -114,13 +105,9 @@
       "network": "Connection failed. Check your network and try again."
     }
   },
-
   "footer": {
-    "copyright": "© 2026 Quentin Perriere. All rights reserved.",
     "email": "Email",
-    "stackNote": "Portfolio built with Next.js and TypeScript.",
-    "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "stackNote": "Portfolio built with Next.js and TypeScript."
   },
   "cookies": {
     "text": "This website uses cookies only to ensure proper operation and, with your consent, to measure traffic. You can accept or refuse.",

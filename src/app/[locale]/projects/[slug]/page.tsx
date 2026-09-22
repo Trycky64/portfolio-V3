@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import ProjectPage from "@/components/projects/project-page";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
-import { SITE_URL } from "@/lib/site";
+import { localeAlternates, socialMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getAllProjects().map((project) => ({
@@ -29,18 +29,9 @@ export async function generateMetadata({
     description,
     alternates: {
       canonical: path,
-      languages: {
-        fr: `/fr/projects/${slug}`,
-        en: `/en/projects/${slug}`,
-      },
+      languages: localeAlternates(`/projects/${slug}`),
     },
-    openGraph: {
-      title: project.title,
-      description,
-      url: `${SITE_URL}${path}`,
-      type: "article",
-      images: project.image ? [{ url: project.image }] : undefined,
-    },
+    ...socialMetadata(locale, project.title, description, path),
   };
 }
 

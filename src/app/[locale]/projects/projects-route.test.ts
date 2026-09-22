@@ -13,6 +13,7 @@ import DynamicProjectPage, {
   generateMetadata as generateProjectMetadata,
 } from "./[slug]/page";
 import { getAllProjects } from "@/lib/projects";
+import { SITE_URL } from "@/lib/site";
 
 describe("projects routes", () => {
   it("génère les canonical et hreflang de la liste dans chaque langue", async () => {
@@ -26,9 +27,16 @@ describe("projects routes", () => {
         languages: {
           fr: "/fr/projects",
           en: "/en/projects",
+          "x-default": "/fr/projects",
         },
       });
       expect(metadata.description).toBeTruthy();
+      expect(metadata.openGraph).toMatchObject({
+        url: `${SITE_URL}/${locale}/projects`,
+        locale: locale === "fr" ? "fr_FR" : "en_GB",
+        images: [{ url: `${SITE_URL}/${locale}/opengraph-image`, width: 1200, height: 630 }],
+      });
+      expect(metadata.twitter).toMatchObject({ card: "summary_large_image", images: [`${SITE_URL}/${locale}/opengraph-image`] });
     }
   });
 
@@ -46,8 +54,16 @@ describe("projects routes", () => {
           languages: {
             fr: `/fr/projects/${project.slug}`,
             en: `/en/projects/${project.slug}`,
+            "x-default": `/fr/projects/${project.slug}`,
           },
         });
+        expect(metadata.openGraph).toMatchObject({
+          url: `${SITE_URL}/${locale}/projects/${project.slug}`,
+          locale: locale === "fr" ? "fr_FR" : "en_GB",
+          type: "website",
+          images: [{ url: `${SITE_URL}/${locale}/opengraph-image` }],
+        });
+        expect(metadata.twitter).toMatchObject({ card: "summary_large_image", images: [`${SITE_URL}/${locale}/opengraph-image`] });
       }
     }
   });

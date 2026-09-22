@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 import { ProjectsList } from "@/components/projects/projects-list";
 import type { Locale } from "@/lib/i18n/context";
-import { PERSON_NAME, SITE_URL } from "@/lib/site";
+import { localeAlternates, socialMetadata } from "@/lib/seo";
+import { PERSON_NAME } from "@/lib/site";
 
 const metadataByLocale: Record<Locale, { title: string; description: string }> = {
   fr: {
@@ -32,17 +33,9 @@ export async function generateMetadata({
     description: metadata.description,
     alternates: {
       canonical: path,
-      languages: {
-        fr: "/fr/projects",
-        en: "/en/projects",
-      },
+      languages: localeAlternates("/projects"),
     },
-    openGraph: {
-      title: `${metadata.title} — ${PERSON_NAME}`,
-      description: metadata.description,
-      url: `${SITE_URL}${path}`,
-      type: "website",
-    },
+    ...socialMetadata(locale, `${metadata.title} — ${PERSON_NAME}`, metadata.description, path),
   };
 }
 
