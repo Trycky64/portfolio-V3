@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio V5 — Quentin Perriere
 
-## Getting Started
+Portfolio bilingue français/anglais présentant mes projets, compétences et expériences en développement Python, backend, web et applicatif.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 et React 19
+- TypeScript
+- Tailwind CSS 4
+- Vitest
+
+## Prérequis
+
+- Node.js 22
+- npm 10 ou version supérieure
+
+La version majeure de Node utilisée localement et en CI est aussi déclarée dans `.nvmrc`.
+
+## Développement
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site est ensuite disponible sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run verify
+```
 
-## Learn More
+Cette commande exécute ESLint, la vérification TypeScript, les tests Vitest en mode non interactif, puis le build de production.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Les mêmes étapes sont exécutées séparément dans GitHub Actions afin de rendre les erreurs plus faciles à identifier.

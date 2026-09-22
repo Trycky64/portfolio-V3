@@ -30,13 +30,19 @@ describe("projects routes", () => {
           "x-default": "/fr/projects",
         },
       });
+      expect(metadata.title).toBe(locale === "fr" ? "Projets logiciels" : "Software projects");
       expect(metadata.description).toBeTruthy();
       expect(metadata.openGraph).toMatchObject({
         url: `${SITE_URL}/${locale}/projects`,
         locale: locale === "fr" ? "fr_FR" : "en_GB",
         images: [{ url: `${SITE_URL}/${locale}/opengraph-image`, width: 1200, height: 630 }],
       });
-      expect(metadata.twitter).toMatchObject({ card: "summary_large_image", images: [`${SITE_URL}/${locale}/opengraph-image`] });
+      expect(metadata.twitter).toMatchObject({
+        card: "summary_large_image",
+        title: `${locale === "fr" ? "Projets logiciels" : "Software projects"} — Quentin Perriere`,
+        description: metadata.description,
+        images: [`${SITE_URL}/${locale}/opengraph-image`],
+      });
     }
   });
 
@@ -48,7 +54,7 @@ describe("projects routes", () => {
         });
 
         expect(metadata.title).toBe(project.title);
-        expect(metadata.description).toBeTruthy();
+        expect(metadata.description).toBe(project.seoDescription?.[locale] ?? project.shortDescription[locale]);
         expect(metadata.alternates).toEqual({
           canonical: `/${locale}/projects/${project.slug}`,
           languages: {
@@ -63,7 +69,12 @@ describe("projects routes", () => {
           type: "website",
           images: [{ url: `${SITE_URL}/${locale}/opengraph-image` }],
         });
-        expect(metadata.twitter).toMatchObject({ card: "summary_large_image", images: [`${SITE_URL}/${locale}/opengraph-image`] });
+        expect(metadata.twitter).toMatchObject({
+          card: "summary_large_image",
+          title: project.title,
+          description: metadata.description,
+          images: [`${SITE_URL}/${locale}/opengraph-image`],
+        });
       }
     }
   });
