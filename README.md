@@ -1,5 +1,7 @@
 # Portfolio V5 — Quentin Perriere
 
+[![CI](https://github.com/Trycky64/portfolio-V3/actions/workflows/ci.yml/badge.svg?branch=feat%2Fportfolio-v5)](https://github.com/Trycky64/portfolio-V3/actions/workflows/ci.yml)
+
 Portfolio bilingue français/anglais présentant mes projets, compétences et expériences en développement Python, backend, web et applicatif.
 
 ## Stack
