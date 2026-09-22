@@ -81,6 +81,11 @@ describe("api/contact route", () => {
     const [, init] = fetchMock.mock.calls[0]!;
     const sentBody = JSON.parse(init.body as string);
     expect(sentBody.subject).toMatch(/^\[FR\]/);
+    expect(sentBody).toMatchObject({
+      from: configuredEnv.CONTACT_FROM_EMAIL,
+      to: [configuredEnv.CONTACT_TO_EMAIL],
+      reply_to: validPayload.email,
+    });
   });
 
   it("accepte un payload valide en EN", async () => {
@@ -177,15 +182,16 @@ describe("api/contact route", () => {
     expect(sentBody.text).toContain(maliciousName);
   });
 
-  it("répond CONFIG_ERROR quand la configuration serveur est absente", async () => {
-    const { POST } = await loadRoute({});
+  it("répond CONFIG_ERROR quand une variable serveur requise est absente", async () => {
+    for (const missing of Object.keys(configuredEnv) as Array<keyof typeof configuredEnv>) {
+      const { POST } = await loadRoute({ ...configuredEnv, [missing]: undefined });
+      const res = await POST(jsonRequest(validPayload, { "x-forwarded-for": `missing-${missing}` }));
+      const body = await res.json();
 
-    const res = await POST(jsonRequest(validPayload, { "x-forwarded-for": "1.1.1.9" }));
-    const body = await res.json();
-
-    expect(res.status).toBe(500);
-    expect(body.error).toBe("CONFIG_ERROR");
-    expect(fetchMock).not.toHaveBeenCalled();
+      expect(res.status).toBe(500);
+      expect(body.error).toBe("CONFIG_ERROR");
+      expect(fetchMock).not.toHaveBeenCalled();
+    }
   });
 
   it("répond EMAIL_ERROR quand Resend échoue", async () => {

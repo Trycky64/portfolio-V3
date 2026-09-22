@@ -24,8 +24,7 @@ const contactSchema = z.object({
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL;
-const CONTACT_FROM_EMAIL =
-  process.env.CONTACT_FROM_EMAIL ?? "portfolio@onresend.com";
+const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL;
 
 function jsonError(error: string, status: number, extra?: Record<string, unknown>) {
   return NextResponse.json({ ok: false, error, ...extra }, { status });
@@ -113,7 +112,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
 
-    if (!RESEND_API_KEY || !CONTACT_TO_EMAIL) {
+    if (!RESEND_API_KEY || !CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
       console.warn("[CONTACT] Configuration serveur manquante");
       return jsonError("CONFIG_ERROR", 500);
     }
@@ -154,6 +153,7 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         from: CONTACT_FROM_EMAIL,
         to: [CONTACT_TO_EMAIL],
+        reply_to: data.email,
         subject,
         text: textBody,
         html: htmlBody,
