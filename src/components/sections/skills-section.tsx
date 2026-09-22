@@ -11,9 +11,12 @@ export function SkillsSection() {
   const { t, locale } = useI18n();
 
   return (
-    <section id="skills" className="border-b border-slate-800 bg-qp-bg">
+    <section
+      id="skills"
+      className="scroll-mt-20 border-b border-border bg-background"
+    >
       <Container>
-        <div className="py-12 sm:py-section-y animate-fade-in-up">
+        <div className="py-12 sm:py-section-y">
           <SectionTitle title={t("skills_section.title")} description={t("skills_section.description")} />
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -29,6 +32,12 @@ export function SkillsSection() {
                     <Badge key={item}>{item}</Badge>
                   ))}
                 </div>
+                <p className="mt-4 border-t border-slate-800 pt-3 text-xs leading-5 text-text-muted">
+                  <span className="font-medium text-slate-300">
+                    {t("skills_section.evidencePrefix")}
+                  </span>{" "}
+                  {group.evidence[locale].join(", ")}
+                </p>
               </article>
             ))}
           </div>

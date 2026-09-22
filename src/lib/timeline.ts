@@ -1,28 +1,31 @@
-// src/lib/timeline.ts
 export type TimelineItemType = "education" | "experience" | "project";
+export type LocalizedText = { fr: string; en: string };
 
 export type TimelineItem = {
   id: string;
-  period: string;
-  title: { fr: string; en: string };
-  description: { fr: string; en: string };
+  period: LocalizedText;
+  title: LocalizedText;
+  company?: string;
+  description: LocalizedText;
+  technologies?: string[];
+  technical?: boolean;
   type: TimelineItemType;
 };
 
 export const timelineItems: TimelineItem[] = [
   {
     id: "bachelor-dev-web",
-    period: "09/2025 — 12/2025",
-    title: { fr: "Bachelor développement web & applicatif", en: "Bachelor in web & application development" },
+    period: { fr: "09/2025 — 12/2025", en: "Sep 2025 — Dec 2025" },
+    title: { fr: "Formation Bachelor développement web & applicatif", en: "Bachelor-level web & application development coursework" },
     description: {
-      fr: "Spécialisation en développement web et applicatif moderne (PHP/Symfony, React/Next.js, bonnes pratiques, intégration continue).",
-      en: "Specialization in modern web and application development (PHP/Symfony, React/Next.js, best practices, CI/CD).",
+      fr: "Formation en développement web et applicatif moderne, suivie de septembre à décembre 2025.",
+      en: "Web and application development coursework completed from September to December 2025.",
     },
     type: "education",
   },
   {
     id: "bts-sio-slam",
-    period: "2023 — 2025",
+    period: { fr: "2023 — 2025", en: "2023 — 2025" },
     title: { fr: "BTS SIO — option SLAM", en: "BTS SIO — SLAM" },
     description: {
       fr: "Formation en développement d’applications, bases de données, système et réseau.",
@@ -31,38 +34,58 @@ export const timelineItems: TimelineItem[] = [
     type: "education",
   },
   {
-    id: "qa-maxsea",
-    period: "01/2025 — 02/2025",
-    title: { fr: "Testeur QA — Maxsea International", en: "QA Tester — Maxsea International" },
+    id: "leclerc-traiteur",
+    period: { fr: "Depuis mars 2026", en: "Since March 2026" },
+    title: { fr: "Traiteur", en: "Deli assistant" },
+    company: "E.Leclerc",
     description: {
-      fr: "Tests automatisés (Android & Windows), scénarios Pytest et Airtest, remontée de bugs.",
-      en: "Automated testing (Android & Windows), Pytest & Airtest scenarios, bug reporting.",
+      fr: "Organisation du travail, respect des procédures et coordination en équipe dans un rythme opérationnel soutenu.",
+      en: "Work organization, adherence to procedures and team coordination in a fast-paced operational environment.",
     },
+    technical: false,
     type: "experience",
   },
   {
-    id: "mcdo",
-    period: "12/2023 — 12/2024",
-    title: { fr: "Équipier polyvalent — McDonald’s, Anglet", en: "Crew member — McDonald’s, Anglet" },
+    id: "qa-maxsea",
+    period: { fr: "05/2025 — 06/2025", en: "May 2025 — Jun 2025" },
+    title: { fr: "Stagiaire QA & automatisation Python", en: "QA & Python automation intern" },
+    company: "MaxSea International",
     description: {
-      fr: "Travail en équipe, gestion de la pression et respect des standards de service.",
-      en: "Teamwork, working under pressure and adhering to service standards.",
+      fr: "Création et exécution de scénarios de tests automatisés sur Android et Windows, puis remontée et suivi des bugs.",
+      en: "Created and ran automated test scenarios on Android and Windows, then reported and tracked bugs.",
     },
+    technologies: ["Python", "pytest", "Airtest"],
+    technical: true,
     type: "experience",
   },
   {
     id: "dev-dwe64",
-    period: "05/2024 — 06/2024",
-    title: { fr: "Développeur web — DWE64", en: "Web developer — DWE64" },
+    period: { fr: "05/2024 — 06/2024", en: "May 2024 — Jun 2024" },
+    title: { fr: "Stagiaire développeur web", en: "Web developer intern" },
+    company: "DWE64",
     description: {
-      fr: "Développement d’un site professionnel en Symfony + Doctrine, rôles utilisateurs, sécurité.",
-      en: "Development of a professional website using Symfony + Doctrine, user roles, security.",
+      fr: "Développement d’une application web avec gestion des utilisateurs, des rôles, des données SQL et de la sécurité.",
+      en: "Developed a web application with user and role management, SQL data handling and security controls.",
     },
+    technologies: ["Symfony", "Doctrine", "SQL"],
+    technical: true,
+    type: "experience",
+  },
+  {
+    id: "mcdo",
+    period: { fr: "12/2023 — 12/2024", en: "Dec 2023 — Dec 2024" },
+    title: { fr: "Équipier polyvalent", en: "Crew member" },
+    company: "McDonald’s · Anglet",
+    description: {
+      fr: "Travail en équipe dans un rythme soutenu, respect des procédures et gestion de la pression.",
+      en: "Teamwork in a fast-paced environment, adherence to procedures and working under pressure.",
+    },
+    technical: false,
     type: "experience",
   },
   {
     id: "citypulse-timeline",
-    period: "2024 — 2025",
+    period: { fr: "2024 — 2025", en: "2024 — 2025" },
     title: { fr: "CityPulse", en: "CityPulse" },
     description: {
       fr: "Application Vue 3 pour explorer des données urbaines avec une interface moderne.",
@@ -72,7 +95,7 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: "portfolio-v3-timeline",
-    period: "2025",
+    period: { fr: "2025", en: "2025" },
     title: { fr: "Portfolio v3", en: "Portfolio v3" },
     description: {
       fr: "Refonte complète du portfolio avec Next.js, Tailwind, animations, SEO et pages dynamiques.",

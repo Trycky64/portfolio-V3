@@ -1,5 +1,44 @@
-import ProjectsListPage from "../../projects/page";
+import type { Metadata } from "next";
 
-export default function LocaleProjectsListPage() {
-  return <ProjectsListPage />;
+import { ProjectsList } from "@/components/projects/projects-list";
+import type { Locale } from "@/lib/i18n/context";
+import { localeAlternates, socialMetadata } from "@/lib/seo";
+import { PERSON_NAME } from "@/lib/site";
+
+const metadataByLocale: Record<Locale, { title: string; description: string }> = {
+  fr: {
+    title: "Projets logiciels",
+    description:
+      "Découvrez les projets de Quentin Perriere en Python, backend, applications et web, avec leurs choix techniques, tests et résultats.",
+  },
+  en: {
+    title: "Software projects",
+    description:
+      "Explore Quentin Perriere's Python, backend, application, and web projects, including technical decisions, tests, and results.",
+  },
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = rawLocale === "en" ? "en" : "fr";
+  const metadata = metadataByLocale[locale];
+  const path = `/${locale}/projects`;
+
+  return {
+    title: metadata.title,
+    description: metadata.description,
+    alternates: {
+      canonical: path,
+      languages: localeAlternates("/projects"),
+    },
+    ...socialMetadata(locale, `${metadata.title} — ${PERSON_NAME}`, metadata.description, path),
+  };
+}
+
+export default function ProjectsPage() {
+  return <ProjectsList />;
 }

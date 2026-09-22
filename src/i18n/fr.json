@@ -1,114 +1,85 @@
 {
   "nav": {
+    "home": "Accueil",
+    "primaryAria": "Navigation principale",
+    "mobileAria": "Navigation mobile",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
     "projects": "Projets",
-    "services": "Services",
-    "timeline": "Parcours",
     "skills": "Compétences",
+    "experience": "Expérience",
     "about": "À propos",
-    "contact": "Contact"
-  },
-  "header": {
-    "timeline": "Parcours"
+    "contact": "Contact",
+    "cv": "CV"
   },
   "common": {
     "see_project": "Voir le projet →",
     "source_code": "Code source",
     "demo": "Démo"
   },
-  "hero": {
-    "kicker": "Développeur web freelance",
-    "title": "Je conçois, développe et déploie des applications web modernes.",
-    "subtitle": "Next.js, React, TypeScript, API & déploiement. Disponible pour des missions : site vitrine, dashboard, intégration, backend et mise en production.",
-    "ctaContact": "Me contacter",
-    "ctaMalt": "Voir mon profil Malt",
-    "statusNote": "Micro-entreprise déposée — SIRET en cours (bientôt)."
+  "projects_page": {
+    "back_to_list": "Retour aux projets",
+    "links": "Liens",
+    "project_not_found": "Projet introuvable",
+    "project_not_found_desc": "Le projet {slug} est introuvable.",
+    "project_navigation": "Navigation entre les projets",
+    "previous_project": "Projet précédent",
+    "next_project": "Projet suivant"
   },
-  "services": {
-    "title": "Services",
-    "description": "Des prestations claires, orientées résultat : UI soignée, code propre, et déploiement fiable.",
-    "items": {
-      "website": {
-        "title": "Site vitrine / Landing",
-        "desc": "Un site rapide, clair et orienté conversion, avec SEO de base et performance.",
-        "b1": "Structure claire (sections, CTA, contenu)",
-        "b2": "SEO essentiel (meta, indexation, perf)",
-        "b3": "Déploiement & mise en ligne"
-      },
-      "webapp": {
-        "title": "App web / Dashboard",
-        "desc": "Des interfaces riches avec logique métier, formulaires, tableaux et états UI.",
-        "b1": "UI responsive, states & feedback",
-        "b2": "Auth, CRUD, tableaux, filtres",
-        "b3": "Qualité & perf (DX, lighthouse)"
-      },
-      "nextreact": {
-        "title": "Intégration Next.js / React",
-        "desc": "Renfort sur un projet existant : composants, refactor, migration, perf.",
-        "b1": "Refactor & composants réutilisables",
-        "b2": "Migration App Router / pages",
-        "b3": "Optimisation perf & bundle"
-      },
-      "api": {
-        "title": "Backend / API",
-        "desc": "APIs propres et documentées : endpoints stables, validation, sécurité.",
-        "b1": "API REST (Node / Symfony selon besoin)",
-        "b2": "Validation, erreurs, logs",
-        "b3": "Connexion DB (SQL) si nécessaire"
-      },
-      "deploy": {
-        "title": "Déploiement / Cloudflare",
-        "desc": "Mise en production fiable : DNS, SSL, tunnel, CI/CD, auto-hébergement.",
-        "b1": "Cloudflare Tunnel, DNS & SSL",
-        "b2": "systemd, reverse proxy, monitoring",
-        "b3": "CI/CD GitHub Actions"
-      },
-      "maintenance": {
-        "title": "Maintenance / Perf / SEO",
-        "desc": "Stabiliser et faire évoluer un produit : corrections, vitesse, qualité.",
-        "b1": "Corrections & évolutions",
-        "b2": "Optimisations (images, cache, perf)",
-        "b3": "SEO technique & accessibilité"
-      }
-    }
+  "projects_list": {
+    "eyebrow": "Sélection de réalisations",
+    "title": "Projets",
+    "description": "Des projets concrets qui illustrent ma façon de concevoir, tester et livrer des applications. Chaque étude de cas présente le problème traité, l’architecture retenue et les résultats vérifiés.",
+    "filters": {
+      "label": "Filtrer les projets par domaine",
+      "all": "Tous",
+      "python": "Python",
+      "backend": "Backend",
+      "java": "Java",
+      "applications": "Applications"
+    },
+    "result_count": "{count} projets affichés",
+    "result_count_one": "{count} projet affiché"
+  },
+  "hero": {
+    "title": "Je développe des applications, API et outils logiciels utiles et fiables.",
+    "subtitle": "Je conçois des solutions principalement avec Python et des technologies backend, avec une attention particulière portée à la qualité du code, aux tests et au déploiement.",
+    "ctaProjects": "Voir mes projets",
+    "ctaCv": "Télécharger mon CV",
+    "stackAria": "Technologies principales",
+    "openToWork": "Ouvert aux opportunités",
+    "avatarAlt": "Portrait de Quentin Perriere"
   },
   "projects_section": {
     "title": "Projets phares",
     "description": "Une sélection de projets qui représentent le mieux ma manière de travailler : du front au backend, jusqu’au déploiement."
   },
-  "timeline_section": {
-    "title": "Parcours",
-    "description": "Entre formation, expériences et projets perso, voici les grandes étapes de mon parcours."
-  },
   "skills_section": {
     "title": "Compétences",
-    "description": "Un aperçu rapide de mon stack actuel côté front, back, DevOps et qualité logicielle."
+    "description": "Mes compétences principales en développement Python, backend, intégration d’API, tests et déploiement.",
+    "evidencePrefix": "Mis en pratique dans :"
   },
-
   "about": {
     "title": "À propos",
-    "description": "Je suis développeur web freelance. J’aide à concevoir des interfaces propres, des APIs solides et des déploiements fiables, avec une approche orientée produit.",
+    "description": "Développeur orienté Python et backend, j’aime concevoir des applications et outils logiciels où l’architecture, les tests et la fiabilité comptent autant que la fonctionnalité elle-même.",
     "value": {
       "title": "Ce que j’apporte",
-      "p1": "Code propre et maintenable, UI soignée, et attention portée à la performance et à l’accessibilité.",
-      "p2": "Une livraison pragmatique : cadrage clair, priorisation, et suivi après mise en production."
+      "p1": "Une approche structurée du développement : comprendre le besoin, séparer clairement les responsabilités, tester les comportements importants et garder un code maintenable.",
+      "p2": "Mes projets personnels m’amènent aussi à gérer l’intégration, le packaging, la CI et le déploiement jusqu’à un environnement réellement utilisable."
+    },
+    "build": {
+      "title": "Ce que j’aime construire",
+      "p1": "Des applications, APIs et outils qui automatisent un problème concret, manipulent des données ou s’intègrent à un système existant."
     },
     "availability": {
-      "title": "Disponibilité & statut",
-      "status": "Micro-entreprise déposée — validation et SIRET en cours. J’accepte des missions dès maintenant."
-    },
-    "process": {
-      "title": "Process (4 étapes)",
-      "step1": "Cadrage : besoin, objectifs, contraintes",
-      "step2": "Devis : estimation, planning, livrables",
-      "step3": "Développement : itérations, validation, qualité",
-      "step4": "Livraison & suivi : mise en prod, corrections, évolutions"
+      "title": "Disponibilité",
+      "status": "Basé à {location}, je recherche activement un poste à temps plein en développement Python, backend ou applicatif, en hybride dans la région ou en télétravail partout en France."
     }
   },
-
   "contact": {
-    "title": "On travaille ensemble ?",
-    "description": "Décris ton besoin (contexte, objectifs, deadline) et je te réponds rapidement.",
-    "responseTime": "Réponse sous 24/48h.",
+    "title": "Me contacter",
+    "description": "Vous recrutez un développeur Python, backend ou applicatif ? Je suis disponible pour échanger sur un poste, une équipe ou un projet logiciel.",
+    "responseTime": "Je réponds généralement sous 24 à 48 h.",
     "form": {
       "name": "Nom",
       "email": "Email",
@@ -116,27 +87,28 @@
     },
     "button": {
       "send": "Envoyer le message",
+      "sending": "Envoi en cours…",
+      "sent": "Message envoyé",
       "retry": "Réessayer"
     },
     "direct": {
       "title": "Contact direct & réseaux",
       "emailLabel": "Email",
       "githubLabel": "GitHub",
-      "linkedinLabel": "LinkedIn",
-      "maltLabel": "Malt"
+      "linkedinLabel": "LinkedIn"
     },
-    "status": {
-      "sending": "Envoi en cours…",
-      "success": "Message envoyé. Merci !",
-      "error": "Impossible d’envoyer le message. Vérifiez les champs ou réessayez plus tard."
+    "success": "Message envoyé, merci ! Je reviens vers vous rapidement.",
+    "errors": {
+      "invalid": "Merci de vérifier les champs du formulaire.",
+      "tooLarge": "Le message est trop long.",
+      "rateLimited": "Trop de tentatives. Merci de réessayer dans quelques minutes.",
+      "server": "Impossible d’envoyer le message pour le moment. Merci de réessayer plus tard.",
+      "network": "Connexion impossible. Vérifiez votre réseau et réessayez."
     }
   },
-
   "footer": {
-    "copyright": "© 2026 Quentin Perriere. Tous droits réservés.",
-    "malt": "Malt",
-    "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "email": "Email",
+    "stackNote": "Portfolio développé avec Next.js et TypeScript."
   },
   "cookies": {
     "text": "Ce site utilise des cookies uniquement pour assurer son bon fonctionnement et, avec votre accord, mesurer l’audience. Vous pouvez accepter ou refuser.",
