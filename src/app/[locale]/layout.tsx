@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "@/app/globals.css";
@@ -12,12 +12,6 @@ import { LOCATION, PERSON_NAME, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -92,7 +86,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
+      className={`${geistSans.variable} scroll-smooth`}
     >
       <body>
         <I18nProvider locale={locale}>

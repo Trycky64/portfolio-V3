@@ -103,7 +103,7 @@ export function ContactSection() {
         <div className="mt-8 grid gap-10 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <form
             onSubmit={handleSubmit}
-            className="space-y-4 rounded-xl border border-slate-800 bg-slate-900/40 p-5"
+            className="min-w-0 space-y-4 rounded-xl border border-slate-700 bg-slate-900/40 p-4 sm:p-5"
           >
             <div
               aria-hidden="true"
@@ -133,7 +133,7 @@ export function ContactSection() {
                 required
                 autoComplete="name"
                 maxLength={CONTACT_LIMITS.name.max}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
+                className="focus-ring w-full min-h-11 rounded-md border border-slate-500 bg-slate-900 px-3 py-2 text-base text-slate-100"
               />
             </div>
 
@@ -151,7 +151,7 @@ export function ContactSection() {
                 required
                 autoComplete="email"
                 maxLength={CONTACT_LIMITS.email.max}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
+                className="focus-ring w-full min-h-11 rounded-md border border-slate-500 bg-slate-900 px-3 py-2 text-base text-slate-100"
               />
             </div>
 
@@ -169,7 +169,7 @@ export function ContactSection() {
                 required
                 minLength={CONTACT_LIMITS.message.min}
                 maxLength={CONTACT_LIMITS.message.max}
-                className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-qp-primary focus:ring-1 focus:ring-qp-primary"
+                className="focus-ring w-full rounded-md border border-slate-500 bg-slate-900 px-3 py-2 text-base text-slate-100"
               />
             </div>
 
@@ -177,7 +177,7 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center justify-center rounded-md bg-qp-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-qp-primary/90 disabled:cursor-not-allowed disabled:opacity-70 focus-ring"
+                className="focus-ring inline-flex min-h-11 w-full items-center justify-center rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-slate-950 transition-colors hover:bg-primary-strong hover:text-white disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
               >
                 {buttonLabel}
               </button>
@@ -199,7 +199,7 @@ export function ContactSection() {
             </div>
           </form>
 
-          <div className="space-y-4 text-sm text-slate-300">
+          <div className="min-w-0 space-y-4 text-sm text-slate-300">
             <h3 className="text-base font-semibold text-slate-100">
               {t("contact.direct.title")}
             </h3>
@@ -208,7 +208,7 @@ export function ContactSection() {
               {t("contact.direct.emailLabel")}{" "}
               <a
                 href={`mailto:${EMAIL}`}
-                className="underline underline-offset-4 hover:text-qp-primary"
+                className="break-all underline underline-offset-4 hover:text-primary"
               >
                 {EMAIL}
               </a>

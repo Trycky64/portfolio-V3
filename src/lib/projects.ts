@@ -42,6 +42,20 @@ export interface Project {
   seoDescription?: LocalizedText;
 }
 
+const imageDescriptions: Record<string, LocalizedText> = {
+  "/images/projects/pygeolab/pygeolab-workspace.png": { fr: "Espace de travail de PyGeoLab avec une construction géométrique", en: "PyGeoLab workspace showing a geometric construction" },
+  "/images/projects/pygeolab/pygeolab-geometry.png": { fr: "Construction géométrique dans PyGeoLab", en: "Geometric construction in PyGeoLab" },
+  "/images/projects/pygeolab/pygeolab-math.png": { fr: "Visualisation mathématique dans PyGeoLab", en: "Mathematical visualization in PyGeoLab" },
+  "/images/projects/jellyfin-media-integrity/settings.png": { fr: "Réglages du plugin Jellyfin Media Integrity", en: "Jellyfin Media Integrity plugin settings" },
+  "/images/projects/jellyfin-media-integrity/status.png": { fr: "État des analyses dans Jellyfin Media Integrity", en: "Scan status in Jellyfin Media Integrity" },
+  "/images/projects/jellyfin-media-integrity/scheduled-tasks.png": { fr: "Tâches planifiées de Jellyfin Media Integrity", en: "Jellyfin Media Integrity scheduled tasks" },
+  "/images/projects/citypulse.png": { fr: "Tableau de bord météo et qualité de l’air de CityPulse", en: "CityPulse weather and air quality dashboard" },
+};
+
+export function getProjectImageAlt(project: Project, image: string, locale: keyof LocalizedText): string {
+  return imageDescriptions[image]?.[locale] ?? (locale === "fr" ? `Interface du projet ${project.title}` : `${project.title} project interface`);
+}
+
 const projects: Project[] = [
   {
     slug: "pygeolab",

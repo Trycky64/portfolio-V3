@@ -16,7 +16,7 @@ export function EducationSection() {
       className="scroll-mt-20 border-b border-border bg-background"
     >
       <Container>
-        <div className="animate-fade-in-up py-12 sm:py-section-y">
+        <div className="py-12 sm:py-section-y">
           <SectionTitle
             title={locale === "fr" ? "Formation" : "Education"}
             description={

@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionTitle } from "@/components/ui/section-title";
 import { useI18n } from "@/lib/i18n/context";
-import { getFeaturedProjects, getProjectType } from "@/lib/projects";
+import { getFeaturedProjects, getProjectImageAlt, getProjectType } from "@/lib/projects";
 
 export function ProjectsSection() {
   const { t, locale } = useI18n();
@@ -18,7 +18,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="scroll-mt-20 border-b border-border bg-background">
       <Container>
-        <div className="animate-fade-in-up py-12 sm:py-section-y">
+        <div className="py-12 sm:py-section-y">
           <SectionTitle
             title={t("projects_section.title")}
             description={t("projects_section.description")}
@@ -42,7 +42,7 @@ export function ProjectsSection() {
                   <div className="relative mt-4 h-40 overflow-hidden rounded-lg border border-border bg-surface">
                     <Image
                       src={project.image}
-                      alt={`Capture du projet ${project.title}`}
+                      alt={getProjectImageAlt(project, project.image, locale)}
                       fill
                       className={
                         project.contentStatus === "ready"

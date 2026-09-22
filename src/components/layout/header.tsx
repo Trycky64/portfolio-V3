@@ -55,7 +55,7 @@ export function Header() {
 
           <div className="flex items-center gap-2">
             <nav
-              className="hidden items-center gap-1 sm:flex"
+              className="hidden items-center gap-1 lg:flex"
               aria-label={t("nav.primaryAria")}
             >
               {items.map((item) => (
@@ -77,7 +77,7 @@ export function Header() {
             <a
               href={cvUrl}
               download={cvUrl.slice(1)}
-              className="focus-ring hidden min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-primary-strong hover:text-white sm:inline-flex"
+              className="focus-ring hidden min-h-11 items-center justify-center rounded-md bg-primary px-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-primary-strong hover:text-white lg:inline-flex"
             >
               {t("nav.cv")}
             </a>
@@ -86,7 +86,7 @@ export function Header() {
               href={targetPath}
               hrefLang={targetLocale}
               lang={targetLocale}
-              className="focus-ring hidden min-h-11 items-center justify-center rounded-md border border-border bg-surface/60 px-3 text-xs font-semibold text-text-muted transition-colors hover:border-primary/40 hover:text-text-primary sm:inline-flex"
+              className="focus-ring hidden min-h-11 items-center justify-center rounded-md border border-border bg-surface/60 px-3 text-xs font-semibold text-text-muted transition-colors hover:border-primary/40 hover:text-text-primary lg:inline-flex"
               aria-label={
                 locale === "fr" ? "Switch to English" : "Passer en français"
               }
@@ -99,10 +99,12 @@ export function Header() {
               locale={locale}
               targetLocale={targetLocale}
               targetPath={targetPath}
+              cvUrl={cvUrl}
               labels={{
                 navigation: t("nav.mobileAria"),
                 open: t("nav.openMenu"),
                 close: t("nav.closeMenu"),
+                cv: t("nav.cv"),
               }}
             />
           </div>

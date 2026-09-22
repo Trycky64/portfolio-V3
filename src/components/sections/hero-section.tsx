@@ -41,7 +41,7 @@ export function HeroSection() {
       <Container>
         <div className="py-16 sm:py-24">
           <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_auto]">
-            <div className="animate-fade-in-up">
+            <div>
               <p className="text-sm font-semibold text-primary">
                 {ROLE[locale]}
               </p>
@@ -117,7 +117,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="flex animate-fade-in-up justify-center md:justify-end">
+            <div className="flex justify-center md:justify-end">
               <div className="relative h-48 w-48 sm:h-56 sm:w-56">
                 <div
                   className="absolute inset-0 rounded-full bg-primary/15 blur-2xl"

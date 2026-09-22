@@ -10,6 +10,7 @@ import { useI18n } from "@/lib/i18n/context";
 import {
   getAdjacentProjects,
   getProjectBySlug,
+  getProjectImageAlt,
   getProjectType,
   type LocalizedList,
 } from "@/lib/projects";
@@ -73,7 +74,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
   );
 
   return (
-    <main className="min-h-screen bg-background py-16">
+    <article className="min-h-screen bg-background py-16">
       <Container>
         <Link
           href={`${base}/projects`}
@@ -96,7 +97,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
           ))}
         </div>
 
-        <h1 className="mt-5 text-3xl font-bold text-text-primary sm:text-4xl">
+        <h1 className="mt-5 break-words text-3xl font-bold text-text-primary sm:text-4xl">
           {project.title}
         </h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-text-muted">
@@ -123,11 +124,7 @@ export default function ProjectPage({ slug }: { slug: string }) {
           >
             <Image
               src={project.image}
-              alt={
-                locale === "fr"
-                  ? `Capture du projet ${project.title}`
-                  : `Screenshot of ${project.title}`
-              }
+              alt={getProjectImageAlt(project, project.image, locale)}
               fill
               className={ready ? "object-contain" : "object-cover"}
               sizes="(min-width: 1024px) 992px, calc(100vw - 32px)"
@@ -142,18 +139,14 @@ export default function ProjectPage({ slug }: { slug: string }) {
               project.gallery.length === 1 ? "mt-4" : "mt-4 grid gap-4 md:grid-cols-2"
             }
           >
-            {project.gallery.map((image, index) => (
+            {project.gallery.map((image) => (
               <div
                 key={image}
                 className="relative aspect-[3/2] overflow-hidden rounded-xl border border-border bg-surface"
               >
                 <Image
                   src={image}
-                  alt={
-                    locale === "fr"
-                      ? `Capture ${index + 2} de ${project.title}`
-                      : `Screenshot ${index + 2} of ${project.title}`
-                  }
+                  alt={getProjectImageAlt(project, image, locale)}
                   fill
                   className="object-contain"
                   sizes={
@@ -300,6 +293,6 @@ export default function ProjectPage({ slug }: { slug: string }) {
           </nav>
         )}
       </Container>
-    </main>
+    </article>
   );
 }

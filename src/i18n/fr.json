@@ -38,7 +38,8 @@
       "java": "Java",
       "applications": "Applications"
     },
-    "result_count": "{count} projets affichés"
+    "result_count": "{count} projets affichés",
+    "result_count_one": "{count} projet affiché"
   },
   "hero": {
     "title": "Je développe des applications, API et outils logiciels utiles et fiables.",

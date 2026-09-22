@@ -7,7 +7,7 @@
   --color-surface-soft: 8 15 32;
   --color-border: 51 65 85;
   --color-primary: 129 140 248;
-  --color-primary-strong: 99 102 241;
+  --color-primary-strong: 95 98 235;
   --color-text-primary: 248 250 252;
   --color-text-muted: 148 163 184;
   --color-success: 74 222 128;
@@ -66,6 +66,11 @@ input,
 textarea,
 select {
   -webkit-tap-highlight-color: transparent;
+}
+
+:is(a, button, input, textarea, select):not(.focus-ring):focus-visible {
+  outline: 2px solid rgb(var(--color-primary));
+  outline-offset: 3px;
 }
 
 @layer utilities {

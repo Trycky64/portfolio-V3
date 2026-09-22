@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { useI18n } from "@/lib/i18n/context";
 import {
   getAllProjects,
+  getProjectImageAlt,
   getProjectsByCategory,
   getProjectType,
   type ProjectCategory,
@@ -76,11 +77,11 @@ export function ProjectsList() {
         </div>
 
         <p className="sr-only" aria-live="polite">
-          {t("projects_list.result_count", { count: visibleProjects.length })}
+          {t(visibleProjects.length === 1 ? "projects_list.result_count_one" : "projects_list.result_count", { count: visibleProjects.length })}
         </p>
 
         <div className="mt-10 grid items-start gap-6 md:grid-cols-2">
-          {visibleProjects.map((project, index) => (
+          {visibleProjects.map((project) => (
             <Card key={project.slug} variant="project" className="!h-auto">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge variant="muted">{getProjectType(project, locale)}</Badge>
@@ -92,7 +93,7 @@ export function ProjectsList() {
                 ))}
               </div>
 
-              <h2 className="mt-4 text-xl font-semibold text-text-primary">
+              <h2 className="mt-4 break-words text-xl font-semibold text-text-primary">
                 {project.title}
               </h2>
 
@@ -100,15 +101,10 @@ export function ProjectsList() {
                 <div className="relative mt-4 aspect-[3/2] overflow-hidden rounded-lg border border-border bg-surface">
                   <Image
                     src={project.image}
-                    alt={
-                      locale === "fr"
-                        ? `Aperçu du projet ${project.title}`
-                        : `Preview of ${project.title}`
-                    }
+                    alt={getProjectImageAlt(project, project.image, locale)}
                     fill
                     className="object-contain"
                     sizes="(min-width: 768px) 480px, calc(100vw - 48px)"
-                    loading={index === 0 ? "eager" : "lazy"}
                   />
                 </div>
               )}

@@ -15,7 +15,7 @@ export function AboutSection() {
       className="scroll-mt-20 border-b border-border bg-background"
     >
       <Container>
-        <div className="py-12 sm:py-section-y animate-fade-in-up">
+        <div className="py-12 sm:py-section-y">
           <SectionTitle
             title={t("about.title")}
             description={t("about.description")}

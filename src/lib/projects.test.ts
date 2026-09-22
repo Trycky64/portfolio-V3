@@ -6,12 +6,24 @@ import {
   getAdjacentProjects,
   getAllProjects,
   getFeaturedProjects,
+  getProjectImageAlt,
   getProjectBySlug,
   getProjectType,
   getProjectsByCategory,
 } from "./projects";
 
 describe("lib/projects", () => {
+  it("décrit les captures de projet dans chaque langue", () => {
+    for (const project of getAllProjects()) {
+      for (const image of [project.image, ...project.gallery].filter((path): path is string => Boolean(path))) {
+        for (const locale of ["fr", "en"] as const) {
+          expect(getProjectImageAlt(project, image, locale).length).toBeGreaterThan(15);
+        }
+      }
+    }
+    const pygeolab = getProjectBySlug("pygeolab")!;
+    expect(getProjectImageAlt(pygeolab, pygeolab.gallery[1], "fr")).toContain("mathématique");
+  });
   it("publie les quatre projets dans l'ordre attendu", () => {
     expect(getAllProjects().map((project) => project.slug)).toEqual([
       "pygeolab",

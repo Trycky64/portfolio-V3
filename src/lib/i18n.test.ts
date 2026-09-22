@@ -36,7 +36,7 @@ describe("lib/i18n", () => {
     const sourceText = sources.map((path) => readFileSync(path, "utf8")).join("\n");
     const staticCalls = [...sourceText.matchAll(/\bt\(\s*["']([^"']+)["']/g)].map((match) => match[1]);
     // NAV_ITEMS, FILTERS and errorKeyForResponse supply literals to t at runtime.
-    const dynamicLiterals = [...sourceText.matchAll(/["']((?:nav|projects_list\.filters|contact\.errors)\.[\w.]+)["']/g)].map((match) => match[1]);
+    const dynamicLiterals = [...sourceText.matchAll(/["']((?:nav|projects_list\.filters|projects_list\.result_count|contact\.errors)\.[\w.]+)["']/g)].map((match) => match[1]);
     const used = [...new Set([...staticCalls, ...dynamicLiterals])];
     expect(used.length).toBeGreaterThan(50);
     for (const locale of ["fr", "en"] as const) {

@@ -17,7 +17,7 @@ export function ExperienceSection() {
       className="scroll-mt-20 border-b border-border bg-surface-soft"
     >
       <Container>
-        <div className="animate-fade-in-up py-12 sm:py-section-y">
+        <div className="py-12 sm:py-section-y">
           <SectionTitle
             title={locale === "fr" ? "Expérience professionnelle" : "Professional experience"}
             description={

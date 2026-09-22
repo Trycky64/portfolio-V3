@@ -17,10 +17,12 @@ interface MobileNavProps {
   locale: Locale;
   targetLocale: Locale;
   targetPath: string;
+  cvUrl: string;
   labels: {
     navigation: string;
     open: string;
     close: string;
+    cv: string;
   };
 }
 
@@ -29,6 +31,7 @@ export function MobileNav({
   locale,
   targetLocale,
   targetPath,
+  cvUrl,
   labels,
 }: MobileNavProps) {
   const [open, setOpen] = useState(false);
@@ -54,7 +57,7 @@ export function MobileNav({
   }, [open]);
 
   return (
-    <div className="relative sm:hidden">
+    <div className="relative lg:hidden">
       <button
         ref={triggerRef}
         type="button"
@@ -115,6 +118,15 @@ export function MobileNav({
             ))}
 
             <div className="my-1 border-t border-border" aria-hidden="true" />
+
+            <a
+              href={cvUrl}
+              download={cvUrl.slice(1)}
+              onClick={() => setOpen(false)}
+              className="focus-ring rounded-md px-3 py-3 text-sm font-medium text-text-muted transition-colors hover:bg-surface/70 hover:text-text-primary"
+            >
+              {labels.cv}
+            </a>
 
             <Link
               href={targetPath}

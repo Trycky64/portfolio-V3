@@ -16,7 +16,7 @@ export function SkillsSection() {
       className="scroll-mt-20 border-b border-border bg-background"
     >
       <Container>
-        <div className="py-12 sm:py-section-y animate-fade-in-up">
+        <div className="py-12 sm:py-section-y">
           <SectionTitle title={t("skills_section.title")} description={t("skills_section.description")} />
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
